@@ -1,4 +1,4 @@
-# cssweng-project 
+# Sticker!Me
 ## Instruction to run for development:
 You will have to run the front-end and back-end side seperately.  
 **For the front-end:**
@@ -23,5 +23,19 @@ You can view the users in `http://localhost:3000/api/users`
 | ------------- | ---------- |
 | user          | password   |
 | admin         | password   |
+
+## Tech Stack:
+| Area                  | Tool                    |
+| --------------------- | ----------------------- |
+| Programming Languages | HTML, CSS, Javascript   |
+| Framework             | ReactJS                 |
+| Front-End Libraries   | EsLint, Prettier        |
+| Back-End Libraries    | ExpressJS, Mongoose     |
+| Database              | MongoDB                 |
+
+## Development Notes: 
+### Coding Standards
+ReactJS: https://github.com/airbnb/javascript/tree/master/react  
+CSS: https://github.com/airbnb/css  
 
 ## Features:

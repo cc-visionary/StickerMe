@@ -4,7 +4,7 @@ import "./assets/styles/App.css";
 
 import { Navbar, Footer } from "./components";
 import { Admin, PageNotFound } from "./pages";
-import { UserService } from './services';
+import { UserService } from "./services";
 
 export default class App extends Component {
   constructor(props) {
@@ -16,11 +16,11 @@ export default class App extends Component {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     UserService.getAllUsers().then((res) => {
       this.setState({ users: res.data });
-    })
-  }; 
+    });
+  }
 
   render() {
     const { userType, users } = this.state;
@@ -32,7 +32,11 @@ export default class App extends Component {
           <div id="main">
             {userType === "admin" ? (
               <Switch>
-                <Route exact path="/" component={() => <Admin users={users} />} />
+                <Route
+                  exact
+                  path="/"
+                  component={() => <Admin users={users} />}
+                />
                 <Route component={PageNotFound} />
               </Switch>
             ) : (
@@ -40,7 +44,11 @@ export default class App extends Component {
             )}
             {userType === "user" ? (
               <Switch>
-                <Route exact path="/" component={() => <h1>User Page Content</h1>} />
+                <Route
+                  exact
+                  path="/"
+                  component={() => <h1>User Page Content</h1>}
+                />
                 <Route component={PageNotFound} />
               </Switch>
             ) : (

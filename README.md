@@ -35,7 +35,8 @@ You can view the users in `http://localhost:3000/api/users`
 
 ## Development Notes: 
 ### Coding Standards
-ReactJS: https://github.com/airbnb/javascript/tree/master/react  
+ReactJS (JSX): https://github.com/airbnb/javascript/tree/master/react  
+Javascript: https://github.com/airbnb/javascript  
 CSS: https://github.com/airbnb/css  
 
 ## Features:

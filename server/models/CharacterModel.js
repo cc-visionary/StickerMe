@@ -20,7 +20,7 @@ const CharacterSchema = new Schema({
   },
   status: {
     type: String, 
-    default: ''
+    default: 'Editing'
   },
 });
 

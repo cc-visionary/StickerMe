@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./index.js",
-    "db-insert": "node ./helpers/insert_data.js",
-    "db-reset": "node ./helpers/reset_collections.js",
+    "db-insert": "node ./helpers/insertData.js",
+    "db-drop": "node ./helpers/dropCollections.js",
+    "db-reset": "node ./helpers/resetDatabase.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -31,7 +31,7 @@ You can view the users in `http://localhost:3000/api/users`
 | --------------------- | ----------------------- |
 | Programming Languages | HTML, CSS, Javascript   |
 | Framework             | ReactJS                 |
-| Front-End Libraries   | EsLint, Prettier        |
+| Front-End Libraries   | Axios, ESLint, Prettier |
 | Back-End Libraries    | ExpressJS, Mongoose     |
 | Database              | MongoDB                 |
 

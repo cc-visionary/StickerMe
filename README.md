@@ -1,4 +1,6 @@
-# Sticker!Me
+# Sticker!Me 
+<img src="./client/src/assets/images/logo.png" height="100" width="100" />  
+
 ## Instruction to run for development:
 You will have to run the front-end and back-end side seperately.  
 **For the front-end:**

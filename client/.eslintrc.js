@@ -18,5 +18,6 @@ module.exports = {
     "react/prefer-stateless-function": [1],
     "prettier/prettier": "error",
     "react/prop-types": "off",
+    "class-methods-use-this": "off",
   },
 };

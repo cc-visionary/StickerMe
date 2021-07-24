@@ -4,7 +4,8 @@ const db = require('../models/database.js');
 // import CharacterSchema from `../models/CharacterModel.js`
 const Character = require('../models/CharacterModel');
 
-const defaultCallback = (res, result) => res.status(200).json(result)
+// import helper function defaultCallback from `../helpers/defaultCallback`
+const defaultCallback = require('../helpers/defaultCallback');
 
 const CharacterController = {
   getCharactersByUserID: (req, res) => {

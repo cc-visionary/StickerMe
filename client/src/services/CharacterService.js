@@ -4,10 +4,9 @@ import axios from "axios";
 
 const CHARACTER_API_BASE_URL = "http://localhost:3000/api/Characters";
 
-class CharacterService {
-  getAllCharactersByUserID(userID) {
-    return axios.get(CHARACTER_API_BASE_URL, { userID });
-  }
-}
+const CharacterService = {
+  getAllCharactersByUserID: (userID) =>
+    axios.get(CHARACTER_API_BASE_URL, { userID }),
+};
 
-export default new CharacterService();
+export default CharacterService;

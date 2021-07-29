@@ -18,7 +18,12 @@ export default class App extends Component {
 
   componentDidMount() {
     UserService.getAllUsers().then((res) => {
-      this.setState({ users: res.data });
+      const { success, result } = res.data;
+      if (success) {
+        this.setState({ users: result });
+      } else {
+        console.log("Failed to get the Users from the Database");
+      }
     });
   }
 

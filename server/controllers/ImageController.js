@@ -1,37 +1,51 @@
 // import module from `../models/database.js`
 const db = require('../models/database.js');
+const fs = require('fs');
 
 // import ImageSchema from `../models/ImageModel.js`
 const Image = require('../models/ImageModel');
 
 const fileSizeFormatter = require('../helpers/fileSizeFormatter');
 
+const defaultCallback = require('../helpers/defaultCallback');
+
 const ImageController = {
+  // inserts an image info to the database
   insertImage: async (req, res) => {
-    try {
-      const file = req.files[0]
-      console.log(file)
-      const img = new Image({
-        fileName: file.originalname,
-        filePath: file.path,
-        fileType: file.mimetype,
-        fileSize: fileSizeFormatter(file.size, 2),
-        imageType: file.fieldname,
-      })
-      await img.save();
-      res.status(201).send('Image was uploaded successfully!')
-    } catch (error) {
-      console.log(error)
-      // res.status(400).send(error.message);
+    const file = req.files[0]
+    const image = {
+      fileName: file.path.split('\\')[1],
+      filePath: file.path,
+      fileType: file.mimetype,
+      fileSize: fileSizeFormatter(file.size, 2),
+      imageType: file.fieldname,
     }
+    db.insertOne(Image, image, (result) => {
+      if(result.success) {
+        res.status(201).send('Image was uploaded successfully!')
+      } else {
+        res.status(400).send(error.message);
+      }
+    })
   },
+  // returns all the images from the database
   getAllImages: async (req, res) => {
+    db.findMany(Image, {}, (result) => defaultCallback(res, result));
+  },
+  // returns all the images of a certain type from the database
+  getImagesByType: async (req, res) => {
+    const { imageType } = req.params;
+    db.findMany(Image, { imageType }, (result) => defaultCallback(res, result));
+  },
+  deleteImage: async (req, res) => {
+    const { fileName } = req.params;
     try {
-      const files = await Image.find();
-      res.status(200).send(files);
-    } catch(error) {
-      console.log(error)
-      // res.status(400).send(error.message);
+      db.deleteOne(Image, { fileName }, (result) => {
+        fs.unlinkSync(`uploads/${fileName}`);
+        defaultCallback(res, result);
+      });
+    } catch (error) {
+      return res.status(400).send(error.message);
     }
   }
 };

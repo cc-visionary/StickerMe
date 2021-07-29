@@ -20,10 +20,23 @@ const app = express();
 const upload = require('../modules/multer');
 
 app.get("/users", UserController.getAllUsers);
-// 
+
+// API for Users
+
+// API for Contacts
+
+// API for Orders
+
+// API for Characters
+
+// API for Images
+app.get("/images", ImageController.getAllImages);
+
+app.get("/images/:imageType", ImageController.getImagesByType);
+
 app.post("/images/upload", upload.any(), ImageController.insertImage);
 
-app.get("/images", ImageController.getAllImages);
+app.delete("/images/:fileName", ImageController.deleteImage);
 
 /*
     exports the object `app` (defined above)

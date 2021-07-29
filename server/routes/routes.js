@@ -19,11 +19,17 @@ const app = express();
 
 const upload = require('../modules/multer');
 
+// API for Users
 app.get("/users", UserController.getAllUsers);
 
-// API for Users
-
 // API for Contacts
+app.get("/contacts/userID/:userID", ContactController.getContactsByUserID);
+
+app.get("/contacts/id/:id", ContactController.getContactByID);
+
+app.post("/contacts/add", ContactController.insertContact);
+
+app.patch("/contacts/edit", ContactController.editContact);
 
 // API for Orders
 

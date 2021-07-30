@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./assets/styles/App.css";
 
 import { Navbar, Footer } from "./components";
-import { Admin, Login, PageNotFound } from "./pages";
+import { Admin, User, Landing, Login, PageNotFound } from "./pages";
 import { UserService } from "./services";
+import { AdminRoute, UserRoute, LoginRoute } from "./utils";
+import { removeUserSession } from "./utils/common";
 
 export default class App extends Component {
   constructor(props) {
@@ -16,6 +18,10 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    UserService.getLogin().then((res) => {
+      const { success } = res.data;
+      if (!success) removeUserSession();
+    });
     UserService.getAllUsers().then((res) => {
       const { success, result } = res.data;
       if (success) {
@@ -40,16 +46,14 @@ export default class App extends Component {
           </Switch>
           <div id="main">
             <Switch>
-              <Route
-                exact
-                path="/"
-                component={() => <h1>User Page Content</h1>}
+              <Route exact path="/" component={Landing} />
+              <AdminRoute
+                path="/admin"
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                component={(props) => <Admin {...props} users={users} />}
               />
-              <Route
-                path="/dashboard"
-                component={() => <Admin users={users} />}
-              />
-              <Route path="/login" component={Login} />
+              <UserRoute path="/user" component={User} />
+              <LoginRoute path="/login" component={Login} />
               <Route component={PageNotFound} />
             </Switch>
           </div>

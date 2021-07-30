@@ -17,7 +17,12 @@ const UserService = {
     axios
       .post(`${USER_API_BASE_URL}/login`, { username, password, remember })
       .then((response) => {
-        setUserSession(response.data.token, response.data.result);
+        const { username: uname, userType, email } = response.data.user;
+        setUserSession(response.data.token, {
+          uname,
+          email,
+          userType,
+        });
         return response;
       }),
   logout: () => axios.post(`${USER_API_BASE_URL}/logout`),

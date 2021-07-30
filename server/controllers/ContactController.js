@@ -39,7 +39,7 @@ const ContactController = {
       }
     });
   },
-  getContactByID: (req, res) => {
+  getContact: (req, res) => {
     const { id } = req.params;
     db.findOne(Contact, { _id: id }, (result) => defaultCallback(res, result));
   },
@@ -47,7 +47,7 @@ const ContactController = {
     const { userID } = req.params;
     db.findMany(Contact, { userID }, (result) => defaultCallback(res, result));
   },
-  editContact: (req, res) => {
+  updateContact: (req, res) => {
     const {
       id,
       userID,

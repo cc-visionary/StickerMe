@@ -14,7 +14,50 @@ const CharacterSchema = new Schema({
     type: String, 
     required: true,
   },
-  // TODO: add the body parts and their types
+  accessories: {
+    type: String,
+    required: true,
+  },
+  backHair: {
+    type: String,
+    required: true,
+  },
+  bangs: {
+    type: String,
+    required: true,
+  },
+  blush: {
+    type: String,
+    required: true,
+  },
+  extraHair: {
+    type: String,
+    required: true,
+  },
+  eyebrows: {
+    type: String,
+    required: true,
+  },
+  eyes: {
+    type: String,
+    required: true,
+  },
+  mouth: {
+    type: String,
+    required: true,
+  },
+  nose: {
+    type: String,
+    required: true,
+  },
+  sideHair: {
+    type: String,
+    required: true,
+  },
+  skin: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String, 
   },

@@ -25,15 +25,26 @@ app.get("/users", UserController.getAllUsers);
 // API for Contacts
 app.get("/contacts/userID/:userID", ContactController.getContactsByUserID);
 
-app.get("/contacts/id/:id", ContactController.getContactByID);
+app.get("/contacts/id/:id", ContactController.getContact);
 
 app.post("/contacts/add", ContactController.insertContact);
 
-app.patch("/contacts/edit", ContactController.editContact);
+app.patch("/contacts/update", ContactController.updateContact);
+
+app.delete("/contacts/delete", ContactController.deleteContact);
 
 // API for Orders
 
 // API for Characters
+app.get("/characters/userID/:userID", CharacterController.getCharactersByUserID);
+
+app.get("/characters/id/:id", CharacterController.getCharacter);
+
+app.post("/characters/add", CharacterController.insertCharacter);
+
+app.patch("/characters/update", CharacterController.updateCharacter);
+
+app.delete("/contacts/delete", CharacterController.deleteCharacter);
 
 // API for Images
 app.get("/images", ImageController.getAllImages);

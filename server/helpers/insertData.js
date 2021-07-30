@@ -1,14 +1,18 @@
 /*
   This script inserts the following:
-    1. 5 users to the collection 'users' 
+    1. 5 users to the collection "users" 
 */
 
+// import bcrypt for encrypting the password by hashing
+const bcrypt = require("bcrypt");
+const saltRounds = bcrypt.genSaltSync();
+
 const users = [
-  { username: "user", password: "password" },
-  { username: "admin", password: "password" },
-  { username: "john", password: "password" },
-  { username: "kyle", password: "password" },
-  { username: "jacob", password: "password" },
+  { username: "moderator", email: "moderator@gmail.com", password: bcrypt.hashSync("password", saltRounds), userType: "moderator" },
+  { username: "customer", email: "customer@gmail.com", password: bcrypt.hashSync("password", saltRounds), userType: "customer" },
+  { username: "john", email: "john@gmail.com", password: bcrypt.hashSync("password", saltRounds), userType: "customer" },
+  { username: "kyle", email: "kyle@gmail.com", password: bcrypt.hashSync("password", saltRounds), userType: "customer" },
+  { username: "jacob", email: "jacob@gmail.com", password: bcrypt.hashSync("password", saltRounds), userType: "customer" },
 ];
 
 const contacts = [
@@ -23,18 +27,18 @@ const orders = [
 
 ]
 
-require('dotenv').config()
+require("dotenv").config()
 
 // import module from `../models/database.js`
-const db = require('../models/database.js');
-const User = require('../models/UserModel');
-const Contact = require('../models/ContactModel');
-const Character = require('../models/CharacterModel');
-const Order = require('../models/OrderModel');
+const db = require("../models/database.js");
+const User = require("../models/UserModel");
+const Contact = require("../models/ContactModel");
+const Character = require("../models/CharacterModel");
+const Order = require("../models/OrderModel");
 
 db.connect();
 
-db.insertMany(User, users, null);
-db.insertMany(Contact, contacts, null);
-db.insertMany(Character, characters, null);
-db.insertMany(Order, orders, null);
+db.insertMany(User, users, (res) => console.log(res));
+// db.insertMany(Contact, contacts, null);
+// db.insertMany(Character, characters, null);
+// db.insertMany(Order, orders, null);

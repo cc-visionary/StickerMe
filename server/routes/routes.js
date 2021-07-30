@@ -20,15 +20,15 @@ const app = express();
 const upload = require('../modules/multer');
 
 // API for Users
-app.get("/users", UserController.getAllUsers);
+app.get("/users/getLogin", UserController.getLogin);
 
 app.get("/users/:username", UserController.getUserByUsername);
+
+app.get("/users", UserController.getAllUsers);
 
 app.patch("/users/update", UserController.updateUser);
 
 app.delete("/users/:username", UserController.deleteUser);
-
-app.get("/users/getLogin", UserController.getLogin);
 
 app.post("/users/login", UserController.login);
 
@@ -59,9 +59,9 @@ app.patch("/characters/update", CharacterController.updateCharacter);
 app.delete("/contacts/delete/:id", CharacterController.deleteCharacter);
 
 // API for Images
-app.get("/images", ImageController.getAllImages);
-
 app.get("/images/:imageType", ImageController.getImagesByType);
+
+app.get("/images", ImageController.getAllImages);
 
 app.post("/images/upload", upload.any(), ImageController.insertImage);
 

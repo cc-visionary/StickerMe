@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./assets/styles/App.css";
 
 import { Navbar, Footer } from "./components";
-import { Admin, PageNotFound } from "./pages";
+import { Admin, Login, PageNotFound } from "./pages";
 import { UserService } from "./services";
 
 export default class App extends Component {
@@ -11,7 +11,6 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      userType: "admin",
       users: [],
     };
   }
@@ -28,39 +27,38 @@ export default class App extends Component {
   }
 
   render() {
-    const { userType, users } = this.state;
+    const { users } = this.state;
 
     return (
       <Router>
         <div className="app">
-          <Navbar />
+          <Switch>
+            {/* No Navbar for the Login Page */}
+            <Route path="/login" component={() => <></>} />
+            {/* With Navbar for all the other pages */}
+            <Route path="/" component={Navbar} />
+          </Switch>
           <div id="main">
-            {userType === "admin" ? (
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  component={() => <Admin users={users} />}
-                />
-                <Route component={PageNotFound} />
-              </Switch>
-            ) : (
-              <></>
-            )}
-            {userType === "user" ? (
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  component={() => <h1>User Page Content</h1>}
-                />
-                <Route component={PageNotFound} />
-              </Switch>
-            ) : (
-              <></>
-            )}
+            <Switch>
+              <Route
+                exact
+                path="/"
+                component={() => <h1>User Page Content</h1>}
+              />
+              <Route
+                path="/dashboard"
+                component={() => <Admin users={users} />}
+              />
+              <Route path="/login" component={Login} />
+              <Route component={PageNotFound} />
+            </Switch>
           </div>
-          <Footer />
+          <Switch>
+            {/* No Footer for the Login Page */}
+            <Route path="/login" component={() => <></>} />
+            {/* With Footer for all the other pages */}
+            <Route path="/" component={Footer} />
+          </Switch>
         </div>
       </Router>
     );

@@ -58,10 +58,9 @@ const UserController = {
     db.deleteOne(User, { username }, (result) => defaultCallback(res, result));
   },
   getLogin: (req, res) => {
-    const { username, email, password, userType } = req.session;
+    const { username, email, userType } = req.session;
     if (username) {
-      const user = { username, email, password, userType };
-      res.status(200).send({ success: true, result: user });
+      res.status(200).send({ success: true, result: { username, email, userType } });
     } else {
       res.send({ success: false });
     }
@@ -70,15 +69,16 @@ const UserController = {
     const { username, password, remember } = req.body;
 
     db.findOne(User, { username }, (result) => {
-      if (result) {
-        if (bcrypt.compareSync(password, result.password)) {
+      const data = result.result;
+      if (data) {
+        if (bcrypt.compareSync(password, data.password)) {
           // only keep the user logged in, if user asked to be `remember` is true
           if (remember) {
-            req.session.username = result.password;
-            req.session.email = result.email;
-            req.session.userType = result.userType;
+            req.session.username = data.username;
+            req.session.email = data.email;
+            req.session.userType = data.userType;
           }
-          res.status(200).send({ success: true, user: result });
+          res.status(200).send({ success: true, user: data });
         } else {
           res
             .status(404)

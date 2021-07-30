@@ -43,7 +43,7 @@ const routes = require("./routes/routes.js");
 // setups the session tracker
 app.use(
   session({
-    secret: "session",
+    secret: "stickerme-session",
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),

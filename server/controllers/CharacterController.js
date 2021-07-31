@@ -8,8 +8,10 @@ const Character = require('../models/CharacterModel');
 const defaultCallback = require('../helpers/defaultCallback');
 
 const CharacterController = {
-  getCharactersByUserID: (req, res) => {
-    db.findMany(Character, {}, (result) => defaultCallback(res, result));
+  getCharactersByUsername: (req, res) => {
+    const { username } = req.params;
+
+    db.findMany(Character, { username }, (result) => defaultCallback(res, result));
   },
   getCharacter: (req, res) => {
     const { id } = req.params;
@@ -17,7 +19,7 @@ const CharacterController = {
   },
   insertCharacter: (req, res) => {
     const {
-      userID,
+      username,
       name,
       accessories,
       backHair,
@@ -35,7 +37,7 @@ const CharacterController = {
     } = req.body;
 
     const character = {
-      userID,
+      username,
       name,
       accessories,
       backHair,
@@ -63,7 +65,7 @@ const CharacterController = {
   updateCharacter: (req, res) => {
     const {
       id,
-      userID,
+      username,
       name,
       accessories,
       backHair,
@@ -81,7 +83,7 @@ const CharacterController = {
     } = req.body;
 
     const character = {
-      userID,
+      username,
       name,
       accessories,
       backHair,

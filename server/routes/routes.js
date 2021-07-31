@@ -20,10 +20,20 @@ const app = express();
 const upload = require('../modules/multer');
 
 // API for Users
+app.get("/users/:username", UserController.getUserByUsername);
+
 app.get("/users", UserController.getAllUsers);
 
+app.patch("/users/update", UserController.updateUser);
+
+app.delete("/users/:username", UserController.deleteUser);
+
+app.post("/users/login", UserController.login);
+
+app.post("/users/logout", UserController.logout);
+
 // API for Contacts
-app.get("/contacts/userID/:userID", ContactController.getContactsByUserID);
+app.get("/contacts/username/:username", ContactController.getContactsByUsername);
 
 app.get("/contacts/id/:id", ContactController.getContact);
 
@@ -31,12 +41,12 @@ app.post("/contacts/add", ContactController.insertContact);
 
 app.patch("/contacts/update", ContactController.updateContact);
 
-app.delete("/contacts/delete", ContactController.deleteContact);
+app.delete("/contacts/delete/:id", ContactController.deleteContact);
 
 // API for Orders
 
 // API for Characters
-app.get("/characters/userID/:userID", CharacterController.getCharactersByUserID);
+app.get("/characters/username/:username", CharacterController.getCharactersByUsername);
 
 app.get("/characters/id/:id", CharacterController.getCharacter);
 
@@ -44,12 +54,12 @@ app.post("/characters/add", CharacterController.insertCharacter);
 
 app.patch("/characters/update", CharacterController.updateCharacter);
 
-app.delete("/contacts/delete", CharacterController.deleteCharacter);
+app.delete("/contacts/delete/:id", CharacterController.deleteCharacter);
 
 // API for Images
-app.get("/images", ImageController.getAllImages);
-
 app.get("/images/:imageType", ImageController.getImagesByType);
+
+app.get("/images", ImageController.getAllImages);
 
 app.post("/images/upload", upload.any(), ImageController.insertImage);
 

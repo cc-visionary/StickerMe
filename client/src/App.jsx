@@ -1,18 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./assets/styles/App.css";
 
 import { Navbar, Footer } from "./components";
-import { Admin, PageNotFound } from "./pages";
+import {
+  Admin,
+  Customer,
+  Landing,
+  Login,
+  Loading,
+  PageNotFound,
+} from "./pages";
 import { UserService } from "./services";
+import { AdminRoute, CustomerRoute, LoginRoute } from "./utils";
+import { getUser } from "./utils/store";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      userType: "admin",
       users: [],
+      user: getUser(),
     };
   }
 
@@ -28,41 +37,41 @@ export default class App extends Component {
   }
 
   render() {
-    const { userType, users } = this.state;
+    const { user, users } = this.state;
+    console.log(user);
 
     return (
-      <Router>
-        <div className="app">
-          <Navbar />
-          <div id="main">
-            {userType === "admin" ? (
+      <Suspense fallback={<Loading />}>
+        <Router>
+          <div className="app">
+            <Switch>
+              {/* No Navbar for the Login Page */}
+              <Route path="/login" component={() => <></>} />
+              {/* With Navbar for all the other pages */}
+              <Route path="/" component={Navbar} />
+            </Switch>
+            <div id="main">
               <Switch>
-                <Route
-                  exact
-                  path="/"
-                  component={() => <Admin users={users} />}
+                <Route exact path="/" component={Landing} />
+                <AdminRoute
+                  path="/admin"
+                  // eslint-disable-next-line react/jsx-props-no-spreading
+                  component={(props) => <Admin {...props} users={users} />}
                 />
+                <CustomerRoute path="/customer" component={Customer} />
+                <LoginRoute path="/login" component={Login} />
                 <Route component={PageNotFound} />
               </Switch>
-            ) : (
-              <></>
-            )}
-            {userType === "user" ? (
-              <Switch>
-                <Route
-                  exact
-                  path="/"
-                  component={() => <h1>User Page Content</h1>}
-                />
-                <Route component={PageNotFound} />
-              </Switch>
-            ) : (
-              <></>
-            )}
+            </div>
+            <Switch>
+              {/* No Footer for the Login Page */}
+              <Route path="/login" component={() => <></>} />
+              {/* With Footer for all the other pages */}
+              <Route path="/" component={Footer} />
+            </Switch>
           </div>
-          <Footer />
-        </div>
-      </Router>
+        </Router>
+      </Suspense>
     );
   }
 }

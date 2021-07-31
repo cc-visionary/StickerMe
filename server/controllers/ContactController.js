@@ -8,9 +8,17 @@ const Contact = require("../models/ContactModel");
 const defaultCallback = require("../helpers/defaultCallback");
 
 const ContactController = {
+  getContact: (req, res) => {
+    const { id } = req.params;
+    db.findOne(Contact, { _id: id }, (result) => defaultCallback(res, result));
+  },
+  getContactsByUsername: (req, res) => {
+    const { username } = req.params;
+    db.findMany(Contact, { username }, (result) => defaultCallback(res, result));
+  },
   insertContact: (req, res) => {
     const {
-      userID,
+      username,
       fullName,
       phone,
       address,
@@ -21,7 +29,7 @@ const ContactController = {
     } = req.body;
 
     const contact = {
-      userID,
+      username,
       fullName,
       phone,
       address,
@@ -39,18 +47,10 @@ const ContactController = {
       }
     });
   },
-  getContact: (req, res) => {
-    const { id } = req.params;
-    db.findOne(Contact, { _id: id }, (result) => defaultCallback(res, result));
-  },
-  getContactsByUserID: (req, res) => {
-    const { userID } = req.params;
-    db.findMany(Contact, { userID }, (result) => defaultCallback(res, result));
-  },
   updateContact: (req, res) => {
     const {
       id,
-      userID,
+      username,
       fullName,
       phone,
       address,
@@ -61,7 +61,7 @@ const ContactController = {
     } = req.body;
 
     const contact = {
-      // userID, <- non-editable
+      // username, <- non-editable
       fullName,
       phone,
       address,

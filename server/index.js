@@ -6,6 +6,7 @@
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
+const cookieParser = require('cookie-parser');
 const express = require("express");
 const session = require("express-session");
 const mongoose = require("mongoose");
@@ -19,7 +20,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // MIDDLEWARES
-app.use(require('morgan')('tiny'));
+app.use(require("morgan")("tiny"));
 
 const corsOptions = {
   origin: "http://localhost:8080",
@@ -27,8 +28,15 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
-app.use(bodyParser.json({ limit: "50mb" }))
+app.use(
+  bodyParser.urlencoded({
+    limit: "50mb",
+    extended: true,
+    parameterLimit: 50000,
+  })
+);
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(cookieParser());
 
 // set the folder `public` as folder containing static assets
 // such as css, js, and image files
@@ -43,7 +51,11 @@ const routes = require("./routes/routes.js");
 // setups the session tracker
 app.use(
   session({
-    secret: "session",
+    secret: "stickerme session",
+    cookie: {
+      secure: true,
+      maxAge: 60000 * 60 * 24 * 7, // expire the session(-cookie) after 7 days
+    },
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -51,11 +63,11 @@ app.use(
   })
 );
 
-// define paths for uploads folder
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
 // define the paths contained in `./routes/routes.js`
 app.use("/api", routes);
+
+// define paths for uploads folder
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // All other GET requests not handled before will return our React app
 app.get("*", (req, res) => {

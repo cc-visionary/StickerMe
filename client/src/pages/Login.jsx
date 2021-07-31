@@ -5,20 +5,19 @@ import { getUser } from "../utils/store";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
-  const [usernameError, setUsernameError] = useState(null);
+  const [loginError, setLoginError] = useState(null);
   const [password, setPassword] = useState("");
-  const [passwordError, setPasswordError] = useState(null);
 
   const handleLogin = () => {
-    try {
-      UserService.login(username, password).then(() => {
+    UserService.login(username, password)
+      .then(() => {
         if (getUser().userType === "moderator") props.history.push("/admin");
         else props.history.push("/customer");
+      })
+      .catch((err) => {
+        const { success, error } = err.response.data;
+        if (!success) setLoginError(error);
       });
-    } catch (error) {
-      setUsernameError("Invalid username");
-      setPasswordError("Invalid password");
-    }
   };
 
   return (
@@ -26,7 +25,6 @@ const Login = (props) => {
       <h1>Login</h1>
       <div>
         <label htmlFor="username">Username</label>
-        {usernameError && <p>{usernameError}</p>}
         <input
           type="text"
           value={username}
@@ -37,7 +35,6 @@ const Login = (props) => {
       </div>
       <div>
         <label htmlFor="password">Password</label>
-        {passwordError && <p>{passwordError}</p>}
         <input
           type="password"
           value={password}
@@ -46,6 +43,7 @@ const Login = (props) => {
           required
         />
       </div>
+      {loginError && <p>{loginError}</p>}
       <input type="submit" onClick={handleLogin} value="Login" />
     </div>
   );

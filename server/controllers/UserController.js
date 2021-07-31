@@ -60,6 +60,17 @@ const UserController = {
   login: (req, res) => {
     const { username, password } = req.body;
 
+    if (username.length === 0)
+      return res.status(400).send({
+        success: false,
+        error: "Sorry, we don't accept empty usernames.",
+      });
+    if (password.length === 0)
+      return res.status(400).send({
+        success: false,
+        error: "Sorry, we don't accept empty password.",
+      });
+
     db.findOne(User, { username }, (result) => {
       const data = result.result;
       if (data) {
@@ -67,25 +78,23 @@ const UserController = {
           req.session.username = data.username;
           req.session.email = data.email;
           req.session.userType = data.userType;
-          res
-            .status(200)
-            .send({
-              success: true,
-              user: {
-                username: data.username,
-                email: data.email,
-                userType: data.userType,
-              },
-            });
+          res.status(200).send({
+            success: true,
+            user: {
+              username: data.username,
+              email: data.email,
+              userType: data.userType,
+            },
+          });
         } else {
-          res
+          return res
             .status(400)
-            .send({ success: false, error: "Incorrect password..." });
+            .send({ success: false, error: "Incorrect username or password." });
         }
       } else {
-        res
+        return res
           .status(400)
-          .send({ success: false, error: "Username doesn't exist..." });
+          .send({ success: false, error: "Incorrect username or password." });
       }
     });
   },

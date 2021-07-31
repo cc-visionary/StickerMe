@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = bcrypt.genSaltSync();
 
 const users = [
-  { username: "moderator", email: "moderator@gmail.com", password: bcrypt.hashSync("password", saltRounds), userType: "moderator" },
+  { username: "moderator", email: "moderator@gmail.com", password: bcrypt.hashSync("password", saltRounds), userType: "admin" },
   { username: "customer", email: "customer@gmail.com", password: bcrypt.hashSync("password", saltRounds), userType: "customer" },
   { username: "john", email: "john@gmail.com", password: bcrypt.hashSync("password", saltRounds), userType: "customer" },
   { username: "kyle", email: "kyle@gmail.com", password: bcrypt.hashSync("password", saltRounds), userType: "customer" },

@@ -1,7 +1,8 @@
 import Admin from "./Admin";
-import User from "./User";
+import Customer from "./Customer";
 import Landing from "./Landing";
 import Login from "./Login";
+import Loading from "./Loading";
 import PageNotFound from "./PageNotFound";
 
-export { Admin, User, Landing, Login, PageNotFound };
+export { Admin, Customer, Landing, Login, Loading, PageNotFound };

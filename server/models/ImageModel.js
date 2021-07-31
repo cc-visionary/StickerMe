@@ -25,6 +25,10 @@ const ImageSchema = new Schema({
     type: String,
     require: true,
   },
+  price: {
+    type: Schema.Types.Decimal128,
+    default: 0,
+  }
 }, { timestamps: true });
 
 /*

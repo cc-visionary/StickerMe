@@ -57,31 +57,29 @@ const UserController = {
 
     db.deleteOne(User, { username }, (result) => defaultCallback(res, result));
   },
-  getLogin: (req, res) => {
-    const { username, email, userType } = req.session;
-    if (username) {
-      res.status(200).send({ success: true, result: { username, email, userType } });
-    } else {
-      res.send({ success: false });
-    }
-  },
   login: (req, res) => {
-    const { username, password, remember } = req.body;
+    const { username, password } = req.body;
 
     db.findOne(User, { username }, (result) => {
       const data = result.result;
       if (data) {
         if (bcrypt.compareSync(password, data.password)) {
-          // only keep the user logged in, if user asked to be `remember` is true
-          if (remember) {
-            req.session.username = data.username;
-            req.session.email = data.email;
-            req.session.userType = data.userType;
-          }
-          res.status(200).send({ success: true, user: data });
+          req.session.username = data.username;
+          req.session.email = data.email;
+          req.session.userType = data.userType;
+          res
+            .status(200)
+            .send({
+              success: true,
+              user: {
+                username: data.username,
+                email: data.email,
+                userType: data.userType,
+              },
+            });
         } else {
           res
-            .status(404)
+            .status(400)
             .send({ success: false, error: "Incorrect password..." });
         }
       } else {
@@ -104,16 +102,19 @@ const UserController = {
     // checks if there are validation errors
     var errors = validationResult(req);
 
-    if(errors.isEmpty()) {
+    if (errors.isEmpty()) {
       const { username, password } = req.query;
 
       db.findOne(User, { username }, (result) => {
-        if(bcrypt.compareSync(password, result.password)) {
-          res.status(200).send({success: true})
-        } else res.status(200).send({success: false, error: "Password doesn't match..."})
-      })
+        if (bcrypt.compareSync(password, result.password)) {
+          res.status(200).send({ success: true });
+        } else
+          res
+            .status(200)
+            .send({ success: false, error: "Password doesn't match..." });
+      });
     }
-  }
+  },
 };
 /*
     exports the object `UserController` (defined above)

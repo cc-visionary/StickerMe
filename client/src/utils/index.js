@@ -1,5 +1,5 @@
 import AdminRoute from "./AdminRoute";
-import UserRoute from "./UserRoute";
+import CustomerRoute from "./CustomerRoute";
 import LoginRoute from "./LoginRoute";
 
-export { AdminRoute, UserRoute, LoginRoute };
+export { AdminRoute, CustomerRoute, LoginRoute };

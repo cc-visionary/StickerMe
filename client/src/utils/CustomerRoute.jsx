@@ -4,7 +4,7 @@ import { Route, Redirect } from "react-router-dom";
 import { getUser, getUserToken } from "./store";
 
 const LOGIN_FALLBACK = "/login";
-const CUSTOMER_FALLBACK = "/customer";
+const ADMIN_FALLBACK = "/admin";
 
 const AdminRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -12,19 +12,19 @@ const AdminRoute = ({ component: Component, ...rest }) => (
     render={(props) => {
       // checks if user is logged in
       if (getUserToken()) {
-        // checks if user is a customer, if he is, he'll be redirected to customer page
-        if (getUser().userType === "customer")
+        // checks if user is a admin, if he is, he'll be redirected to admin page
+        if (getUser().userType === "admin")
           return (
             <Redirect
               to={{
-                pathname: CUSTOMER_FALLBACK,
+                pathname: ADMIN_FALLBACK,
                 state: {
                   from: props.location,
                 },
               }}
             />
           );
-        // if not, then the user will see the admin page
+        // if not, then the user will see the customer page
         return <Component {...props} />;
       }
       // if user is logged out, redirect to login page

@@ -4,12 +4,10 @@ import "../assets/styles/pages/Admin.css";
 
 import { ImageUpload } from "../components";
 import { UserService } from "../services";
-import { removeUserSession } from "../utils/common";
 
 const Admin = (props) => {
   const handleLogout = () => {
     UserService.logout().then(() => {
-      removeUserSession();
       props.history.push("/login");
     });
   };

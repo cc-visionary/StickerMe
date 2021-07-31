@@ -20,8 +20,6 @@ const app = express();
 const upload = require('../modules/multer');
 
 // API for Users
-app.get("/users/getLogin", UserController.getLogin);
-
 app.get("/users/:username", UserController.getUserByUsername);
 
 app.get("/users", UserController.getAllUsers);

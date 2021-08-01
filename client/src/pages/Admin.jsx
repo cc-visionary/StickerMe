@@ -7,7 +7,7 @@ import "../assets/styles/pages/Admin.css";
 import { FeatureList, ImageUpload } from "../components";
 import { ImageService, UserService } from "../services";
 
-const features = [
+const FEATURES = [
   "Skin Color",
   "Back Hair",
   "Front Hair",
@@ -21,12 +21,14 @@ const features = [
   "Accessories",
 ];
 
+const FEATURES_PATH = "http://localhost:3000/uploads";
+
 export default class Admin extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentFeature: features[0],
+      currentFeature: FEATURES[0],
       currentFeatures: [],
       allFeatures: [],
       // users: [],
@@ -71,29 +73,67 @@ export default class Admin extends Component {
     });
   }
 
+  addToFeatures(feature) {
+    const { currentFeature, allFeatures, currentFeatures } = this.state;
+    this.setState({
+      allFeatures: [...allFeatures, feature],
+      currentFeatures:
+        feature.imageType === currentFeature
+          ? [...currentFeatures, feature]
+          : currentFeatures,
+    });
+  }
+
   render() {
     const { /* users, */ currentFeature, currentFeatures } = this.state;
     // console.log(users);
     return (
       <div id="admin-page">
-        <h1>Admin Page Content</h1>
-        <select
-          value={currentFeature}
-          onChange={(e) => this.handleChangeFeature(e.target.value)}
-        >
-          {features.map((feature) => (
-            <option>{feature}</option>
+        <div className="admin-container">
+          <div className="title-bar">Sticker Features</div>
+
+          <select
+            value={currentFeature}
+            onChange={(e) => this.handleChangeFeature(e.target.value)}
+          >
+            {FEATURES.map((feature) => (
+              <option>{feature}</option>
+            ))}
+          </select>
+          {currentFeatures.map((feature) => (
+            <div>
+              <svg
+                viewBox="0 0 100 100"
+                height="100"
+                width="100"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <image
+                  className="background-shape"
+                  href="../assets/images/feature-background.png"
+                  height="100"
+                  width="100"
+                />
+                <image
+                  className="feature-image"
+                  href={`${FEATURES_PATH}/${feature.fileName}`}
+                  height="75"
+                  width="75"
+                />
+              </svg>
+            </div>
           ))}
-        </select>
-        {currentFeatures.map((feature) => (
-          <div>{feature.fileName}</div>
-        ))}
-        <ImageUpload imageType={currentFeature} />
-        <input
-          type="button"
-          onClick={() => this.handleLogout()}
-          value="Logout"
-        />
+          <ImageUpload
+            addToFeatures={(e) => this.addToFeatures(e)}
+            imageType={currentFeature}
+          />
+          <input
+            type="button"
+            onClick={() => this.handleLogout()}
+            value="Logout"
+          />
+        </div>
       </div>
     );
   }

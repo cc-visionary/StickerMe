@@ -14,7 +14,9 @@ const ContactController = {
   },
   getContactsByUsername: (req, res) => {
     const { username } = req.params;
-    db.findMany(Contact, { username }, (result) => defaultCallback(res, result));
+    db.findMany(Contact, { username }, (result) =>
+      defaultCallback(res, result)
+    );
   },
   insertContact: (req, res) => {
     const {
@@ -41,9 +43,9 @@ const ContactController = {
 
     db.insertOne(Contact, contact, (result) => {
       if (result.success) {
-        res.status(200).send("Contact was successfully added to the database!");
+        res.status(200).send({ success: true, result: contact });
       } else {
-        res.status(400).send(error.message);
+        res.status(400).send({ success: false, error: error.message });
       }
     });
   },
@@ -71,13 +73,17 @@ const ContactController = {
       paypalEmail, // <- verify
     };
 
-    db.updateOne(Contact, { _id: id }, contact, (result) => defaultCallback(res, result));
+    db.updateOne(Contact, { _id: id }, contact, (result) =>
+      defaultCallback(res, result)
+    );
   },
   deleteContact: (req, res) => {
     const { id } = req.params;
 
-    db.deleteOne(Contact, { _id: id }, (result) => defaultCallback(res, result));
-  }
+    db.deleteOne(Contact, { _id: id }, (result) =>
+      defaultCallback(res, result)
+    );
+  },
 };
 /*
     exports the object `ContactController` (defined above)

@@ -5,7 +5,7 @@ import FormData from "form-data";
 
 import { ImageService } from "../../../services";
 
-const ImageUpload = ({ imageType }) => {
+const ImageUpload = ({ imageType, addToFeatures }) => {
   const [image, setImage] = useState("");
 
   const uploadImage = async () => {
@@ -13,11 +13,10 @@ const ImageUpload = ({ imageType }) => {
     formData.append(imageType, image);
     const response = await ImageService.uploadImage(formData);
     if (response.status === 201) {
-      const { id } = response.headers;
-
-      console.log(id);
+      const { result } = response.data;
+      addToFeatures(result);
     } else {
-      console.log(response);
+      console.log("Failed to upload the image");
     }
   };
 
@@ -37,6 +36,7 @@ const ImageUpload = ({ imageType }) => {
 
 ImageUpload.propTypes = {
   imageType: PropType.string.isRequired,
+  addToFeatures: PropType.func.isRequired,
 };
 
 export default ImageUpload;

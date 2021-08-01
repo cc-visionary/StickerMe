@@ -17,8 +17,6 @@ module.exports = {
     "react/prefer-es6-class": [1, "always"],
     "react/prefer-stateless-function": [1],
     "prettier/prettier": "error",
-    "react/prop-types": "off",
-    "class-methods-use-this": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {

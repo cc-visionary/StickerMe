@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import PropType from "prop-types";
 
 import FormData from "form-data";
 
-import ImageService from "../services/ImageService";
+import { ImageService } from "../../../services";
 
 const ImageUpload = ({ imageType }) => {
   const [image, setImage] = useState("");
@@ -32,6 +33,10 @@ const ImageUpload = ({ imageType }) => {
       </button>
     </div>
   );
+};
+
+ImageUpload.propTypes = {
+  imageType: PropType.string.isRequired,
 };
 
 export default ImageUpload;

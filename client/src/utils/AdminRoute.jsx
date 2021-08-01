@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
+import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
 import { getUser, getUserToken } from "./store";
 
@@ -41,5 +42,14 @@ const AdminRoute = ({ component: Component, ...rest }) => (
     }}
   />
 );
+
+AdminRoute.propTypes = {
+  component: PropTypes.func.isRequired,
+  location: PropTypes.objectOf(PropTypes.any),
+};
+
+AdminRoute.defaultProps = {
+  location: null,
+};
 
 export default AdminRoute;

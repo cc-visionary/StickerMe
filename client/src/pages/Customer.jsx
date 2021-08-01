@@ -1,20 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import { UserService } from "../services";
 
-const Customer = (props) => {
-  const handleLogout = () => {
-    UserService.logout().then(() => {
-      props.history.push("/login");
-    });
-  };
+export default class Customer extends Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div id="user-page">
-      <h1>Customer Page</h1>
-      <input type="button" onClick={handleLogout} value="Logout" />
-    </div>
-  );
+    this.state = {};
+  }
+
+  handleLogout() {
+    const { history } = this.props;
+    UserService.logout().then(() => {
+      history.push("/login");
+    });
+  }
+
+  render() {
+    return (
+      <div id="user-page">
+        <h1>Customer Page</h1>
+        <input
+          type="button"
+          onClick={() => this.handleLogout()}
+          value="Logout"
+        />
+      </div>
+    );
+  }
+}
+
+Customer.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any),
 };
 
-export default Customer;
+Customer.defaultProps = {
+  history: null,
+};

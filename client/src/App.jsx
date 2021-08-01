@@ -11,7 +11,6 @@ import {
   Loading,
   PageNotFound,
 } from "./pages";
-import { UserService } from "./services";
 import { AdminRoute, CustomerRoute, LoginRoute } from "./utils";
 import { getUser } from "./utils/store";
 
@@ -20,24 +19,12 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      users: [],
       user: getUser(),
     };
   }
 
-  componentDidMount() {
-    UserService.getAllUsers().then((res) => {
-      const { success, result } = res.data;
-      if (success) {
-        this.setState({ users: result });
-      } else {
-        console.log("Failed to get the Users from the Database");
-      }
-    });
-  }
-
   render() {
-    const { user, users } = this.state;
+    const { user } = this.state;
     console.log(user);
 
     return (
@@ -53,11 +40,7 @@ export default class App extends Component {
             <div id="main">
               <Switch>
                 <Route exact path="/" component={Landing} />
-                <AdminRoute
-                  path="/admin"
-                  // eslint-disable-next-line react/jsx-props-no-spreading
-                  component={(props) => <Admin {...props} users={users} />}
-                />
+                <AdminRoute path="/admin" component={Admin} />
                 <CustomerRoute path="/customer" component={Customer} />
                 <LoginRoute path="/login" component={Login} />
                 <Route component={PageNotFound} />

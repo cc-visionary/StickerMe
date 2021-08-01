@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import { UserService } from "../services";
 import { getUser } from "../utils/store";
@@ -47,6 +48,14 @@ const Login = (props) => {
       <input type="submit" onClick={handleLogin} value="Login" />
     </div>
   );
+};
+
+Login.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any),
+};
+
+Login.defaultProps = {
+  history: null,
 };
 
 export default Login;

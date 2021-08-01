@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import PropType from "prop-types";
 
-const ImageUpload = ({ imageType, onImageUpload }) => {
-  const [image, setImage] = useState("");
+import { FeatureImage } from "..";
 
-  return (
-    <div>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => setImage(e.target.files[0])}
-      />
-      <button type="button" onClick={() => onImageUpload(image)}>
-        Upload {imageType.replace(/^\w/, (c) => c.toUpperCase())}
-      </button>
-    </div>
-  );
-};
+import plusSign from "../../assets/images/icons/PlusSign.png";
+
+const ImageUpload = ({ imageType, onImageUpload }) => (
+  <div id="image-upload">
+    <label htmlFor={imageType}>
+      <FeatureImage image={plusSign} />
+    </label>
+    <input
+      id={imageType}
+      name={imageType}
+      type="file"
+      accept="image/*"
+      onChange={(e) => onImageUpload(e.target.files[0])}
+      hidden
+    />
+  </div>
+);
 
 ImageUpload.propTypes = {
   imageType: PropType.string.isRequired,

@@ -14,6 +14,9 @@
 
 .admin-feature-list .feature-item {
   display: inline-block;
+}
+
+.admin-feature-list .feature-item .feature-image {
   cursor: pointer;
 }
 

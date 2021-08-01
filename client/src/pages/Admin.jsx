@@ -4,7 +4,7 @@ import FormData from "form-data";
 
 import "../assets/styles/pages/Admin.css";
 
-import { FeatureList, ImageUpload } from "../components/Admin";
+import { FeatureList } from "../components/Admin";
 import { ImageService, UserService } from "../services";
 
 const FEATURES = [
@@ -133,8 +133,6 @@ export default class Admin extends Component {
             featureName={currentFeature}
             currentFeatures={currentFeatures}
             onImageDelete={this.onImageDelete}
-          />
-          <ImageUpload
             onImageUpload={this.onImageUpload}
             imageType={currentFeature}
           />

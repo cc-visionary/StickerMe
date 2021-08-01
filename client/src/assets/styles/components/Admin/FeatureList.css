@@ -1,8 +1,12 @@
+.admin-feature-list {
+  text-align: left;
+}
+
 .admin-feature-list .delete-button {
   opacity: 0;
   position: relative;
-  top: -100px;
-  left: -40px;
+  top: -140px;
+  left: -50px;
   background-color: #AC7849;
   border-radius: 50%;
   padding: 7.5px;

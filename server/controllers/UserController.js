@@ -34,7 +34,7 @@ const UserController = {
       if (result.success) {
         res.status(200).send({ success: true, result: user });
       } else {
-        res.status(400).send({ success: false, error: error.message });
+        res.status(400).send({ success: false, error: result.error.message });
       }
     });
   },

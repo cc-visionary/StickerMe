@@ -18,13 +18,18 @@ const ImageController = {
       filePath: file.path,
       fileType: file.mimetype,
       fileSize: fileSizeFormatter(file.size, 2),
+      imageID: file.originalname.split(".")[0],
       imageType: file.fieldname,
     };
     db.insertOne(Image, image, (result) => {
       if (result.success) {
         res.status(201).send({ success: true, result: image });
       } else {
-        res.status(400).send({ success: false, error: error.message });
+        if(result.error.code === 11000) {
+          res.status(400).send({ success: false, error: "Image ID already exists..." });
+        } else {
+          res.status(400).send({ success: false, error: result.error.message });
+        }
       }
     });
   },

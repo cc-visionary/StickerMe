@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import FormData from "form-data";
 
-import "../assets/styles/pages/Admin.css";
-
 import { FeatureList } from "../components/Admin";
 import { ImageService, UserService } from "../services";
+
+import selectionBackground from "../assets/images/selection-background.png";
+
+import "../assets/styles/pages/Admin.css";
 
 const FEATURES = [
   "Skin Color",
@@ -120,24 +122,33 @@ export default class Admin extends Component {
     // console.log(users);
     return (
       <div id="admin-page">
-        <div className="admin-container">
-          <div className="title-bar">Sticker Features</div>
-          <select value={currentFeature} onChange={this.handleChangeFeature}>
-            {FEATURES.map((feature) => (
-              <option key={feature} value={feature}>
-                {feature}
-              </option>
-            ))}
-          </select>
-          <FeatureList
-            featureName={currentFeature}
-            currentFeatures={currentFeatures}
-            onImageDelete={this.onImageDelete}
-            onImageUpload={this.onImageUpload}
-            imageType={currentFeature}
-          />
-          <input type="button" onClick={this.handleLogout} value="Logout" />
+        <div className="features-container">
+          <div className="title-bar">
+            <span className="title-text">Sticker Features</span>
+          </div>
+          <div className="features-inner">
+            <div className="features-selection">
+              <select
+                value={currentFeature}
+                onChange={this.handleChangeFeature}
+              >
+                {FEATURES.map((feature) => (
+                  <option key={feature} value={feature}>
+                    {feature}
+                  </option>
+                ))}
+              </select>
+              <img src={selectionBackground} alt="Selection Background" />
+            </div>
+            <FeatureList
+              currentFeatures={currentFeatures}
+              onImageDelete={this.onImageDelete}
+              onImageUpload={this.onImageUpload}
+              imageType={currentFeature}
+            />
+          </div>
         </div>
+        <input type="button" onClick={this.handleLogout} value="Logout" />
       </div>
     );
   }

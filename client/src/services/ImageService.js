@@ -17,8 +17,8 @@ const ImageService = {
 
     return axios.post(`${IMAGE_API_BASE_URL}/upload`, image, config);
   },
-  deleteImage: async (id, filePath) =>
-    axios.delete(IMAGE_API_BASE_URL, { _id: id, filePath }),
+  deleteImage: async (filePath) =>
+    axios.delete(`${IMAGE_API_BASE_URL}/${filePath}`),
 };
 
 export default ImageService;

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import FormData from "form-data";
 
 import "../assets/styles/pages/Admin.css";
 
-// eslint-disable-next-line no-unused-vars
-import { FeatureList, ImageUpload } from "../components";
+import { FeatureList, ImageUpload } from "../components/Admin";
 import { ImageService, UserService } from "../services";
 
 const FEATURES = [
@@ -21,8 +21,6 @@ const FEATURES = [
   "Accessories",
 ];
 
-const FEATURES_PATH = "http://localhost:3000/uploads";
-
 export default class Admin extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +31,11 @@ export default class Admin extends Component {
       allFeatures: [],
       // users: [],
     };
+
+    this.handleChangeFeature = this.handleChangeFeature.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+    this.onImageUpload = this.onImageUpload.bind(this);
+    this.onImageDelete = this.onImageDelete.bind(this);
   }
 
   componentDidMount() {
@@ -63,8 +66,11 @@ export default class Admin extends Component {
     });
   }
 
-  handleChangeFeature(currValue) {
+  handleChangeFeature(e) {
     const { allFeatures } = this.state;
+
+    const currValue = e.target.value;
+
     this.setState({
       currentFeature: currValue,
       currentFeatures: allFeatures.filter(
@@ -73,15 +79,40 @@ export default class Admin extends Component {
     });
   }
 
-  addToFeatures(feature) {
+  onImageUpload(image) {
     const { currentFeature, allFeatures, currentFeatures } = this.state;
-    this.setState({
-      allFeatures: [...allFeatures, feature],
-      currentFeatures:
-        feature.imageType === currentFeature
-          ? [...currentFeatures, feature]
-          : currentFeatures,
-    });
+    const formData = new FormData();
+    formData.append(currentFeature, image);
+    ImageService.uploadImage(formData)
+      .then((res) => {
+        const { result } = res.data;
+        this.setState({
+          allFeatures: [...allFeatures, result],
+          currentFeatures:
+            result.imageType === currentFeature
+              ? [...currentFeatures, result]
+              : currentFeatures,
+        });
+      })
+      .catch(() => {
+        console.log("Failed to upload the image...");
+      });
+  }
+
+  onImageDelete(image) {
+    const { allFeatures, currentFeatures } = this.state;
+    ImageService.deleteImage(image.fileName)
+      .then(() => {
+        this.setState({
+          allFeatures: allFeatures.filter((f) => f.fileName !== image.fileName),
+          currentFeatures: currentFeatures.filter(
+            (f) => f.fileName !== image.fileName
+          ),
+        });
+      })
+      .catch(() => {
+        console.log("Failed to delete the image...");
+      });
   }
 
   render() {
@@ -91,48 +122,23 @@ export default class Admin extends Component {
       <div id="admin-page">
         <div className="admin-container">
           <div className="title-bar">Sticker Features</div>
-
-          <select
-            value={currentFeature}
-            onChange={(e) => this.handleChangeFeature(e.target.value)}
-          >
+          <select value={currentFeature} onChange={this.handleChangeFeature}>
             {FEATURES.map((feature) => (
-              <option>{feature}</option>
+              <option key={feature} value={feature}>
+                {feature}
+              </option>
             ))}
           </select>
-          {currentFeatures.map((feature) => (
-            <div>
-              <svg
-                viewBox="0 0 100 100"
-                height="100"
-                width="100"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <image
-                  className="background-shape"
-                  href="../assets/images/feature-background.png"
-                  height="100"
-                  width="100"
-                />
-                <image
-                  className="feature-image"
-                  href={`${FEATURES_PATH}/${feature.fileName}`}
-                  height="75"
-                  width="75"
-                />
-              </svg>
-            </div>
-          ))}
+          <FeatureList
+            featureName={currentFeature}
+            currentFeatures={currentFeatures}
+            onImageDelete={this.onImageDelete}
+          />
           <ImageUpload
-            addToFeatures={(e) => this.addToFeatures(e)}
+            onImageUpload={this.onImageUpload}
             imageType={currentFeature}
           />
-          <input
-            type="button"
-            onClick={() => this.handleLogout()}
-            value="Logout"
-          />
+          <input type="button" onClick={this.handleLogout} value="Logout" />
         </div>
       </div>
     );

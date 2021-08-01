@@ -1,6 +1,5 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import ImageUpload from "./pages/Admin/ImageUpload";
-import FeatureList from "./pages/Admin/FeatureList";
+import FeatureImage from "./FeatureImage";
 
-export { Navbar, Footer, ImageUpload, FeatureList };
+export { Navbar, Footer, FeatureImage };

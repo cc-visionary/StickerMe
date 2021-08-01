@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import FormData from "form-data";
+import { toast } from "react-toastify";
 
 import { FeatureList } from "../components/Admin";
 import { ImageService, UserService } from "../services";
@@ -96,8 +97,9 @@ export default class Admin extends Component {
               : currentFeatures,
         });
       })
-      .catch(() => {
-        console.log("Failed to upload the image...");
+      .catch((err) => {
+        const { success, error } = err.response.data;
+        if (!success) toast.error(error);
       });
   }
 

@@ -8,6 +8,7 @@ import {
   Customer,
   Landing,
   Login,
+  Signup,
   Loading,
   PageNotFound,
 } from './pages';
@@ -52,6 +53,7 @@ export default class App extends Component {
                 <AdminRoute path="/admin" component={Admin} />
                 <CustomerRoute path="/customer" component={Customer} />
                 <LoginRoute path="/login" component={Login} />
+                <LoginRoute path="/signup" component={Signup} />
                 <Route component={PageNotFound} />
               </Switch>
             </div>

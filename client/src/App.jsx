@@ -42,8 +42,9 @@ export default class App extends Component {
         <Router>
           <div className="app">
             <Switch>
-              {/* No Navbar for the Login Page */}
+              {/* No Navbar for the Login and Signup Page */}
               <Route path="/login" component={() => <></>} />
+              <Route path="/signup" component={() => <></>} />
               {/* With Navbar for all the other pages */}
               <Route path="/" component={Navbar} />
             </Switch>
@@ -58,8 +59,9 @@ export default class App extends Component {
               </Switch>
             </div>
             <Switch>
-              {/* No Footer for the Login Page */}
+              {/* No Footer for the Login and Signup Page */}
               <Route path="/login" component={() => <></>} />
+              <Route path="/signup" component={() => <></>} />
               {/* With Footer for all the other pages */}
               <Route path="/" component={Footer} />
             </Switch>

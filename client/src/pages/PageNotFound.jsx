@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import "../assets/styles/pages/PageNotFound.css";
+import '../assets/styles/pages/PageNotFound.css';
 
 const PageNotFound = () => (
   <div id="page-not-found">

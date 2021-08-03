@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import FormData from "form-data";
-import { toast } from "react-toastify";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import FormData from 'form-data';
+import { toast } from 'react-toastify';
 
-import { FeatureList } from "../components/Admin";
-import { ImageService, UserService } from "../services";
+import { FeatureList } from '../components/Admin';
+import { ImageService, UserService } from '../services';
 
-import selectionBackground from "../assets/images/selection-background.png";
+import selectionBackground from '../assets/images/selection-background.png';
 
-import "../assets/styles/pages/Admin.css";
+import '../assets/styles/pages/Admin.css';
 
 const FEATURES = [
-  "Skin Color",
-  "Back Hair",
-  "Front Hair",
-  "Side Hair",
-  "Extra Hair",
-  "Eyes",
-  "Eyebrows",
-  "Nose",
-  "Mouth",
-  "Blush",
-  "Accessories",
+  'Skin Color',
+  'Back Hair',
+  'Front Hair',
+  'Side Hair',
+  'Extra Hair',
+  'Eyes',
+  'Eyebrows',
+  'Nose',
+  'Mouth',
+  'Blush',
+  'Accessories',
 ];
 
 export default class Admin extends Component {
@@ -65,7 +65,7 @@ export default class Admin extends Component {
   handleLogout() {
     const { history } = this.props;
     UserService.logout().then(() => {
-      history.push("/login");
+      history.push('/login');
     });
   }
 
@@ -77,7 +77,7 @@ export default class Admin extends Component {
     this.setState({
       currentFeature: currValue,
       currentFeatures: allFeatures.filter(
-        (feature) => feature.imageType === currValue
+        (feature) => feature.imageType === currValue,
       ),
     });
   }
@@ -110,12 +110,12 @@ export default class Admin extends Component {
         this.setState({
           allFeatures: allFeatures.filter((f) => f.fileName !== image.fileName),
           currentFeatures: currentFeatures.filter(
-            (f) => f.fileName !== image.fileName
+            (f) => f.fileName !== image.fileName,
           ),
         });
       })
       .catch(() => {
-        console.log("Failed to delete the image...");
+        console.log('Failed to delete the image...');
       });
   }
 

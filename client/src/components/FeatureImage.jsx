@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import featureBackground from "../assets/images/feature-background.png";
+import featureBackground from '../assets/images/feature-background.png';
 
 const FeatureImage = ({ image, name }) => (
   <svg
@@ -22,7 +22,7 @@ const FeatureImage = ({ image, name }) => (
       className="feature-image"
       href={image}
       x="15"
-      y={name ? "2.5" : "15"}
+      y={name ? '2.5' : '15'}
       height="70"
       width="70"
     />

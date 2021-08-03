@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-import { UserService } from "../services";
-import { getUser } from "../utils/store";
+import { UserService } from '../services';
+import { getUser } from '../utils/store';
 
 const Login = (props) => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
   const [loginError, setLoginError] = useState(null);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
 
   const handleLogin = () => {
     UserService.login(username, password)
       .then(() => {
-        if (getUser().userType === "moderator") props.history.push("/admin");
-        else props.history.push("/customer");
+        if (getUser().userType === 'moderator') props.history.push('/admin');
+        else props.history.push('/customer');
       })
       .catch((err) => {
         const { success, error } = err.response.data;
@@ -25,24 +25,28 @@ const Login = (props) => {
     <div id="login-page">
       <h1>Login</h1>
       <div>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          name="username"
-          required
-        />
+        <label htmlFor="username">
+          Username
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            name="username"
+            required
+          />
+        </label>
       </div>
       <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          name="password"
-          required
-        />
+        <label htmlFor="password-input">
+          Password
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            required
+          />
+        </label>
       </div>
       {loginError && <p>{loginError}</p>}
       <input type="submit" onClick={handleLogin} value="Login" />

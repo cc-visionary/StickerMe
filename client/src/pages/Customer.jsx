@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { UserService } from "../services";
+import { UserService } from '../services';
 
 export default class Customer extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class Customer extends Component {
   handleLogout() {
     const { history } = this.props;
     UserService.logout().then(() => {
-      history.push("/login");
+      history.push('/login');
     });
   }
 

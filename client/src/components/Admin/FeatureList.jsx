@@ -1,15 +1,15 @@
-import React from "react";
-import PropType from "prop-types";
+import React from 'react';
+import PropType from 'prop-types';
 
-import { FeatureImage } from "..";
+import { FeatureImage } from '..';
 // eslint-disable-next-line import/no-cycle
-import { ImageUpload } from ".";
+import ImageUpload from './ImageUpload';
 
-import deleteIcon from "../../assets/images/icons/Delete.png";
+import deleteIcon from '../../assets/images/icons/Delete.png';
 
-import "../../assets/styles/components/Admin/FeatureList.css";
+import '../../assets/styles/components/Admin/FeatureList.css';
 
-const FEATURES_PATH = "http://localhost:3000/uploads";
+const FEATURES_PATH = 'http://localhost:3000/uploads';
 
 const FeatureList = ({
   currentFeatures,

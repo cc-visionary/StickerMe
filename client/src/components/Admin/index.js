@@ -1,5 +1,4 @@
-import ImageUpload from "./ImageUpload";
-// eslint-disable-next-line import/no-cycle
-import FeatureList from "./FeatureList";
+import FeatureList from './FeatureList';
+import ImageUpload from './ImageUpload';
 
 export { ImageUpload, FeatureList };

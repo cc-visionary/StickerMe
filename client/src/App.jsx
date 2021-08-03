@@ -1,8 +1,8 @@
-import React, { Component, Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { toast } from "react-toastify";
+import React, { Component, Suspense } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-import { Navbar, Footer } from "./components";
+import { Navbar, Footer } from './components';
 import {
   Admin,
   Customer,
@@ -11,14 +11,14 @@ import {
   Signup,
   Loading,
   PageNotFound,
-} from "./pages";
-import { AdminRoute, CustomerRoute, LoginRoute } from "./utils";
-import { getUser } from "./utils/store";
+} from './pages';
+import { AdminRoute, CustomerRoute, LoginRoute } from './utils';
+import { getUser } from './utils/store';
 
-import "./assets/styles/App.css";
+import './assets/styles/App.css';
 
 // Import toastify css file
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 // toast-configuration method,
 // it is compulsory method.

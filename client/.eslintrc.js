@@ -3,20 +3,20 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["airbnb"],
+  extends: ['airbnb'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["react"],
+  plugins: ['react'],
   rules: {
-    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
-    "react/prefer-es6-class": [1, "always"],
-    "react/prefer-stateless-function": [1],
-    "react/prop-types": "off",
-    "class-methods-use-this": "off",
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/prefer-es6-class': [1, 'always'],
+    'react/prefer-stateless-function': [1],
+    'react/prop-types': 'off',
+    'class-methods-use-this': 'off',
   },
 };

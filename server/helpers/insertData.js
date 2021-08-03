@@ -38,11 +38,7 @@ const Order = require("../models/OrderModel");
 
 db.connect();
 
-<<<<<<< HEAD
 db.insertMany(User, users, (res) => console.log(res));
-=======
-db.insertMany(User, users, null);
->>>>>>> e69759480a62b3265cbd1ebc8bbe8ba3637b1484
-// db.insertMany(Contact, contacts, null);
-// db.insertMany(Character, characters, null);
-// db.insertMany(Order, orders, null);
+// db.insertMany(Contact, contacts, (res) => console.log(res));
+// db.insertMany(Character, characters, (res) => console.log(res));
+// db.insertMany(Order, orders, (res) => console.log(res));

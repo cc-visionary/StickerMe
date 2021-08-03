@@ -1,25 +1,25 @@
-import React, { useState } from "react";
-import logo from "../assets/images/logo.png";
+import React, { useState } from 'react';
+import logo from '../assets/images/logo.png';
 
-import "../assets/styles/pages/Signup.css";
+import '../assets/styles/pages/Signup.css';
 
 const Signup = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(null);
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
   const [usernameError, setUsernameError] = useState(null);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(null);
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState(null);
 
   const onRegister = (e) => {
     e.preventDefault();
     console.log([email, username, password, confirmPassword]);
-    setEmailError("Invalid Email");
-    setUsernameError("Invalid Username");
-    setPasswordError("Invalid Password");
-    setConfirmPasswordError("Invalid Confirm Password");
+    setEmailError('Invalid Email');
+    setUsernameError('Invalid Username');
+    setPasswordError('Invalid Password');
+    setConfirmPasswordError('Invalid Confirm Password');
   };
 
   return (

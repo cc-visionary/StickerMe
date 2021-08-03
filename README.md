@@ -23,16 +23,11 @@ You can view the users in `http://localhost:3000/api/users`
 ## Default Credentials
 | username      | password   |
 | ------------- | ---------- |
-<<<<<<< HEAD
 | moderator     | password   |
 | customer      | password   |
 | john          | password   |
 | kyle          | password   |
 | jacob         | password   |
-=======
-| customer      | password   |
-| admin         | password   |
->>>>>>> e69759480a62b3265cbd1ebc8bbe8ba3637b1484
 
 ## Tech Stack:
 | Area                  | Tool                    |

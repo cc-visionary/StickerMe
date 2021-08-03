@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import FormData from "form-data";
+import FormData from 'form-data';
 
-import ImageService from "../services/ImageService";
+import ImageService from '../services/ImageService';
 
 const ImageUpload = ({ imageType }) => {
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState('');
 
   const uploadImage = async () => {
     const formData = new FormData();
@@ -28,7 +28,9 @@ const ImageUpload = ({ imageType }) => {
         onChange={(e) => setImage(e.target.files[0])}
       />
       <button type="button" onClick={uploadImage}>
-        Upload {imageType.replace(/^\w/, (c) => c.toUpperCase())}
+        Upload
+        {' '}
+        {imageType.replace(/^\w/, (c) => c.toUpperCase())}
       </button>
     </div>
   );

@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import "../assets/styles/pages/Admin.css";
+import '../assets/styles/pages/Admin.css';
 
-import { ImageUpload } from "../components";
-import { UserService } from "../services";
+import { ImageUpload } from '../components';
+import { UserService } from '../services';
 
 const Admin = (props) => {
   const handleLogout = () => {
     UserService.logout().then(() => {
-      props.history.push("/login");
+      props.history.push('/login');
     });
   };
 

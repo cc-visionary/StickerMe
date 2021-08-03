@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { UserService } from "../services";
-import { getUser } from "../utils/store";
+import { UserService } from '../services';
+import { getUser } from '../utils/store';
 
 const Login = (props) => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
   const [loginError, setLoginError] = useState(null);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
 
   const handleLogin = () => {
     UserService.login(username, password)
       .then(() => {
-        if (getUser().userType === "moderator") props.history.push("/admin");
-        else props.history.push("/customer");
+        if (getUser().userType === 'moderator') props.history.push('/admin');
+        else props.history.push('/customer');
       })
       .catch((err) => {
         const { success, error } = err.response.data;

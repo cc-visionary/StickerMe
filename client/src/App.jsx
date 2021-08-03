@@ -1,8 +1,8 @@
-import React, { Component, Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./assets/styles/App.css";
+import React, { Component, Suspense } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './assets/styles/App.css';
 
-import { Navbar, Footer } from "./components";
+import { Navbar, Footer } from './components';
 import {
   Admin,
   Customer,
@@ -10,10 +10,10 @@ import {
   Login,
   Loading,
   PageNotFound,
-} from "./pages";
-import { UserService } from "./services";
-import { AdminRoute, CustomerRoute, LoginRoute } from "./utils";
-import { getUser } from "./utils/store";
+} from './pages';
+import { UserService } from './services';
+import { AdminRoute, CustomerRoute, LoginRoute } from './utils';
+import { getUser } from './utils/store';
 
 export default class App extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class App extends Component {
       if (success) {
         this.setState({ users: result });
       } else {
-        console.log("Failed to get the Users from the Database");
+        console.log('Failed to get the Users from the Database');
       }
     });
   }

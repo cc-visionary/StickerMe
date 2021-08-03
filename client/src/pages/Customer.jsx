@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { UserService } from "../services";
+import { UserService } from '../services';
 
 const Customer = (props) => {
   const handleLogout = () => {
     UserService.logout().then(() => {
-      props.history.push("/login");
+      props.history.push('/login');
     });
   };
 

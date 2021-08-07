@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import { SpecialInput } from '../components';
 import { UserService } from '../services';
@@ -64,9 +63,9 @@ const Login = (props) => {
             Log In
           </button>
         </form>
-        <Link to="/signup" className="create-an-account">
+        <a className="create-an-account" href="/signup">
           Create an account
-        </Link>
+        </a>
       </div>
     </div>
   );

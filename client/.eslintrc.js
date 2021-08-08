@@ -18,21 +18,5 @@ module.exports = {
     'react/prefer-stateless-function': [1],
     'react/prop-types': 'off',
     'class-methods-use-this': 'off',
-    'jsx-a11y/label-has-associated-control': [
-      'error',
-      {
-        required: {
-          some: ['nesting', 'id'],
-        },
-      },
-    ],
-    'jsx-a11y/label-has-for': [
-      'error',
-      {
-        required: {
-          some: ['nesting', 'id'],
-        },
-      },
-    ],
   },
 };

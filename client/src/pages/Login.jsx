@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { SpecialInput } from '../components';
 import { UserService } from '../services';
@@ -11,7 +12,7 @@ import '../assets/styles/pages/Login.css';
 
 const Login = (props) => {
   const [username, setUsername] = useState('');
-  const [loginError, setLoginError] = useState('');
+  const [loginError, setLoginError] = useState(null);
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
@@ -73,6 +74,14 @@ const Login = (props) => {
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any),
+};
+
+Login.defaultProps = {
+  history: null,
 };
 
 export default Login;

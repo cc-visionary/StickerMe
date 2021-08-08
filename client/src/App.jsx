@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './assets/styles/App.css';
+import { toast } from 'react-toastify';
 
 import { Navbar, Footer } from './components';
 import {
@@ -8,36 +8,33 @@ import {
   Customer,
   Landing,
   Login,
+  Signup,
   Loading,
   PageNotFound,
 } from './pages';
-import { UserService } from './services';
 import { AdminRoute, CustomerRoute, LoginRoute } from './utils';
 import { getUser } from './utils/store';
+
+import './assets/styles/App.css';
+
+// Import toastify css file
+import 'react-toastify/dist/ReactToastify.css';
+
+// toast-configuration method,
+// it is compulsory method.
+toast.configure();
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      users: [],
       user: getUser(),
     };
   }
 
-  componentDidMount() {
-    UserService.getAllUsers().then((res) => {
-      const { success, result } = res.data;
-      if (success) {
-        this.setState({ users: result });
-      } else {
-        console.log('Failed to get the Users from the Database');
-      }
-    });
-  }
-
   render() {
-    const { user, users } = this.state;
+    const { user } = this.state;
     console.log(user);
 
     return (
@@ -45,27 +42,26 @@ export default class App extends Component {
         <Router>
           <div className="app">
             <Switch>
-              {/* No Navbar for the Login Page */}
+              {/* No Navbar for the Login and Signup Page */}
               <Route path="/login" component={() => <></>} />
+              <Route path="/signup" component={() => <></>} />
               {/* With Navbar for all the other pages */}
               <Route path="/" component={Navbar} />
             </Switch>
             <div id="main">
               <Switch>
                 <Route exact path="/" component={Landing} />
-                <AdminRoute
-                  path="/admin"
-                  // eslint-disable-next-line react/jsx-props-no-spreading
-                  component={(props) => <Admin {...props} users={users} />}
-                />
+                <AdminRoute path="/admin" component={Admin} />
                 <CustomerRoute path="/customer" component={Customer} />
                 <LoginRoute path="/login" component={Login} />
+                <LoginRoute path="/signup" component={Signup} />
                 <Route component={PageNotFound} />
               </Switch>
             </div>
             <Switch>
-              {/* No Footer for the Login Page */}
+              {/* No Footer for the Login and Signup Page */}
               <Route path="/login" component={() => <></>} />
+              <Route path="/signup" component={() => <></>} />
               {/* With Footer for all the other pages */}
               <Route path="/" component={Footer} />
             </Switch>

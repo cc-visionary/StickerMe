@@ -1,21 +1,25 @@
 // import module from `../models/database.js`
-const db = require('../models/database.js');
+const db = require("../models/database.js");
 
 // import CharacterSchema from `../models/CharacterModel.js`
-const Character = require('../models/CharacterModel');
+const Character = require("../models/CharacterModel");
 
 // import helper function defaultCallback from `../helpers/defaultCallback`
-const defaultCallback = require('../helpers/defaultCallback');
+const defaultCallback = require("../helpers/defaultCallback");
 
 const CharacterController = {
   getCharactersByUsername: (req, res) => {
     const { username } = req.params;
 
-    db.findMany(Character, { username }, (result) => defaultCallback(res, result));
+    db.findMany(Character, { username }, (result) =>
+      defaultCallback(res, result)
+    );
   },
   getCharacter: (req, res) => {
     const { id } = req.params;
-    db.findOne(Character, { _id: id }, (result) => defaultCallback(res, result));
+    db.findOne(Character, { _id: id }, (result) =>
+      defaultCallback(res, result)
+    );
   },
   insertCharacter: (req, res) => {
     const {
@@ -51,14 +55,14 @@ const CharacterController = {
       sideHair,
       skin,
       description,
-      status
-    }
+      status,
+    };
 
     db.insertOne(Character, character, (result) => {
       if (result.success) {
-        res.status(200).send("Character was successfully added to the database!");
+        res.status(200).send({ success: true, result: character });
       } else {
-        res.status(400).send(error.message);
+        res.status(400).send({ success: false, error: result.error.message });
       }
     });
   },
@@ -97,16 +101,20 @@ const CharacterController = {
       sideHair,
       skin,
       description,
-      status
-    }
+      status,
+    };
 
-    db.updateOne(Character, { _id: id }, character, (result) => defaultCallback(res, result));
+    db.updateOne(Character, { _id: id }, character, (result) =>
+      defaultCallback(res, result)
+    );
   },
   deleteCharacter: (req, res) => {
     const { id } = req.params;
-    
-    db.deleteOne(Character, { _id: id }, (result) => defaultCallback(res, result));
-  }
+
+    db.deleteOne(Character, { _id: id }, (result) =>
+      defaultCallback(res, result)
+    );
+  },
 };
 /*
     exports the object `CharacterController` (defined above)

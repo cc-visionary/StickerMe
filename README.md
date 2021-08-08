@@ -43,6 +43,8 @@ You can view the users in `http://localhost:3000/api/users`
 ReactJS (JSX): https://github.com/airbnb/javascript/tree/master/react  
 Javascript: https://github.com/airbnb/javascript  
 CSS: https://github.com/airbnb/css  
+### Useful Commands
+`git config core.autocrlf false` - for disabling the auto conversion of files from LF to CRLF
 
 ### Folder Structure
 #### client (contains all the code for the front-end part of the project)

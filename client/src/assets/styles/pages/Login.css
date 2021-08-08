@@ -1,29 +1,31 @@
 #login-page {
   height: 100vh;
   width: 100%;
-  background:url(../../images/login/notebook.png) center center no-repeat;
   background-color: #FFDE87;
   font-family: 'Indie Flower', cursive;
 }
-
-#login-page .inner-login {
-  position: relative;
+#login-page .scrapbook, #login-page .login-form {
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
 }
 
 #login-page .login-title {
   color: #FDB8A3;
 }
 
-#login-page img {
+#login-page .logo {
   height: 20vh;
 }
 
 #login-page .login-error {
   color: #B80404;
+  font-size: 24px;
+}
+
+#login-page form * {
+  margin: 10px 0;
 }
 
 #login-page input {
@@ -33,6 +35,7 @@
 #login-page .login-button {
   position: absolute;
   right: 0;
+  transform: translate(-5%, -125%);
   background-color: #6A6B6B;
   padding: 25px 30px;
   border-radius: 75%;
@@ -49,7 +52,7 @@
 
 #login-page .create-an-account {
   position: relative;
+  left: 0;
   text-decoration: none;
   color: #B80404;
-  bottom: -125px;
 }

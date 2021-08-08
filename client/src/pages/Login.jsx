@@ -37,12 +37,12 @@ const Login = (props) => {
     <div id="login-page">
       <div className="scrapbook">
         <img src={Notebook} alt="" />
-        <button type="button" className="login-button" onClick={handleLogin}>
-          Log In
-        </button>
         <a className="create-an-account" href="/signup">
           Create an account
         </a>
+        <button type="button" className="login-button" onClick={handleLogin}>
+          Log In
+        </button>
       </div>
       <div className="login-form">
         <img className="logo" src={Logo} alt="Logo" />

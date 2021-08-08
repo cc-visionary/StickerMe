@@ -35,7 +35,8 @@
 #login-page .login-button {
   position: absolute;
   right: 0;
-  transform: translate(-5%, -125%);
+  bottom: 0;
+  transform: translate(-5%, -25%);
   background-color: #6A6B6B;
   padding: 25px 30px;
   border-radius: 75%;
@@ -51,8 +52,10 @@
 }
 
 #login-page .create-an-account {
-  position: relative;
+  position: absolute;
   left: 0;
+  bottom: 0;
+  transform: translate(50%, 100%);
   text-decoration: none;
   color: #B80404;
 }

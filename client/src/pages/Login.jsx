@@ -5,6 +5,7 @@ import { UserService } from '../services';
 import { getUser } from '../utils/store';
 
 import Logo from '../assets/images/login/logo.png';
+import Notebook from '../assets/images/login/notebook.png';
 
 import '../assets/styles/pages/Login.css';
 
@@ -34,8 +35,17 @@ const Login = (props) => {
 
   return (
     <div id="login-page">
-      <div className="inner-login">
-        <img src={Logo} alt="Logo" />
+      <div className="scrapbook">
+        <img src={Notebook} alt="" />
+        <button type="button" className="login-button" onClick={handleLogin}>
+          Log In
+        </button>
+        <a className="create-an-account" href="/signup">
+          Create an account
+        </a>
+      </div>
+      <div className="login-form">
+        <img className="logo" src={Logo} alt="Logo" />
         <h1 className="login-title">THIS SCRAPBOOK BELONGS TO...</h1>
         <form>
           <SpecialInput
@@ -59,13 +69,7 @@ const Login = (props) => {
           />
           <br />
           <span className="login-error">{loginError}</span>
-          <button type="button" className="login-button" onClick={handleLogin}>
-            Log In
-          </button>
         </form>
-        <a className="create-an-account" href="/signup">
-          Create an account
-        </a>
       </div>
     </div>
   );

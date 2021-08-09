@@ -1,82 +1,49 @@
 import React, { useState } from 'react';
 import logo from '../assets/images/logo.png';
 
+import { SpecialInput } from '../components';
+
 import '../assets/styles/pages/Signup.css';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState(null);
   const [username, setUsername] = useState('');
-  const [usernameError, setUsernameError] = useState(null);
   const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [confirmPasswordError, setConfirmPasswordError] = useState(null);
+  const [signupError, setSignupError] = useState(null);
 
   const onRegister = (e) => {
     e.preventDefault();
     console.log([email, username, password, confirmPassword]);
-    setEmailError('Invalid Email');
-    setUsernameError('Invalid Username');
-    setPasswordError('Invalid Password');
-    setConfirmPasswordError('Invalid Confirm Password');
+    setSignupError('Invalid Email');
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      onRegister(e);
+    }
   };
 
   return (
     <div id="signup-page">
-      <p className="signup-title">Sign Up</p>
-      <img className="logo" src={logo} alt="Logo" />
-      <form onSubmit={onRegister}>
-        <div className="input-group">
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-          />
+      <div className="inner-signup">
+        <p className="signup-title">Sign Up</p>
+        <img className="logo" src={logo} alt="Logo" />
+        <form onSubmit={onRegister}>
+          <SpecialInput type="text" value={email} onChange={setEmail} onKeyPress={handleKeyPress} placeholder="Email" required />
           <br />
-          <span className="error-message" hidden={!emailError}>
-            {emailError}
-          </span>
-        </div>
-        <div className="input-group">
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-          />
+          <SpecialInput type="text" value={username} onChange={setUsername} onKeyPress={handleKeyPress} placeholder="Username" required />
           <br />
-          <span className="error-message" hidden={!usernameError}>
-            {usernameError}
-          </span>
-        </div>
-        <div className="input-group">
-          <input
-            type="text"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
+          <SpecialInput type="password" value={password} onChange={setPassword} onKeyPress={handleKeyPress} placeholder="Password" required />
           <br />
-          <span className="error-message" hidden={!passwordError}>
-            {passwordError}
-          </span>
-        </div>
-        <div className="input-group">
-          <input
-            type="text"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="Confirm Password"
-          />
+          <SpecialInput type="password" value={confirmPassword} onChange={setConfirmPassword} onKeyPress={handleKeyPress} placeholder="Confirm Password" required />
           <br />
-          <span className="error-message" hidden={!confirmPasswordError}>
-            {confirmPasswordError}
-          </span>
-        </div>
-        <button type="submit">Register</button>
-      </form>
+          <button className="signup-button" type="submit">Signup</button>
+        </form>
+        <span className="error-message">
+          {signupError}
+        </span>
+      </div>
     </div>
   );
 };

@@ -23,6 +23,23 @@ const UserController = {
   insertUser: (req, res) => {
     const { username, email, password, userType } = req.body;
 
+    if(email == '') {
+      return res.status(400).send({ success: false, error:"Sorry, we don't accept empty emails." })
+    }
+
+    if(username == '') {
+      return res.status(400).send({ success: false, error:"Sorry, we don't accept empty usernames." })
+    }
+
+    if(password == '') {
+      return res.status(400).send({ success: false, error:"Sorry, we don't accept empty passwords." })
+    }
+
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if(!re.test(email)) {
+      return res.status(400).send({ success: false, error: "Invalid email format." })
+    }
+
     const user = {
       username,
       email,
@@ -30,11 +47,22 @@ const UserController = {
       userType,
     };
 
-    db.insertOne(User, user, (result) => {
-      if (result.success) {
-        res.status(200).send({ success: true, result: user });
+    db.findOne(User, { username }, (result) => {
+      if(result.result) {
+        return res.status(400).send({ success: false, error: 'Username already exists.' });
       } else {
-        res.status(400).send({ success: false, error: result.error.message });
+
+        if(userType != 'customer') {
+          return res.status(400).send({ success: false, error: 'Usertype has to be customer' });
+        }
+        
+        db.insertOne(User, user, (result) => {
+          if (result.success) {
+            res.status(200).send({ success: true, result: user });
+          } else {
+            res.status(400).send({ success: false, error: result.error.message });
+          }
+        });
       }
     });
   },

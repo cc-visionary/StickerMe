@@ -3,7 +3,7 @@ import React from 'react';
 import '../assets/styles/components/SpecialInput.css';
 
 const SpecialInput = ({
-  type, name, placeholder, value, onChange, required, onKeyPress,
+  type, name, placeholder, value, onChange, onKeyPress,
 }) => (
   <input
     className="special-input"
@@ -13,7 +13,6 @@ const SpecialInput = ({
     onKeyPress={(e) => onKeyPress(e)}
     name={name}
     placeholder={placeholder}
-    required={required}
   />
 );
 

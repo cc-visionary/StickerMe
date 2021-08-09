@@ -1,7 +1,14 @@
 #signup-page {
-  padding: 15vh;
-  height: 70vh;
+  height: 100vh;
+  background-color: #FDB8A3;
+}
+
+#signup-page .inner-signup {
   background-color: #383838;
+  width: 100%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #signup-page .signup-title {

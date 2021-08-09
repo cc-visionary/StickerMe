@@ -40,7 +40,10 @@ const Signup = (props) => {
     }
   };
 
-  const handleKeyPress = () => {
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      onRegister();
+    }
   };
 
   return (

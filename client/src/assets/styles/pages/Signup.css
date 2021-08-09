@@ -6,60 +6,60 @@
 #signup-page .inner-signup {
   background-color: #383838;
   width: 100%;
+  height: 70vh;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
 
-#signup-page .signup-title {
-    font-family: 'Finger Paint', cursive;
-    font-size: 5em;
-    color: #F3CD00;
-    margin: -10px 0 -100px 0;
-}
-
 #signup-page .logo {
   height: 300px;
   width: 300px;
-  position: relative;
-  left: -300px;
-  top: 300px;
-  margin-top: -300px;
-  z-index: 3;
+  position: absolute;
+  left: -100px;
+  top: -50px;
 }
 
-#signup-page form {
-  padding: 200px;
-  background-image: url("../../images/signup-background.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 75vh;
-}
-
-#signup-page .background {
-  position: relative;
-  top: 250px;
-  margin-top: -300px;
-  z-index: 1;
+#signup-page .blob, #signup-page form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #signup-page .input-group {
   margin: 10px 0;
-  z-index: 2;
 }
 
 #signup-page .error-message {
-  font-size: 0.75em;
-  color: #f00;
+  position: absolute;
+  left: 50%;
+  bottom: -100px;
+  transform: translateX(-50%);
+  font-family: 'Indie Flower', cursive;
+  font-size: 28px;
+  color: #B80404;
 }
 
-#signup-page input {
-  background-color: transparent;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 3px solid #000;
+#signup-page .signup-button {
+  position: absolute;
+  right: -50px;
+  bottom: 0;
+  background-color: #6A6B6B;
+  padding: 25px 30px;
+  border-radius: 75%;
+  border: none;
+  cursor: pointer;
   font-family: 'Indie Flower', cursive;
-  font-weight: bold;
-  font-size: 24px;
+  font-size: 42px;
+  color: #FFDE87;
+  transform: rotateZ(-10deg);
+}
+
+#signup-page .signup-button:hover {
+  background-color: #7E7E7C;
+}
+
+#signup-page form input {
+  margin: 10px 0;
 }

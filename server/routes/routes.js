@@ -24,6 +24,8 @@ app.get("/users/:username", UserController.getUserByUsername);
 
 app.get("/users", UserController.getAllUsers);
 
+app.post("/users", UserController.insertUser);
+
 app.patch("/users/update", UserController.updateUser);
 
 app.delete("/users/:username", UserController.deleteUser);

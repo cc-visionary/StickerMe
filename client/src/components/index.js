@@ -1,9 +1,10 @@
-import Navbar from './Navbar';
+import AdminNavbar from './AdminNavbar';
+import CustomerNavbar from './CustomerNavbar';
 import Footer from './Footer';
 import ImageUpload from './ImageUpload';
 import SpecialInput from './SpecialInput';
 import FeatureImage from './FeatureImage';
 
 export {
-  Navbar, Footer, ImageUpload, SpecialInput, FeatureImage,
+  AdminNavbar, CustomerNavbar, Footer, ImageUpload, SpecialInput, FeatureImage,
 };

@@ -2,7 +2,7 @@ import React, { Component, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { Navbar, Footer } from './components';
+import { AdminNavbar, CustomerNavbar, Footer } from './components';
 import {
   Admin,
   Customer,
@@ -46,11 +46,13 @@ export default class App extends Component {
               <Route path="/login" component={() => <></>} />
               <Route path="/signup" component={() => <></>} />
               {/* With Navbar for all the other pages */}
-              <Route path="/" component={Navbar} />
+              <Route path="/admin" component={AdminNavbar} />
+              <Route path="/" component={CustomerNavbar} />
             </Switch>
             <div id="main">
               <Switch>
                 <Route exact path="/" component={Landing} />
+                <AdminRoute path="/admin/orders" component={() => <div>Orders</div>} />
                 <AdminRoute path="/admin" component={Admin} />
                 <CustomerRoute path="/customer" component={Customer} />
                 <LoginRoute path="/login" component={Login} />

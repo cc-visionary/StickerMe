@@ -12,10 +12,6 @@ import '../assets/styles/pages/Login.css';
 
 const Login = (props) => {
   const [username, setUsername] = useState('');
-<<<<<<< HEAD
-=======
-  const [loginError, setLoginError] = useState(null);
->>>>>>> 371aa8ae6a1fc709606dcc1473ca7403dd98b897
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [hiddenImage, setHiddenImage] = useState(true);

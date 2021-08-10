@@ -2,7 +2,6 @@ import React from 'react';
 import PropType from 'prop-types';
 
 import { FeatureImage } from '..';
-// eslint-disable-next-line import/no-cycle
 import ImageUpload from './ImageUpload';
 
 import deleteIcon from '../../assets/images/icons/Delete.png';

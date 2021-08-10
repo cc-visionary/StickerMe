@@ -11,6 +11,7 @@ import {
   Signup,
   Loading,
   PageNotFound,
+  Locked,
 } from './pages';
 import { AdminRoute, CustomerRoute, LoginRoute } from './utils';
 import { getUser } from './utils/store';
@@ -57,6 +58,7 @@ export default class App extends Component {
                 <CustomerRoute path="/customer" component={Customer} />
                 <LoginRoute path="/login" component={Login} />
                 <LoginRoute path="/signup" component={Signup} />
+                <Route path="/locked" component={Locked} />
                 <Route component={PageNotFound} />
               </Switch>
             </div>

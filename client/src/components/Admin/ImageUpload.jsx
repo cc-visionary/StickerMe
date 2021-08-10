@@ -13,7 +13,7 @@ const ImageUpload = ({ imageType, onImageUpload }) => (
         id={imageType}
         name={imageType}
         type="file"
-        accept="image/*"
+        accept=".png,.jpeg,.jpg"
         onChange={(e) => onImageUpload(e.target.files[0])}
         hidden
       />

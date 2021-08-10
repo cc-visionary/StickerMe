@@ -29,11 +29,13 @@ const Signup = (props) => {
       return false;
     }
 
+    // make sures that the length of the username is greater than or equal to 4
     if (username.length < 4) {
       setSignupError('Username cannot be less than 4 characters');
       return false;
     }
 
+    // makes sure that the username only contains letters, numbers, dots, and underscores
     const reUsername = /^[a-zA-Z0-9_.]+$/;
     if (!reUsername.test(username)) {
       setSignupError('Username can only contain letters, numbers, dots, and underscores.');
@@ -46,11 +48,13 @@ const Signup = (props) => {
       return false;
     }
 
+    // make sures that the length of the password is greater than or equal to 12
     if (password.length < 12) {
       setSignupError('Password cannot be less than 12 characters');
       return false;
     }
 
+    // make sures that the confirm password is equal to password
     if (password !== confirmPassword) {
       setSignupError("Password and confirm password doesn't match...");
       return false;

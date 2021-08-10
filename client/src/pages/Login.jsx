@@ -17,11 +17,13 @@ const Login = (props) => {
   const [hiddenImage, setHiddenImage] = useState(true);
 
   const validateFields = () => {
+    // make sures that username isn't empty
     if (username === '') {
       setLoginError("Sorry, we don't accept empty usernames.");
       return false;
     }
 
+    // make sures that password isn't empty
     if (password === '') {
       setLoginError("Sorry, we don't accept empty passwords.");
       return false;

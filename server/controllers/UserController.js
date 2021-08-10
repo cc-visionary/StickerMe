@@ -23,21 +23,43 @@ const UserController = {
   insertUser: (req, res) => {
     const { username, email, password, userType } = req.body;
 
+    // email validation
     if(email == '') {
       return res.status(400).send({ success: false, error:"Sorry, we don't accept empty emails." })
     }
 
+    // username validation
     if(username == '') {
       return res.status(400).send({ success: false, error:"Sorry, we don't accept empty usernames." })
     }
 
+    if(username.length < 4) {
+      return res.status(400).send({ success: false, error:"Username cannot be less than 4 characters" })
+    }
+
+    const re_username = /^[a-zA-Z0-9_\.]+$/
+    if(!re_username.test(username)) {
+      return res.status(400).send({ success: false, error:"Username can only contain letters, numbers, dots, and underscores." })
+    }
+
+    // password validation
     if(password == '') {
       return res.status(400).send({ success: false, error:"Sorry, we don't accept empty passwords." })
     }
 
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if(!re.test(email)) {
+    if(password.length < 12) {
+      return res.status(400).send({ success: false, error:"Password cannot be less than 12 characters" })
+    }
+
+    // email validation
+    const re_email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if(!re_email.test(email)) {
       return res.status(400).send({ success: false, error: "Invalid email format." })
+    }
+
+    // usertype validation
+    if(userType != 'customer') {
+      return res.status(400).send({ success: false, error: 'Usertype has to be customer.' });
     }
 
     const user = {
@@ -47,22 +69,25 @@ const UserController = {
       userType,
     };
 
-    db.findOne(User, { username }, (result) => {
-      if(result.result) {
+    db.findOne(User, { username }, (result1) => {
+      // check if username exists
+      if(result1.result) {
         return res.status(400).send({ success: false, error: 'Username already exists.' });
       } else {
-
-        if(userType != 'customer') {
-          return res.status(400).send({ success: false, error: 'Usertype has to be customer' });
-        }
-        
-        db.insertOne(User, user, (result) => {
-          if (result.success) {
-            res.status(200).send({ success: true, result: user });
+        db.findOne(User, { email }, (result2) => {
+          // check if email already exists
+          if(result2.result) {
+            return res.status(400).send({ success: false, error: 'Email already exists.' });
           } else {
-            res.status(400).send({ success: false, error: result.error.message });
+            db.insertOne(User, user, (result) => {
+              if (result.success) {
+                res.status(200).send({ success: true, result: user });
+              } else {
+                res.status(400).send({ success: false, error: result.error.message });
+              }
+            });
           }
-        });
+        })
       }
     });
   },

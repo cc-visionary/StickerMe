@@ -12,10 +12,18 @@ import '../assets/styles/pages/Login.css';
 
 const Login = (props) => {
   const [username, setUsername] = useState('');
-  const [loginError, setLoginError] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
 
   const handleLogin = () => {
+    if (username === '') {
+      setLoginError("Sorry, we don't accept empty usernames.");
+      return;
+    }
+    if (password === '') {
+      setLoginError("Sorry, we don't accept empty password.");
+      return;
+    }
     UserService.login(username, password)
       .then(() => {
         if (getUser().userType === 'moderator') props.history.push('/admin');

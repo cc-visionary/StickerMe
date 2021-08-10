@@ -32,6 +32,7 @@
 }
 
 #signup-page .error-message {
+  width: 150%;
   position: absolute;
   left: 50%;
   bottom: -100px;

@@ -13,26 +13,35 @@ const Login = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
+  const [hiddenImage, setHiddenImage] = useState(true);
 
-  const handleLogin = () => {
+  const validateFields = () => {
     if (username === '') {
       setLoginError("Sorry, we don't accept empty usernames.");
-      return;
+      return false;
     }
+
     if (password === '') {
-      setLoginError("Sorry, we don't accept empty password.");
-      return;
+      setLoginError("Sorry, we don't accept empty passwords.");
+      return false;
     }
-    UserService.login(username, password)
-      .then(() => {
-        if (getUser().userType === 'moderator') props.history.push('/admin');
-        else props.history.push('/customer');
-      })
-      .catch((err) => {
-        const { success, error } = err.response.data;
-        if (!success) setLoginError(error);
-        setPassword('');
-      });
+
+    return true;
+  };
+
+  const handleLogin = () => {
+    if (validateFields()) {
+      UserService.login(username, password)
+        .then(() => {
+          if (getUser().userType === 'moderator') props.history.push('/admin');
+          else props.history.push('/customer');
+        })
+        .catch((err) => {
+          const { success, error } = err.response.data;
+          if (!success) setLoginError(error);
+          setPassword('');
+        });
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -43,8 +52,8 @@ const Login = (props) => {
 
   return (
     <div id="login-page">
-      <div className="scrapbook">
-        <img src={Notebook} alt="" />
+      <div className="scrapbook" hidden={hiddenImage}>
+        <img src={Notebook} alt="Notebook" onLoad={() => setHiddenImage(false)} />
         <a className="create-an-account" href="/signup">
           Create an account
         </a>

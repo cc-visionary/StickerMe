@@ -66,8 +66,7 @@ const Signup = (props) => {
     return true;
   };
 
-  const onRegister = (e) => {
-    e.preventDefault();
+  const onRegister = () => {
     if (validateField()) {
       UserService.addUser({
         username, email, password, userType: 'customer',

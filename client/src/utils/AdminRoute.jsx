@@ -27,7 +27,7 @@ const AdminRoute = ({ component: Component, ...rest }) => (
             />
           );
         }
-        if (new Date().getDay() < 3 || new Date().getDay() > 6) {
+        if (new Date().getDay() >= 3 && new Date().getDay() <= 6) {
           return (
             <Redirect
               to={{

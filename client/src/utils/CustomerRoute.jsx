@@ -1,12 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Route, Redirect } from 'react-router-dom';
 import { getUser, getUserToken } from './store';
 
 const LOGIN_FALLBACK = '/login';
 const ADMIN_FALLBACK = '/admin';
 
-const AdminRoute = ({ component: Component, ...rest }) => (
+const CustomerRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) => {
@@ -43,4 +45,13 @@ const AdminRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-export default AdminRoute;
+CustomerRoute.propTypes = {
+  component: PropTypes.func.isRequired,
+  location: PropTypes.objectOf(PropTypes.any),
+};
+
+CustomerRoute.defaultProps = {
+  location: null,
+};
+
+export default CustomerRoute;

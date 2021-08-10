@@ -21,6 +21,11 @@ const ImageSchema = new Schema({
     type: String,
     required: true,
   },
+  imageID: {
+    type: String,
+    require: true,
+    unique: true,
+  },
   imageType: {
     type: String,
     require: true,

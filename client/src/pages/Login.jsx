@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { SpecialInput } from '../components';
 import { UserService } from '../services';
@@ -11,6 +12,10 @@ import '../assets/styles/pages/Login.css';
 
 const Login = (props) => {
   const [username, setUsername] = useState('');
+<<<<<<< HEAD
+=======
+  const [loginError, setLoginError] = useState(null);
+>>>>>>> 371aa8ae6a1fc709606dcc1473ca7403dd98b897
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [hiddenImage, setHiddenImage] = useState(true);
@@ -90,6 +95,14 @@ const Login = (props) => {
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any),
+};
+
+Login.defaultProps = {
+  history: null,
 };
 
 export default Login;

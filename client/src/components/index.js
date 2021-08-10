@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
-import ImageUpload from './ImageUpload';
+// eslint-disable-next-line import/no-cycle
+import ImageUpload from './Admin/ImageUpload';
 import SpecialInput from './SpecialInput';
 
 export {

@@ -1,5 +1,8 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
-import FeatureImage from './FeatureImage';
+import ImageUpload from './ImageUpload';
+import SpecialInput from './SpecialInput';
 
-export { Navbar, Footer, FeatureImage };
+export {
+  Navbar, Footer, ImageUpload, SpecialInput,
+};

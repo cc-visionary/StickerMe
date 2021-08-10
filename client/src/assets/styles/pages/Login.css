@@ -1,3 +1,55 @@
 #login-page {
-  
+  height: 100vh;
+  width: 100%;
+  background:url(../../images/login/notebook.png) center center no-repeat;
+  background-color: #FFDE87;
+  font-family: 'Indie Flower', cursive;
+}
+
+#login-page .inner-login {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+
+#login-page .login-title {
+  color: #FDB8A3;
+}
+
+#login-page img {
+  height: 20vh;
+}
+
+#login-page .login-error {
+  color: #B80404;
+}
+
+#login-page input {
+  color: #7E7E7C;
+}
+
+#login-page .login-button {
+  position: absolute;
+  right: 0;
+  background-color: #6A6B6B;
+  padding: 25px 30px;
+  border-radius: 75%;
+  border: none;
+  cursor: pointer;
+  font-family: 'Indie Flower', cursive;
+  font-size: 24px;
+  color: #FDB8A3;
+}
+
+#login-page .login-button:hover {
+  background-color: #7E7E7C;
+}
+
+#login-page .create-an-account {
+  position: relative;
+  text-decoration: none;
+  color: #B80404;
+  bottom: -125px;
 }

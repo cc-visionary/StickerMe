@@ -10,33 +10,10 @@ const ContactSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  fullName: {
-    type: String,
-    require: true,
-  },
-  phone: {
-    type: String,
-    require: true,
-  },
-  address: {
-    type: String,
-    require: true,
-  },
-  city: {
-    type: String,
-    require: true,
-  },
-  country: {
-    type: String,
-    require: true,
-  },
-  zipcode: {
-    type: String,
-    require: true,
-  },
-  paypalEmail: {
-    type: String,
-    require: true,
+  characterID: {
+    type: Schema.Types.ObjectId, 
+    ref: 'Character',
+    required: true,
   },
 });
 

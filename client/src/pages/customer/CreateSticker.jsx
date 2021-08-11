@@ -36,6 +36,8 @@ export default class CreateSticker extends Component {
 
     this.handleChangeFeature = this.handleChangeFeature.bind(this);
     this.onSelectFeature = this.onSelectFeature.bind(this);
+    this.onSave = this.onSave.bind(this);
+    this.onAddToCart = this.onAddToCart.bind(this);
   }
 
   componentDidMount() {
@@ -197,6 +199,8 @@ export default class CreateSticker extends Component {
                   </button>
                 ))}
               </div>
+              <button type="button" onClick={this.onSave}>Save</button>
+              <button type="button" onClick={this.onAddToCart}>Add to Cart</button>
             </div>
           </div>
         </div>

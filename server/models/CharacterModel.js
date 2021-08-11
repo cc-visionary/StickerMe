@@ -5,8 +5,8 @@ const { Schema } = mongoose;
 
 // defines the schema for collection `characters`
 const CharacterSchema = new Schema({
-  userID: {
-    type: Schema.Types.ObjectId, 
+  username: {
+    type: String, 
     ref: 'User',
     required: true,
   },

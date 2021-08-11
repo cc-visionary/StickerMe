@@ -2,10 +2,12 @@
 
 import axios from 'axios';
 
-const ORDER_API_BASE_URL = 'http://localhost:3000/api/orders';
+import { ORDER_API_BASE_URL } from '../utils/constants';
 
 const OrderService = {
   getAllOrders: () => axios.get(ORDER_API_BASE_URL),
+  getOrdersByUser: (username) => axios.get(`${ORDER_API_BASE_URL}/${username}`),
+  insertOrder: (order) => axios.post(`${ORDER_API_BASE_URL}`, order),
 };
 
 export default OrderService;

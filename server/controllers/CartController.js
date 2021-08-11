@@ -34,7 +34,7 @@ const CartController = {
   deleteCart: (req, res) => {
     const { username } = req.body;
 
-    db.deleteOne(Cart, { username }, (result) => defaultCallback(res, result));
+    db.deleteMany(Cart, { username }, (result) => defaultCallback(res, result));
   }
 };
 /*

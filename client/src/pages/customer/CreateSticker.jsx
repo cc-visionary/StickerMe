@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { ImageService } from '../../services';
 import { FeatureImage } from '../../components';
-import { FEATURES, FEATURES_PATH } from '../../utils/constants';
+import { FEATURES, FEATURE_IMAGE_URL } from '../../utils/constants';
 
 import selectionBackground from '../../assets/images/create/selection-background.png';
 import tape1 from '../../assets/images/create/tape-1.png';
@@ -157,17 +157,17 @@ export default class CreateSticker extends Component {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <image href={characterBackground} height="600" width="600" x="100" y="100" />
-                <image href={backHair && `${FEATURES_PATH}/${backHair.fileName}`} height="500" width="500" x="150" y="150" />
-                <image href={skinColor && `${FEATURES_PATH}/${skinColor.fileName}`} height="500" width="500" x="150" y="150" />
-                <image href={blush && `${FEATURES_PATH}/${blush.fileName}`} height="500" width="500" x="150" y="155" />
-                <image href={frontHair && `${FEATURES_PATH}/${frontHair.fileName}`} height="500" width="500" x="150" y="150" />
-                <image href={sideHair && `${FEATURES_PATH}/${sideHair.fileName}`} height="500" width="500" x="150" y="150" />
-                <image href={extraHair && `${FEATURES_PATH}/${extraHair.fileName}`} height="500" width="500" x="150" y="150" />
-                <image href={eyes && `${FEATURES_PATH}/${eyes.fileName}`} height="500" width="500" x="150" y="150" />
-                <image href={eyebrows && `${FEATURES_PATH}/${eyebrows.fileName}`} height="500" width="500" x="150" y="150" />
-                <image href={nose && `${FEATURES_PATH}/${nose.fileName}`} height="500" width="500" x="150" y="150" />
-                <image href={mouth && `${FEATURES_PATH}/${mouth.fileName}`} height="500" width="500" x="150" y="175" />
-                <image href={accessories && `${FEATURES_PATH}/${accessories.fileName}`} height="500" width="500" x="150" y="175" />
+                <image href={backHair && `${FEATURE_IMAGE_URL}/${backHair.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={skinColor && `${FEATURE_IMAGE_URL}/${skinColor.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={blush && `${FEATURE_IMAGE_URL}/${blush.fileName}`} height="500" width="500" x="150" y="155" />
+                <image href={frontHair && `${FEATURE_IMAGE_URL}/${frontHair.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={sideHair && `${FEATURE_IMAGE_URL}/${sideHair.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={extraHair && `${FEATURE_IMAGE_URL}/${extraHair.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={eyes && `${FEATURE_IMAGE_URL}/${eyes.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={eyebrows && `${FEATURE_IMAGE_URL}/${eyebrows.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={nose && `${FEATURE_IMAGE_URL}/${nose.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={mouth && `${FEATURE_IMAGE_URL}/${mouth.fileName}`} height="500" width="500" x="150" y="175" />
+                <image href={accessories && `${FEATURE_IMAGE_URL}/${accessories.fileName}`} height="500" width="500" x="150" y="175" />
                 <image href={tape1} height="400" width="400" x="-50" y="425" />
                 <image href={tape2} height="300" width="300" x="500" y="25" />
                 <image href={tape3} height="300" width="300" x="0" y="0" />
@@ -193,7 +193,7 @@ export default class CreateSticker extends Component {
                   <button type="button" onClick={() => this.onSelectFeature(feature)}>
                     <FeatureImage
                       key={feature.fileName}
-                      image={`${FEATURES_PATH}/${feature.fileName}`}
+                      image={`${FEATURE_IMAGE_URL}/${feature.fileName}`}
                       name={feature.imageID}
                     />
                   </button>

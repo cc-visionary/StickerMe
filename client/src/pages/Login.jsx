@@ -35,7 +35,7 @@ const Login = (props) => {
       UserService.login(username, password)
         .then(() => {
           if (getUser().userType === 'moderator') props.history.push('/admin');
-          else props.history.push('/customer');
+          else props.history.push('/create-sticker');
         })
         .catch((err) => {
           const { success, error } = err.response.data;

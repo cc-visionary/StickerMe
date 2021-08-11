@@ -1,5 +1,7 @@
-import Admin from './Admin';
-import Customer from './Customer';
+import EditFeatures from './admin/EditFeatures';
+import CreateSticker from './customer/CreateSticker';
+import History from './customer/History';
+import Checkout from './customer/Checkout';
 import Landing from './Landing';
 import Login from './Login';
 import Signup from './Signup';
@@ -7,5 +9,5 @@ import Loading from './Loading';
 import PageNotFound from './PageNotFound';
 
 export {
-  Admin, Customer, Landing, Login, Signup, Loading, PageNotFound,
+  EditFeatures, CreateSticker, History, Checkout, Landing, Login, Signup, Loading, PageNotFound,
 };

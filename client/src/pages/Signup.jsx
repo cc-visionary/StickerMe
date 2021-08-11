@@ -74,7 +74,7 @@ const Signup = (props) => {
         .then(() => {
           UserService.login(username, password)
             .then(() => {
-              props.history.push('/customer');
+              props.history.push('/create-sticker');
             })
             .catch((err) => {
               const { error } = err.response.data;

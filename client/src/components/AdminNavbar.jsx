@@ -1,17 +1,28 @@
 import React from 'react';
 
+import { UserService } from '../services';
+
 import logo from '../assets/images/navbar-logo.png';
 
 import '../assets/styles/components/Navbar.css';
 
-const AdminNavbar = ({ location }) => (
-  <div id="navbar">
-    <img src={logo} alt="logo" />
-    <div>
-      <a href="/admin" className={location.pathname === '/admin' ? 'active' : ''}>Features</a>
-      <a href="/admin/orders" className={location.pathname === '/admin/orders' ? 'active' : ''}>Orders</a>
+const AdminNavbar = ({ location, history }) => {
+  const handleLogout = () => {
+    UserService.logout().then(() => {
+      history.push('/login');
+    });
+  };
+
+  return (
+    <div id="navbar">
+      <img src={logo} alt="logo" />
+      <div>
+        <a href="/admin" className={location.pathname === '/admin' ? 'active' : ''}>Features</a>
+        <a href="/admin/orders" className={location.pathname === '/admin/orders' ? 'active' : ''}>Orders</a>
+        <button type="button" onClick={handleLogout}>Logout</button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default AdminNavbar;

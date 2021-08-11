@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import FormData from 'form-data';
 import { toast } from 'react-toastify';
 
-import { FeatureList } from '../components/Admin';
-import { ImageService, UserService } from '../services';
+import { FeatureList } from '../../components/EditFeatures';
+import { ImageService } from '../../services';
 
-import selectionBackground from '../assets/images/selection-background.png';
+import selectionBackground from '../../assets/images/selection-background.png';
 
-import '../assets/styles/pages/Admin.css';
+import '../../assets/styles/pages/EditFeatures.css';
 
 const FEATURES = [
   'Skin Color',
@@ -24,7 +23,7 @@ const FEATURES = [
   'Accessories',
 ];
 
-export default class Admin extends Component {
+export default class EditFeatures extends Component {
   constructor(props) {
     super(props);
 
@@ -36,7 +35,6 @@ export default class Admin extends Component {
     };
 
     this.handleChangeFeature = this.handleChangeFeature.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
     this.onImageUpload = this.onImageUpload.bind(this);
     this.onImageDelete = this.onImageDelete.bind(this);
   }
@@ -60,13 +58,6 @@ export default class Admin extends Component {
     //     console.log("Failed to get the Users from the Database");
     //   }
     // });
-  }
-
-  handleLogout() {
-    const { history } = this.props;
-    UserService.logout().then(() => {
-      history.push('/login');
-    });
   }
 
   handleChangeFeature(e) {
@@ -123,7 +114,7 @@ export default class Admin extends Component {
     const { /* users, */ currentFeature, currentFeatures } = this.state;
     // console.log(users);
     return (
-      <div id="admin-page">
+      <div id="edit-features-page">
         <div className="features-container">
           <div className="title-bar">
             <span className="title-text">Sticker Features</span>
@@ -150,16 +141,7 @@ export default class Admin extends Component {
             />
           </div>
         </div>
-        <input type="button" onClick={this.handleLogout} value="Logout" />
       </div>
     );
   }
 }
-
-Admin.propTypes = {
-  history: PropTypes.objectOf(PropTypes.any),
-};
-
-Admin.defaultProps = {
-  history: null,
-};

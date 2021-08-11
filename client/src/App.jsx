@@ -4,13 +4,15 @@ import { toast } from 'react-toastify';
 
 import { AdminNavbar, CustomerNavbar, Footer } from './components';
 import {
-  Admin,
-  Customer,
+  EditFeatures,
+  CreateSticker,
   Landing,
   Login,
   Signup,
   Loading,
   PageNotFound,
+  History,
+  Checkout,
 } from './pages';
 import { AdminRoute, CustomerRoute, LoginRoute } from './utils';
 import { getUser } from './utils/store';
@@ -53,8 +55,10 @@ export default class App extends Component {
               <Switch>
                 <Route exact path="/" component={Landing} />
                 <AdminRoute path="/admin/orders" component={() => <div>Orders</div>} />
-                <AdminRoute path="/admin" component={Admin} />
-                <CustomerRoute path="/customer" component={Customer} />
+                <AdminRoute path="/admin" component={EditFeatures} />
+                <CustomerRoute path="/create-sticker" component={CreateSticker} />
+                <CustomerRoute path="/history" component={History} />
+                <CustomerRoute path="/checkout" component={Checkout} />
                 <LoginRoute path="/login" component={Login} />
                 <LoginRoute path="/signup" component={Signup} />
                 <Route component={PageNotFound} />

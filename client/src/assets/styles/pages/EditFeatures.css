@@ -1,13 +1,13 @@
-#admin-page {
+#edit-features-page {
     padding: 10px;
     min-height: 90vh;
 }
 
-#admin-page .features-container {
+#edit-features-page .features-container {
     background-color: #735840;
 }
 
-#admin-page .title-bar {
+#edit-features-page .title-bar {
     background-color: rgba(1, 1, 1, 0.73);
     color: #fff;
     font-family: 'Indie Flower', cursive;
@@ -18,26 +18,26 @@
     height: 5vh;
 }
 
-#admin-page .title-bar .title-text {
+#edit-features-page .title-bar .title-text {
     position: relative;
     top: -5px;
 }
 
-#admin-page .features-inner {
+#edit-features-page .features-inner {
     border-left: 10px solid #AC7849;
     border-right: 10px solid #AC7849;
     border-bottom: 10px solid #AC7849;
     padding: 100px;
 }
 
-#admin-page .features-selection {
+#edit-features-page .features-selection {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#admin-page .features-selection select {
+#edit-features-page .features-selection select {
     z-index: 2;
     border: 3px solid #000;
     background-color: transparent;
@@ -47,14 +47,14 @@
     font-weight: 800;
 }
 
-#admin-page .features-selection select option {
+#edit-features-page .features-selection select option {
     font-size: 16px;
     font-family: 'Indie Flower', cursive;
     font-weight: normal;
     color: #000;
 }
 
-#admin-page .features-selection img {
+#edit-features-page .features-selection img {
     position: relative;
     top: -125px;
     margin-bottom: -125px;

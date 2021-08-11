@@ -48,6 +48,16 @@ export default class CreateSticker extends Component {
           allFeatures: result,
           currentFeatures: result.filter((r) => r.imageType === currentFeature),
           skinColor: result.filter((r) => r.imageType === 'Skin Color')[0],
+          backHair: result.filter((r) => r.imageType === 'Back Hair')[0],
+          frontHair: result.filter((r) => r.imageType === 'Front Hair')[0],
+          sideHair: result.filter((r) => r.imageType === 'Side Hair')[0],
+          extraHair: result.filter((r) => r.imageType === 'Extra Hair')[0],
+          eyes: result.filter((r) => r.imageType === 'Eyes')[0],
+          eyebrows: result.filter((r) => r.imageType === 'Eyebrows')[0],
+          nose: result.filter((r) => r.imageType === 'Nose')[0],
+          mouth: result.filter((r) => r.imageType === 'Mouth')[0],
+          blush: result.filter((r) => r.imageType === 'Blush')[0],
+          accessories: result.filter((r) => r.imageType === 'Accessories')[0],
         });
       }
     });
@@ -81,7 +91,7 @@ export default class CreateSticker extends Component {
         this.setState({ sideHair: feature });
         break;
       case 'Extra Hair':
-        this.setState({ frontHair: feature });
+        this.setState({ extraHair: feature });
         break;
       case 'Eyes':
         this.setState({ eyes: feature });
@@ -104,6 +114,14 @@ export default class CreateSticker extends Component {
       default:
         break;
     }
+  }
+
+  onSave() {
+    console.log('Save');
+  }
+
+  onAddToCart() {
+    console.log('Adding to Cart');
   }
 
   render() {
@@ -137,17 +155,17 @@ export default class CreateSticker extends Component {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <image href={characterBackground} height="600" width="600" x="100" y="100" />
+                <image href={backHair && `${FEATURES_PATH}/${backHair.fileName}`} height="500" width="500" x="150" y="150" />
                 <image href={skinColor && `${FEATURES_PATH}/${skinColor.fileName}`} height="500" width="500" x="150" y="150" />
-                <image href={backHair && `${FEATURES_PATH}/${backHair.fileName}`} />
-                <image href={frontHair && `${FEATURES_PATH}/${frontHair.fileName}`} />
-                <image href={sideHair && `${FEATURES_PATH}/${sideHair.fileName}`} />
-                <image href={extraHair && `${FEATURES_PATH}/${extraHair.fileName}`} />
-                <image href={eyes && `${FEATURES_PATH}/${eyes.fileName}`} />
-                <image href={eyebrows && `${FEATURES_PATH}/${eyebrows.fileName}`} />
-                <image href={nose && `${FEATURES_PATH}/${nose.fileName}`} />
-                <image href={mouth && `${FEATURES_PATH}/${mouth.fileName}`} />
-                <image href={blush && `${FEATURES_PATH}/${blush.fileName}`} />
-                <image href={accessories && `${FEATURES_PATH}/${accessories.fileName}`} />
+                <image href={blush && `${FEATURES_PATH}/${blush.fileName}`} height="500" width="500" x="150" y="155" />
+                <image href={frontHair && `${FEATURES_PATH}/${frontHair.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={sideHair && `${FEATURES_PATH}/${sideHair.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={extraHair && `${FEATURES_PATH}/${extraHair.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={eyes && `${FEATURES_PATH}/${eyes.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={eyebrows && `${FEATURES_PATH}/${eyebrows.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={nose && `${FEATURES_PATH}/${nose.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={mouth && `${FEATURES_PATH}/${mouth.fileName}`} height="500" width="500" x="150" y="175" />
+                <image href={accessories && `${FEATURES_PATH}/${accessories.fileName}`} height="500" width="500" x="150" y="175" />
                 <image href={tape1} height="400" width="400" x="-50" y="425" />
                 <image href={tape2} height="300" width="300" x="500" y="25" />
                 <image href={tape3} height="300" width="300" x="0" y="0" />

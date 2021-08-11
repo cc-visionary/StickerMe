@@ -2,13 +2,12 @@ import React from 'react';
 import PropType from 'prop-types';
 
 import { FeatureImage } from '..';
+import { FEATURES_PATH } from '../../utils/constants';
 import ImageUpload from './ImageUpload';
 
 import deleteIcon from '../../assets/images/icons/Delete.png';
 
 import '../../assets/styles/components/Admin/FeatureList.css';
-
-const FEATURES_PATH = 'http://localhost:3000/uploads';
 
 const FeatureList = ({
   currentFeatures,

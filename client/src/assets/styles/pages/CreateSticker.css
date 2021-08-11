@@ -1,7 +1,83 @@
 #create-sticker-page {
-  
+  padding: 10px;
+  min-height: 90vh;
+}
+
+#create-sticker-page .title-bar {
+    background-color: rgba(1, 1, 1, 0.73);
+    color: #fff;
+    font-family: 'Indie Flower', cursive;
+    font-size: 36px;
+    border-top: 10px solid #2F2114;
+    border-left: 10px solid #2F2114;
+    border-right: 10px solid #2F2114;
+    height: 5vh;
 }
 
 #create-sticker-page .sticker-container {
   background-color: #735840;
+}
+
+#create-sticker-page .title-bar .title-text {
+  position: relative;
+  top: -5px;
+}
+
+#create-sticker-page .sticker-inner {
+  display: flex;
+  border-left: 10px solid #AC7849;
+  border-right: 10px solid #AC7849;
+  border-bottom: 10px solid #AC7849;
+  padding: 100px;
+}
+
+#create-sticker-page .frame, #create-sticker-page .features {
+  flex: 1;
+}
+
+#create-sticker-page .features-selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#create-sticker-page .features-selection select {
+    z-index: 2;
+    border: 3px solid #000;
+    background-color: transparent;
+    width: 220px;
+    font-size: 32px;
+    font-family: 'Indie Flower', cursive;
+    font-weight: 800;
+}
+
+#create-sticker-page .features-selection select option {
+    font-size: 16px;
+    font-family: 'Indie Flower', cursive;
+    font-weight: normal;
+    color: #000;
+}
+
+#create-sticker-page .features-selection img {
+    position: relative;
+    top: -125px;
+    margin-bottom: -125px;
+    z-index: 1;
+}
+
+#create-sticker-page .feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: left;
+}
+
+#create-sticker-page .feature-list button {
+  border: none;
+  background-color: transparent;
+}
+
+#create-sticker-page .feature-list button .feature-image {
+  cursor: pointer;
 }

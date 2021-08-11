@@ -4,24 +4,11 @@ import { toast } from 'react-toastify';
 
 import { FeatureList } from '../../components/EditFeatures';
 import { ImageService } from '../../services';
+import { FEATURES } from '../../utils/constants';
 
-import selectionBackground from '../../assets/images/selection-background.png';
+import selectionBackground from '../../assets/images/admin/selection-background.png';
 
 import '../../assets/styles/pages/EditFeatures.css';
-
-const FEATURES = [
-  'Skin Color',
-  'Back Hair',
-  'Front Hair',
-  'Side Hair',
-  'Extra Hair',
-  'Eyes',
-  'Eyebrows',
-  'Nose',
-  'Mouth',
-  'Blush',
-  'Accessories',
-];
 
 export default class EditFeatures extends Component {
   constructor(props) {

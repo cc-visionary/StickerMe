@@ -3,9 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { getUser, getUserToken } from './store';
-
-const ADMIN_FALLBACK = '/admin';
-const CUSTOMER_FALLBACK = '/customer';
+import { ADMIN_FALLBACK, CUSTOMER_FALLBACK } from './constants';
 
 const LoginRoute = ({ component: Component, ...rest }) => (
   <Route

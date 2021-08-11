@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Route, Redirect } from 'react-router-dom';
 import { getUser, getUserToken } from './store';
-
-const LOGIN_FALLBACK = '/login';
-const ADMIN_FALLBACK = '/admin';
+import { ADMIN_FALLBACK, LOGIN_FALLBACK } from './constants';
 
 const CustomerRoute = ({ component: Component, ...rest }) => (
   <Route

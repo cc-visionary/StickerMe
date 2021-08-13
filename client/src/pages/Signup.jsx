@@ -34,9 +34,23 @@ const Signup = (props) => {
       return false;
     }
 
-    const reUsername = /^[a-zA-Z0-9_.]+$/;
-    if (!reUsername.test(username)) {
-      setSignupError('Username can only contain letters, numbers, dots, and underscores.');
+    if (!/(?=.*\d)/.test(username)) {
+      setSignupError('Username has to contain atleast 1 digit');
+      return false;
+    }
+
+    if (!/(?=(.*\W))/.test(username)) {
+      setSignupError('Username has to contain atleast 1 special character');
+      return false;
+    }
+
+    if (!/(?=.*[a-z])/.test(username)) {
+      setSignupError('Username has to contain atleast 1 lower case alphabet');
+      return false;
+    }
+
+    if (!/(?=.*[A-Z])/.test(username)) {
+      setSignupError('Username has to contain atleast 1 upper case alphabet');
       return false;
     }
 
@@ -53,6 +67,26 @@ const Signup = (props) => {
 
     if (password !== confirmPassword) {
       setSignupError("Password and confirm password doesn't match...");
+      return false;
+    }
+
+    if (!/(?=.*\d)/.test(password)) {
+      setSignupError('Password has to contain atleast 1 digit');
+      return false;
+    }
+
+    if (!/(?=(.*\W))/.test(password)) {
+      setSignupError('Password has to contain atleast 1 special character');
+      return false;
+    }
+
+    if (!/(?=.*[a-z])/.test(password)) {
+      setSignupError('Password has to contain atleast 1 lower case alphabet');
+      return false;
+    }
+
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setSignupError('Password has to contain atleast 1 upper case alphabet');
       return false;
     }
 

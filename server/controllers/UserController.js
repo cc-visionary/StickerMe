@@ -37,9 +37,20 @@ const UserController = {
       return res.status(400).send({ success: false, error:"Username cannot be less than 4 characters" })
     }
 
-    const re_username = /^[a-zA-Z0-9_\.]+$/
-    if(!re_username.test(username)) {
-      return res.status(400).send({ success: false, error:"Username can only contain letters, numbers, dots, and underscores." })
+    if(!/(?=.*\d)/.test(username)) {
+      return res.status(400).send({ success: false, error:"Username has to contain atleast 1 digit" })
+    }
+
+    if(!/(?=(.*\W))/.test(username)) {
+      return res.status(400).send({ success: false, error:"Username has to contain atleast 1 special character" })
+    }
+
+    if(!/(?=.*[a-z])/.test(username)) {
+      return res.status(400).send({ success: false, error:"Username has to contain atleast 1 lower case alphabet" })
+    }
+
+    if(!/(?=.*[A-Z])/.test(username)) {
+      return res.status(400).send({ success: false, error:"Username has to contain atleast 1 upper case alphabet" })
     }
 
     // password validation
@@ -49,6 +60,22 @@ const UserController = {
 
     if(password.length < 12) {
       return res.status(400).send({ success: false, error:"Password cannot be less than 12 characters" })
+    }
+
+    if(!/(?=.*\d)/.test(password)) {
+      return res.status(400).send({ success: false, error:"Password has to contain atleast 1 digit" })
+    }
+
+    if(!/(?=(.*\W))/.test(password)) {
+      return res.status(400).send({ success: false, error:"Password has to contain atleast 1 special character" })
+    }
+
+    if(!/(?=.*[a-z])/.test(password)) {
+      return res.status(400).send({ success: false, error:"Password has to contain atleast 1 lower case alphabet" })
+    }
+
+    if(!/(?=.*[A-Z])/.test(password)) {
+      return res.status(400).send({ success: false, error:"Password has to contain atleast 1 upper case alphabet" })
     }
 
     // email validation

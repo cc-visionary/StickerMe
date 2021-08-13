@@ -1,0 +1,39 @@
+#date-notif {
+  height: 100vh;
+  width: 100%;
+  background-color: #FFDE87;
+  font-family: 'Indie Flower', cursive;
+}
+
+#date-notif .scrapbook, #date-notif .notif {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#date-notif .error-message {
+  color: #FF3300;
+}
+
+#date-notif .first-line-message {
+  font-size: 500%;
+  margin: 0px;
+}
+
+#date-notif .second-line-message {
+  font-size: 250%;
+  margin: 0px;
+}
+
+#date-notif .come-back-message {
+  color: #FFFFFF;
+}
+
+#date-notif .lock {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 70%;
+  left: 90%;
+}

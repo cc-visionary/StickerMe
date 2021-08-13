@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-// defines the schema for collection `contacts`
-const ContactSchema = new Schema({
+// defines the schema for collection `carts`
+const CartSchema = new Schema({
   username: {
     type: String, 
     ref: 'User',
@@ -18,9 +18,9 @@ const ContactSchema = new Schema({
 });
 
 /*
-  exports a mongoose.model object based on `ContactSchema` (defined above)
+  exports a mongoose.model object based on `CartSchema` (defined above)
   when another script exports from this file
   This model executes CRUD operations
-  to collection `contacts` -> plural of the argument `Contact`
+  to collection `carts` -> plural of the argument `Cart`
 */
-module.exports = mongoose.model('Contact', ContactSchema);
+module.exports = mongoose.model('Cart', CartSchema);

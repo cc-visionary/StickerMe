@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import { ImageService } from '../../services';
+import { CharacterService, ImageService } from '../../services';
 import { FeatureImage } from '../../components';
 import { FEATURES, FEATURE_IMAGE_URL } from '../../utils/constants';
+import { getUser } from '../../utils/store';
 
 import selectionBackground from '../../assets/images/create/selection-background.png';
 import tape1 from '../../assets/images/create/tape-1.png';
@@ -119,7 +120,40 @@ export default class CreateSticker extends Component {
   }
 
   onSave() {
-    console.log('Save');
+    const {
+      skinColor,
+      backHair,
+      frontHair,
+      sideHair,
+      extraHair,
+      eyes,
+      eyebrows,
+      nose,
+      mouth,
+      blush,
+      accessories,
+    } = this.state;
+
+    const character = {
+      username: getUser().uname,
+      skinColor,
+      backHair,
+      frontHair,
+      sideHair,
+      extraHair,
+      eyes,
+      eyebrows,
+      nose,
+      mouth,
+      blush,
+      accessories,
+    };
+
+    CharacterService.addCharacter(character).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err.response.data);
+    });
   }
 
   onAddToCart() {

@@ -42,4 +42,7 @@ const ImageSchema = new Schema({
   This model executes CRUD operations
   to collection `images` -> plural of the argument `Image`
 */
-module.exports = mongoose.model('Image', ImageSchema);
+module.exports = {
+  Image: mongoose.model('Image', ImageSchema),
+  ImageSchema,
+};

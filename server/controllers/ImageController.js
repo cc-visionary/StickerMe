@@ -3,7 +3,7 @@ const db = require("../models/database.js");
 const fs = require("fs");
 
 // import ImageSchema from `../models/ImageModel.js`
-const Image = require("../models/ImageModel");
+const { Image } = require("../models/ImageModel");
 
 const fileSizeFormatter = require("../helpers/fileSizeFormatter");
 

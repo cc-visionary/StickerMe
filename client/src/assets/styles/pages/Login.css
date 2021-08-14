@@ -1,43 +1,54 @@
 #login-page {
-  height: 100vh;
-  width: 100%;
+  height: 92.5vh;
   background-color: #FFDE87;
+  width: 100%;
+  background-image: url(../../images/login-signup/notebook.png);
+  background-repeat: no-repeat;
+  background-position: center;
   font-family: 'Indie Flower', cursive;
-}
-
-#login-page .scrapbook, #login-page .login-form {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #login-page .login-title {
   color: #FDB8A3;
+  -webkit-text-stroke: 1px #FDB8A3;
 }
 
 #login-page .logo {
-  height: 20vh;
+  height: 150px;
 }
 
-#login-page .login-error {
-  color: #B80404;
-  font-size: 24px;
+#login-page .error-message {
+  font-family: 'Open Sans', sans-serif;
+  color: #EB8B35;
+  font-size: 18px;
+  text-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  display: inline-block;
+  max-width: 400px;
+  margin-top: 10px;
 }
 
 #login-page form * {
   margin: 10px 0;
 }
 
-#login-page input {
+#login-page form input {
+  margin: 5px 0;
+  width: 100%;
   color: #7E7E7C;
+  -webkit-text-stroke: 1px #7E7E7C;
 }
 
-#login-page .login-button {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  transform: translate(-5%, -25%);
+#login-page .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#login-page .buttons .login {
   background-color: #6A6B6B;
   padding: 25px 30px;
   border-radius: 75%;
@@ -46,17 +57,92 @@
   font-family: 'Indie Flower', cursive;
   font-size: 24px;
   color: #FDB8A3;
+  -webkit-text-stroke: 1px #FDB8A3;
 }
 
-#login-page .login-button:hover {
+#login-page .buttons .login:hover {
   background-color: #7E7E7C;
 }
 
-#login-page .create-an-account {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  transform: translate(50%, 100%);
+#login-page .buttons .create-an-account {
+  font-size: 24px;
+  color: #FFF;
   text-decoration: none;
-  color: #B80404;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  #login-page {
+    background-image: url(../../images/login-signup/notebook-mobile.png);
+    background-size: contain;
+  }
+
+  #login-page .login-title {
+    font-size: 24px;
+  }
+
+  #login-page form input {
+    margin: 15px 0;
+  }
+}
+
+@media (max-width: 500px), screen and (max-height: 500px) {
+  #login-page .logo {
+    height: 100px;
+  }
+
+  #login-page .login-title {
+    font-size: 18px;
+  }
+
+  #login-page form input {
+    font-size: 18px;
+  }
+
+  #login-page .error-message {
+    font-family: 'Open Sans', sans-serif;
+    color: #EB8B35;
+    font-size: 14px;
+    max-width: 300px;
+  }
+
+  #login-page .buttons .create-an-account {
+    padding: 15px 20px;
+    font-size: 18px;
+  }
+
+  #login-page .buttons .login {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  #login-page .login-title {
+    font-size: 24px;
+  }
+}
+
+@media screen and  (max-height: 450px) {
+  #login-page .logo {
+    height: 75px;
+  }
+
+  #login-page .login-title {
+    font-size: 14px;
+  }
+
+  #login-page form input {
+    font-size: 14px;
+    margin: 2.5px 0;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  #login-page {
+    background-size: 80vw;
+  }
+
+  #login-page .inner-signup {
+    padding: 10px;
+  }
 }

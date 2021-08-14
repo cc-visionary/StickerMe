@@ -5,6 +5,7 @@
   background-image: url(../../images/login-signup/notebook.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
   font-family: 'Indie Flower', cursive;
   display: flex;
   justify-content: center;
@@ -17,10 +18,7 @@
 
 #signup-page .signup-title {
   color: #FDB8A3;
-}
-
-#signup-page .input-group {
-  margin: 10px 0;
+  -webkit-text-stroke: 1px #FDB8A3;
 }
 
 #signup-page .error-message {
@@ -55,7 +53,8 @@
   cursor: pointer;
   font-family: 'Indie Flower', cursive;
   font-size: 24px;
-  color: #FDB8A3;
+  color: #FFDE87;
+  -webkit-text-stroke: 1px #FFDE87;
 }
 
 #signup-page .buttons .signup:hover {
@@ -65,6 +64,8 @@
 #signup-page form input {
   margin: 5px 0;
   width: 100%;
+  color: #7E7E7C;
+  -webkit-text-stroke: 1px #7E7E7C;
 }
 
 @media screen and (max-width: 768px) {
@@ -119,6 +120,10 @@
 }
 
 @media screen and  (max-height: 450px) {
+  #signup-page .logo {
+    height: 75px;
+  }
+
   #signup-page .signup-title {
     font-size: 14px;
   }
@@ -131,7 +136,7 @@
 
 @media screen and (max-height: 500px) {
   #signup-page {
-    background-size: 90vw;
+    background-size: 80vw;
     height: 100%;
   }
 

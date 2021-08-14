@@ -13,7 +13,7 @@
 }
 
 #date-notif .error-message {
-  color: #FF3300;
+  color: #EB8B35;
 }
 
 #date-notif .first-line-message {
@@ -28,12 +28,4 @@
 
 #date-notif .come-back-message {
   color: #FFFFFF;
-}
-
-#date-notif .lock {
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  top: 70%;
-  left: 90%;
 }

@@ -1,66 +1,146 @@
 #signup-page {
-  height: 100vh;
-  background-color: #FDB8A3;
-}
-
-#signup-page .inner-signup {
-  background-color: #383838;
+  height: 92.5vh;
+  background-color: #FFDE87;
   width: 100%;
-  height: 70vh;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  background-image: url(../../images/login-signup/notebook.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  font-family: 'Indie Flower', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #signup-page .logo {
-  height: 300px;
-  width: 300px;
-  position: absolute;
-  left: -100px;
-  top: -50px;
+  height: 150px;
 }
 
-#signup-page .blob, #signup-page form {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#signup-page .input-group {
-  margin: 10px 0;
+#signup-page .signup-title {
+  color: #FDB8A3;
+  -webkit-text-stroke: 1px #FDB8A3;
 }
 
 #signup-page .error-message {
-  width: 150%;
-  position: absolute;
-  left: 50%;
-  bottom: -100px;
-  transform: translateX(-50%);
-  font-family: 'Indie Flower', cursive;
-  font-size: 28px;
-  color: #B80404;
+  font-family: 'Open Sans', sans-serif;
+  color: #EB8B35;
+  font-size: 18px;
+  text-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
+  text-transform: uppercase;
+  display: inline-block;
+  max-width: 400px;
+  margin-top: 10px;
 }
 
-#signup-page .signup-button {
-  position: absolute;
-  right: -50px;
-  bottom: 0;
+#signup-page .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#signup-page .buttons .login {
+  font-size: 24px;
+  color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#signup-page .buttons .signup {
   background-color: #6A6B6B;
   padding: 25px 30px;
   border-radius: 75%;
   border: none;
   cursor: pointer;
   font-family: 'Indie Flower', cursive;
-  font-size: 42px;
+  font-size: 24px;
   color: #FFDE87;
-  transform: rotateZ(-10deg);
+  -webkit-text-stroke: 1px #FFDE87;
 }
 
-#signup-page .signup-button:hover {
+#signup-page .buttons .signup:hover {
   background-color: #7E7E7C;
 }
 
 #signup-page form input {
-  margin: 10px 0;
+  margin: 5px 0;
+  width: 100%;
+  color: #7E7E7C;
+  -webkit-text-stroke: 1px #7E7E7C;
+}
+
+@media screen and (max-width: 768px) {
+  #signup-page {
+    background-image: url(../../images/login-signup/notebook-mobile.png);
+    background-size: contain;
+  }
+
+  #signup-page .signup-title {
+    font-size: 24px;
+  }
+
+  #signup-page form input {
+    margin: 15px 0;
+  }
+}
+
+@media (max-width: 500px), screen and (max-height: 500px) {
+  #signup-page .logo {
+    height: 100px;
+  }
+
+  #signup-page .signup-title {
+    font-size: 18px;
+  }
+
+  #signup-page form input {
+    font-size: 18px;
+  }
+
+  #signup-page .error-message {
+    font-family: 'Open Sans', sans-serif;
+    color: #EB8B35;
+    font-size: 14px;
+    max-width: 300px;
+  }
+
+  #signup-page .buttons .login {
+    font-size: 18px;
+  }
+
+  #signup-page .buttons .signup {
+    padding: 15px 20px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-height: 1000px) {
+  #signup-page .signup-title {
+    font-size: 24px;
+  }
+}
+
+@media screen and  (max-height: 450px) {
+  #signup-page .logo {
+    height: 75px;
+  }
+
+  #signup-page .signup-title {
+    font-size: 14px;
+  }
+
+  #signup-page form input {
+    font-size: 14px;
+    margin: 2.5px 0;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  #signup-page {
+    background-size: 80vw;
+    height: 100%;
+  }
+
+  #signup-page .inner-signup {
+    padding: 10px;
+  }
 }

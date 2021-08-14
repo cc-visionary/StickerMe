@@ -2,7 +2,8 @@ import React, { Component, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { AdminNavbar, CustomerNavbar, Footer } from './components';
+// import { AdminNavbar, CustomerNavbar, Footer } from './components';
+import { AdminNavbar, CustomerNavbar } from './components';
 import {
   Admin,
   Customer,
@@ -37,10 +38,6 @@ export default class App extends Component {
         <Router>
           <div className="app">
             <Switch>
-              {/* No Navbar for the Login and Signup Page */}
-              <Route path="/login" component={() => <></>} />
-              <Route path="/signup" component={() => <></>} />
-              {/* With Navbar for all the other pages */}
               <Route path="/admin" component={AdminNavbar} />
               <Route path="/locked" component={AdminNavbar} />
               <Route path="/" component={CustomerNavbar} />
@@ -57,13 +54,9 @@ export default class App extends Component {
                 <Route component={PageNotFound} />
               </Switch>
             </div>
-            <Switch>
-              {/* No Footer for the Login and Signup Page */}
-              <Route path="/login" component={() => <></>} />
-              <Route path="/signup" component={() => <></>} />
-              {/* With Footer for all the other pages */}
+            {/* <Switch>
               <Route path="/" component={Footer} />
-            </Switch>
+            </Switch> */}
           </div>
         </Router>
       </Suspense>

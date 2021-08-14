@@ -14,7 +14,6 @@ import {
   Locked,
 } from './pages';
 import { AdminRoute, CustomerRoute, LoginRoute } from './utils';
-import { getUser } from './utils/store';
 
 import './assets/styles/App.css';
 
@@ -29,15 +28,10 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      user: getUser(),
-    };
+    this.state = {};
   }
 
   render() {
-    const { user } = this.state;
-    console.log(user);
-
     return (
       <Suspense fallback={<Loading />}>
         <Router>
@@ -48,6 +42,7 @@ export default class App extends Component {
               <Route path="/signup" component={() => <></>} />
               {/* With Navbar for all the other pages */}
               <Route path="/admin" component={AdminNavbar} />
+              <Route path="/locked" component={AdminNavbar} />
               <Route path="/" component={CustomerNavbar} />
             </Switch>
             <div id="main">

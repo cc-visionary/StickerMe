@@ -5,8 +5,8 @@ import Login from './Login';
 import Signup from './Signup';
 import Loading from './Loading';
 import PageNotFound from './PageNotFound';
-import TimeLocked from './TimeLocked';
+import Locked from './Locked';
 
 export {
-  Admin, Customer, Landing, Login, Signup, Loading, PageNotFound, TimeLocked,
+  Admin, Customer, Landing, Login, Signup, Loading, PageNotFound, Locked,
 };

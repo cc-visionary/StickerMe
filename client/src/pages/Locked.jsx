@@ -2,15 +2,13 @@ import React from 'react';
 
 import Logo from '../assets/images/login/logo.png';
 import Notebook from '../assets/images/login/notebook.png';
-import Lock from '../assets/images/icons/NotifLock.png';
 
-import '../assets/styles/pages/TimeLocked.css';
+import '../assets/styles/pages/Locked.css';
 
-const TimeLocked = () => (
+const Locked = () => (
   <div id="date-notif">
     <div className="scrapbook">
       <img src={Notebook} alt="Notebook" />
-      <img className="lock" src={Lock} alt="Lock" />
     </div>
     <div className="notif">
       <img className="logo" src={Logo} alt="Logo" />
@@ -21,4 +19,4 @@ const TimeLocked = () => (
   </div>
 );
 
-export default TimeLocked;
+export default Locked;

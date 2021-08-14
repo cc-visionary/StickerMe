@@ -5,8 +5,8 @@ import { SpecialInput } from '../components';
 import { UserService } from '../services';
 import { getUser } from '../utils/store';
 
-import Logo from '../assets/images/login/logo.png';
-import Notebook from '../assets/images/login/notebook.png';
+import logo from '../assets/images/login-signup/logo.png';
+import notebook from '../assets/images/login-signup/notebook.png';
 
 import '../assets/styles/pages/Login.css';
 
@@ -17,11 +17,13 @@ const Login = (props) => {
   const [hiddenImage, setHiddenImage] = useState(true);
 
   const validateFields = () => {
+    // make sures that username isn't empty
     if (username === '') {
       setLoginError("Sorry, we don't accept empty usernames.");
       return false;
     }
 
+    // make sures that password isn't empty
     if (password === '') {
       setLoginError("Sorry, we don't accept empty passwords.");
       return false;
@@ -54,7 +56,7 @@ const Login = (props) => {
   return (
     <div id="login-page">
       <div className="scrapbook" hidden={hiddenImage}>
-        <img src={Notebook} alt="Notebook" onLoad={() => setHiddenImage(false)} />
+        <img src={notebook} alt="Notebook" onLoad={() => setHiddenImage(false)} />
         <a className="create-an-account" href="/signup">
           Create an account
         </a>
@@ -63,7 +65,7 @@ const Login = (props) => {
         </button>
       </div>
       <div className="login-form">
-        <img className="logo" src={Logo} alt="Logo" />
+        <img className="logo" src={logo} alt="Logo" />
         <h1 className="login-title">THIS SCRAPBOOK BELONGS TO...</h1>
         <form>
           <SpecialInput

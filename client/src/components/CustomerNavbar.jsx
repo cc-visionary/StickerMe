@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { UserService } from '../services';
-import { getUser } from '../utils/store';
 
 import logo from '../assets/images/navbar-logo.png';
 
@@ -18,10 +17,14 @@ const CustomerNavbar = ({ location, history }) => {
     <div id="navbar">
       <img src={logo} alt="Logo" />
       <div>
-        <a href="/" className={location.pathname === '/' ? 'active' : ''}>Home</a>
-        <a href="/create-sticker" className={location.pathname === '/create-sticker' ? 'active' : ''}>Create</a>
-        <a href="/history" className={location.pathname === '/history' ? 'active' : ''}>History</a>
-        {getUser() ? <button type="button" onClick={handleLogout}>Logout</button> : <a href="/login" className={location.pathname === '/login' ? 'active' : ''}>Login</a>}
+        <a href="/customer" className={location.pathname === '/customer' ? 'active' : ''}>Home</a>
+        <a href="/customer/profile" className={location.pathname === '/customer/profile' ? 'active' : ''}>User</a>
+        <a href="/customer/characters" className={location.pathname === '/customer/characters' || location.pathname === '/customer/characters/edit' ? 'active' : ''}>Characters</a>
+        <a href="/customer/contacts" className={location.pathname === '/customer/contacts' ? 'active' : ''}>Contacts</a>
+        <a href="/customer/orders" className={location.pathname === '/customer/orders' ? 'active' : ''}>Orders</a>
+      </div>
+      <div>
+        <button type="button" onClick={handleLogout}>Logout</button>
       </div>
     </div>
   );

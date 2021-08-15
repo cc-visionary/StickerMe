@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { getUser, getUserToken } from './store';
 import { ADMIN_FALLBACK, CUSTOMER_FALLBACK } from './constants';
 
-const LoginRoute = ({ component: Component, ...rest }) => (
+const PublicRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) => {
@@ -19,8 +19,8 @@ const LoginRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-LoginRoute.propTypes = {
+PublicRoute.propTypes = {
   component: PropTypes.func.isRequired,
 };
 
-export default LoginRoute;
+export default PublicRoute;

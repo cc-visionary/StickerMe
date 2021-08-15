@@ -3,7 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { getUser, getUserToken } from './store';
-import { CUSTOMER_FALLBACK, LOGIN_FALLBACK, ADMIN_LOCKED_FALLBACK } from './constants';
+import {
+  CUSTOMER_FALLBACK, LOGIN_FALLBACK, ADMIN_LOCKED_FALLBACK, ADMIN_URLS_TO_LOCK,
+} from './constants';
 
 const AdminRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -25,16 +27,18 @@ const AdminRoute = ({ component: Component, ...rest }) => (
           );
         }
         if (new Date().getDay() >= 3 && new Date().getDay() <= 6) {
-          return (
-            <Redirect
-              to={{
-                pathname: ADMIN_LOCKED_FALLBACK,
-                state: {
-                  from: props.location,
-                },
-              }}
-            />
-          );
+          if (ADMIN_URLS_TO_LOCK.includes(rest.path)) {
+            return (
+              <Redirect
+                to={{
+                  pathname: ADMIN_LOCKED_FALLBACK,
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
+            );
+          }
         }
         // if not, then the user will see the admin page
         return <Component {...props} />;

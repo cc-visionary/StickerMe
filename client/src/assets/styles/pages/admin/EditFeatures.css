@@ -1,5 +1,6 @@
 #edit-features-page {
-    background-color: #FFDE87;
+    width: 100%;
+    height: 82.5vh;
     padding: 5vh;
 }
 
@@ -32,6 +33,8 @@
     border-bottom: 10px solid #AC7849;
     padding: 100px;
     display: block;
+    height: 50vh;
+    overflow-y: scroll;
 }
 
 #edit-features-page .features-selection {
@@ -65,7 +68,7 @@
     z-index: 1;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px), screen and (max-height: 500px) {
     #edit-features-page .title-bar {
         font-size: 24px;
     }
@@ -88,18 +91,24 @@
         padding: 50px 10px;
     }
 
-  #edit-features-page .features-selection img {
-    top: -75px;
-    margin-bottom: -75px;
-    width: 70vw;
-  }
-  
-  #edit-features-page .features-selection select {
-    font-size: 20px;
-    width: 50vw;
-  }
+    #edit-features-page .features-selection img {
+        top: -75px;
+        margin-bottom: -75px;
+        width: 70vw;
+    }
+    
+    #edit-features-page .features-selection select {
+        font-size: 20px;
+        width: 50vw;
+    }
 
-  #edit-features-page .features-selection select option {
-      font-size: 12px;
-  }
+    #edit-features-page .features-selection select option {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    #edit-features-page .features-inner {
+        height: 20vh;
+    }
 }

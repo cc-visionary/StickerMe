@@ -1,5 +1,15 @@
 import React from 'react';
 
-const Checkout = () => <div><h1>Checkout Page</h1></div>;
+import '../../assets/styles/pages/customer/Checkout.css';
+
+const Checkout = () => {
+  console.log('Welcome to checkout page');
+
+  return (
+    <div id="checkout-page">
+      <h1>Checkout Page</h1>
+    </div>
+  );
+};
 
 export default Checkout;

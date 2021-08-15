@@ -17,8 +17,12 @@ const AdminNavbar = ({ location, history }) => {
     <div id="navbar">
       <img src={logo} alt="logo" />
       <div>
-        <a href="/admin" className={location.pathname === '/admin' ? 'active' : ''}>Features</a>
+        <a href="/admin" className={location.pathname === '/admin' ? 'active' : ''}>Home</a>
+        <a href="/admin/users" className={location.pathname === '/admin/users' ? 'active' : ''}>Users</a>
+        <a href="/admin/features" className={location.pathname === '/admin/features' ? 'active' : ''}>Features</a>
         <a href="/admin/orders" className={location.pathname === '/admin/orders' ? 'active' : ''}>Orders</a>
+      </div>
+      <div>
         <button type="button" onClick={handleLogout}>Logout</button>
       </div>
     </div>

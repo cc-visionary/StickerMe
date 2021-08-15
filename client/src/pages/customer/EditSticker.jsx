@@ -12,9 +12,9 @@ import tape3 from '../../assets/images/create/tape-3.png';
 import tape4 from '../../assets/images/create/tape-4.png';
 import characterBackground from '../../assets/images/create/character-background.png';
 
-import '../../assets/styles/pages/CreateSticker.css';
+import '../../assets/styles/pages/customer/EditSticker.css';
 
-export default class CreateSticker extends Component {
+export default class EditSticker extends Component {
   constructor(props) {
     super(props);
 
@@ -178,10 +178,10 @@ export default class CreateSticker extends Component {
     } = this.state;
 
     return (
-      <div id="create-sticker-page">
+      <div id="edit-sticker-page">
         <div className="sticker-container">
           <div className="title-bar">
-            <span className="title-text">Create Sticker</span>
+            <span className="title-text">Edit Sticker</span>
           </div>
           <div className="sticker-inner">
             <div className="frame">
@@ -189,6 +189,8 @@ export default class CreateSticker extends Component {
                 viewBox="0 0 800 800"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
+                width="500"
+                height="500"
               >
                 <image href={characterBackground} height="600" width="600" x="100" y="100" />
                 <image href={backHair && `${FEATURE_IMAGE_URL}/${backHair.fileName}`} height="500" width="500" x="150" y="150" />

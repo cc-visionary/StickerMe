@@ -8,7 +8,7 @@ import { FEATURES } from '../../utils/constants';
 
 import selectionBackground from '../../assets/images/admin/selection-background.png';
 
-import '../../assets/styles/pages/EditFeatures.css';
+import '../../assets/styles/pages/admin/EditFeatures.css';
 
 export default class EditFeatures extends Component {
   constructor(props) {

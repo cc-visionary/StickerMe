@@ -16,6 +16,18 @@
   padding: 0 20px;
 }
 
+#navbar button {
+  font-family: 'Indie Flower', cursive;
+  color: #000;
+  font-size: 20px;
+  text-decoration: none;
+  margin: 0 5px;
+  padding: 0 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 #navbar .active {
   background-color: #C4C4C4;
   border-radius: 30px; 

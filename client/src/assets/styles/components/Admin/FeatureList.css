@@ -1,12 +1,15 @@
 .admin-feature-list {
-  text-align: left;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .admin-feature-list .delete-button {
   opacity: 0;
   position: relative;
-  top: -140px;
-  left: -50px;
+  top: -100px;
+  right: 40px;
   background-color: #AC7849;
   border-radius: 50%;
   padding: 7.5px;
@@ -14,10 +17,6 @@
   outline: none;
   cursor: pointer;
   transition: ease .25s;
-}
-
-.admin-feature-list .feature-item {
-  display: inline-block;
 }
 
 .admin-feature-list .feature-item .feature-image {
@@ -31,4 +30,27 @@
 .admin-feature-list .delete-button:hover {
   background-color: #BB8B60;
   opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .admin-feature-list .delete-button {
+    opacity: 1;
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .admin-feature-list .feature-item {
+    transform: matrix(0.75,0,0,0.75,0,0);
+    transform-origin: 50% 50%;
+    width: 125px;
+    height: 125px;
+  }
+  
+  .admin-feature-list .delete-button {
+    top: -105%;
+    right: -50%;
+    padding: 2.5px;
+    z-index: 1;
+  }
 }

@@ -6,6 +6,7 @@ import { getUser, getUserToken } from './store';
 
 const LOGIN_FALLBACK = '/login';
 const CUSTOMER_FALLBACK = '/customer';
+const LOCKED_FALLBACK = '/locked';
 
 const AdminRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -19,6 +20,18 @@ const AdminRoute = ({ component: Component, ...rest }) => (
             <Redirect
               to={{
                 pathname: CUSTOMER_FALLBACK,
+                state: {
+                  from: props.location,
+                },
+              }}
+            />
+          );
+        }
+        if (new Date().getDay() >= 3 && new Date().getDay() <= 6) {
+          return (
+            <Redirect
+              to={{
+                pathname: LOCKED_FALLBACK,
                 state: {
                   from: props.location,
                 },

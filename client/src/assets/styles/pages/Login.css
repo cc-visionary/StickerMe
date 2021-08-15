@@ -1,10 +1,10 @@
 #login-page {
   height: 92.5vh;
-  background-color: #FFDE87;
   width: 100%;
   background-image: url(../../images/login-signup/notebook.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 80vw 80vh;
   font-family: 'Indie Flower', cursive;
   display: flex;
   justify-content: center;
@@ -86,7 +86,7 @@
   }
 }
 
-@media (max-width: 500px), screen and (max-height: 500px) {
+@media screen and (max-width: 500px), screen and (max-height: 500px) {
   #login-page .logo {
     height: 100px;
   }
@@ -139,7 +139,7 @@
 
 @media screen and (max-height: 500px) {
   #login-page {
-    background-size: 80vw;
+    background-size: 75vw;
   }
 
   #login-page .inner-signup {

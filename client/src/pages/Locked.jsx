@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Logo from '../assets/images/login/logo.png';
-import Notebook from '../assets/images/login/notebook.png';
+import Logo from '../assets/images/login-signup/logo.png';
+import Notebook from '../assets/images/login-signup/notebook.png';
 
 import '../assets/styles/pages/Locked.css';
 

@@ -12,7 +12,7 @@ import {
   Signup,
   Loading,
   PageNotFound,
-  Locked,
+  AdminLocked,
 } from './pages';
 import { AdminRoute, CustomerRoute, LoginRoute } from './utils';
 
@@ -50,7 +50,7 @@ export default class App extends Component {
                 <CustomerRoute path="/customer" component={Customer} />
                 <LoginRoute path="/login" component={Login} />
                 <LoginRoute path="/signup" component={Signup} />
-                <Route path="/locked" component={Locked} />
+                <Route path="/admin-locked" component={AdminLocked} />
                 <Route component={PageNotFound} />
               </Switch>
             </div>

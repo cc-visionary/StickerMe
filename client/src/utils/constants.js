@@ -15,6 +15,7 @@ const FEATURES = [
 const LOGIN_FALLBACK = '/login';
 const ADMIN_FALLBACK = '/admin';
 const CUSTOMER_FALLBACK = '/create-sticker';
+const ADMIN_LOCKED_FALLBACK = '/admin-locked';
 
 const FEATURE_IMAGE_URL = 'http://localhost:3000/uploads';
 const USER_API_BASE_URL = 'http://localhost:3000/api/users';
@@ -29,6 +30,7 @@ export {
   LOGIN_FALLBACK,
   ADMIN_FALLBACK,
   CUSTOMER_FALLBACK,
+  ADMIN_LOCKED_FALLBACK,
   FEATURE_IMAGE_URL,
   USER_API_BASE_URL,
   CHARACTER_API_BASE_URL,

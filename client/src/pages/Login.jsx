@@ -5,8 +5,7 @@ import { SpecialInput } from '../components';
 import { UserService } from '../services';
 import { getUser } from '../utils/store';
 
-import logo from '../assets/images/login/logo.png';
-import notebook from '../assets/images/login/notebook.png';
+import logo from '../assets/images/login-signup/logo.png';
 
 import '../assets/styles/pages/Login.css';
 
@@ -17,11 +16,13 @@ const Login = (props) => {
   const [hiddenImage, setHiddenImage] = useState(true);
 
   const validateFields = () => {
+    // make sures that username isn't empty
     if (username === '') {
       setLoginError("Sorry, we don't accept empty usernames.");
       return false;
     }
 
+    // make sures that password isn't empty
     if (password === '') {
       setLoginError("Sorry, we don't accept empty passwords.");
       return false;
@@ -53,17 +54,8 @@ const Login = (props) => {
 
   return (
     <div id="login-page">
-      <div className="scrapbook" hidden={hiddenImage}>
-        <img src={notebook} alt="Notebook" onLoad={() => setHiddenImage(false)} />
-        <a className="create-an-account" href="/signup">
-          Create an account
-        </a>
-        <button type="button" className="login-button" onClick={handleLogin}>
-          Log In
-        </button>
-      </div>
-      <div className="login-form">
-        <img className="logo" src={logo} alt="Logo" />
+      <div className="inner-login" hidden={hiddenImage}>
+        <img className="logo" src={logo} alt="Logo" onLoad={() => setHiddenImage(false)} />
         <h1 className="login-title">THIS SCRAPBOOK BELONGS TO...</h1>
         <form>
           <SpecialInput
@@ -86,8 +78,12 @@ const Login = (props) => {
             required
           />
           <br />
-          <span className="login-error">{loginError}</span>
         </form>
+        <span className="error-message">{loginError}</span>
+        <div className="buttons">
+          <a className="create-an-account" href="/signup">Register</a>
+          <button type="button" className="login" onClick={handleLogin}>Log In</button>
+        </div>
       </div>
     </div>
   );

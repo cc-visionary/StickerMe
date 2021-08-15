@@ -6,8 +6,18 @@ import Landing from './Landing';
 import Login from './Login';
 import Signup from './Signup';
 import Loading from './Loading';
+import AdminLocked from './AdminLocked';
 import PageNotFound from './PageNotFound';
 
 export {
-  EditFeatures, CreateSticker, History, Checkout, Landing, Login, Signup, Loading, PageNotFound,
+  EditFeatures,
+  CreateSticker,
+  History,
+  Checkout,
+  Landing,
+  Login,
+  Signup,
+  Loading,
+  AdminLocked,
+  PageNotFound,
 };

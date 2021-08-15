@@ -18,7 +18,6 @@ export default class EditFeatures extends Component {
       currentFeature: FEATURES[0],
       currentFeatures: [],
       allFeatures: [],
-      // users: [],
     };
 
     this.handleChangeFeature = this.handleChangeFeature.bind(this);
@@ -37,14 +36,6 @@ export default class EditFeatures extends Component {
         });
       }
     });
-    // UserService.getAllUsers().then((res) => {
-    //   const { success, result } = res.data;
-    //   if (success) {
-    //     this.setState({ users: result });
-    //   } else {
-    //     console.log("Failed to get the Users from the Database");
-    //   }
-    // });
   }
 
   handleChangeFeature(e) {
@@ -93,13 +84,13 @@ export default class EditFeatures extends Component {
         });
       })
       .catch(() => {
-        console.log('Failed to delete the image...');
+        toast.error('Failed to delete the image...');
       });
   }
 
   render() {
-    const { /* users, */ currentFeature, currentFeatures } = this.state;
-    // console.log(users);
+    const { currentFeature, currentFeatures } = this.state;
+
     return (
       <div id="edit-features-page">
         <div className="features-container">

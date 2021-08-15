@@ -13,6 +13,7 @@ const CustomerNavbar = ({ location, history }) => {
       history.push('/login');
     });
   };
+
   return (
     <div id="navbar">
       <img src={logo} alt="Logo" />

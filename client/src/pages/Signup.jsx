@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import { UserService } from '../services';
 import { SpecialInput } from '../components';
 
-import logo from '../assets/images/logo.png';
-import signupBackground from '../assets/images/signup/signup-background.png';
+import logo from '../assets/images/login-signup/logo.png';
+// import notebook from '../assets/images/login-signup/notebook.png';
 
 import '../assets/styles/pages/Signup.css';
 
 const Signup = (props) => {
-  const [hiddenImage, setHiddenImage] = useState(false);
+  const [hiddenImage, setHiddenImage] = useState(true);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -29,14 +29,29 @@ const Signup = (props) => {
       return false;
     }
 
+    // make sures that the length of the username is greater than or equal to 4
     if (username.length < 4) {
       setSignupError('Username cannot be less than 4 characters');
       return false;
     }
 
-    const reUsername = /^[a-zA-Z0-9_.]+$/;
-    if (!reUsername.test(username)) {
-      setSignupError('Username can only contain letters, numbers, dots, and underscores.');
+    if (!/(?=.*\d)/.test(username)) {
+      setSignupError('Username has to contain atleast 1 digit');
+      return false;
+    }
+
+    if (!/(?=(.*\W))/.test(username)) {
+      setSignupError('Username has to contain atleast 1 special character');
+      return false;
+    }
+
+    if (!/(?=.*[a-z])/.test(username)) {
+      setSignupError('Username has to contain atleast 1 lower case alphabet');
+      return false;
+    }
+
+    if (!/(?=.*[A-Z])/.test(username)) {
+      setSignupError('Username has to contain atleast 1 upper case alphabet');
       return false;
     }
 
@@ -46,13 +61,35 @@ const Signup = (props) => {
       return false;
     }
 
+    // make sures that the length of the password is greater than or equal to 12
     if (password.length < 12) {
       setSignupError('Password cannot be less than 12 characters');
       return false;
     }
 
+    // make sures that the confirm password is equal to password
     if (password !== confirmPassword) {
       setSignupError("Password and confirm password doesn't match...");
+      return false;
+    }
+
+    if (!/(?=.*\d)/.test(password)) {
+      setSignupError('Password has to contain atleast 1 digit');
+      return false;
+    }
+
+    if (!/(?=(.*\W))/.test(password)) {
+      setSignupError('Password has to contain atleast 1 special character');
+      return false;
+    }
+
+    if (!/(?=.*[a-z])/.test(password)) {
+      setSignupError('Password has to contain atleast 1 lower case alphabet');
+      return false;
+    }
+
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setSignupError('Password has to contain atleast 1 upper case alphabet');
       return false;
     }
 
@@ -95,16 +132,10 @@ const Signup = (props) => {
   };
 
   return (
-    <div id="signup-page">
+    <div id="signup-page" hidden={hiddenImage}>
       <div className="inner-signup">
-        <div className="blob" hidden={!hiddenImage}>
-          <img src={signupBackground} alt="Signup Background" onLoad={() => setHiddenImage(true)} />
-          <img className="logo" src={logo} alt="Logo" onLoad={() => setHiddenImage(true)} />
-          <button className="signup-button" type="submit" onClick={onRegister}>Sign up</button>
-          <p className="error-message">
-            {signupError}
-          </p>
-        </div>
+        <img className="logo" src={logo} alt="Logo" onLoad={() => setHiddenImage(false)} />
+        <h1 className="signup-title">THIS SCRAPBOOK WILL BELONG TO...</h1>
         <form>
           <SpecialInput type="text" value={email} onChange={setEmail} onKeyPress={handleKeyPress} placeholder="Email" />
           <br />
@@ -115,6 +146,13 @@ const Signup = (props) => {
           <SpecialInput type="password" value={confirmPassword} onChange={setConfirmPassword} onKeyPress={handleKeyPress} placeholder="Confirm Password" />
           <br />
         </form>
+        <span className="error-message">
+          {signupError}
+        </span>
+        <div className="buttons">
+          <a href="/login" className="login">Login</a>
+          <button className="signup" type="submit" onClick={onRegister}>Sign up</button>
+        </div>
       </div>
     </div>
   );

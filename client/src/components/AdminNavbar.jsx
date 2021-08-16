@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { UserService } from '../services';
 
 import logo from '../assets/images/navbar-logo.png';
+import menu from '../assets/images/icons/Menu.png';
 
 import '../assets/styles/components/Navbar.css';
 
+const links = [
+  {
+    link: '/admin',
+    title: 'Home',
+  },
+  {
+    link: '/admin/users',
+    title: 'Users',
+  },
+  {
+    link: '/admin/features',
+    title: 'Features',
+  },
+  {
+    link: '/admin/orders',
+    title: 'Orders',
+  },
+];
+
 const AdminNavbar = ({ location, history }) => {
+  const [toggle, setToggle] = useState(false);
+
   const handleLogout = () => {
     UserService.logout().then(() => {
       history.push('/login');
@@ -15,15 +37,30 @@ const AdminNavbar = ({ location, history }) => {
 
   return (
     <div id="navbar">
-      <img src={logo} alt="logo" />
-      <div>
-        <a href="/admin" className={location.pathname === '/admin' ? 'active' : ''}>Home</a>
-        <a href="/admin/users" className={location.pathname === '/admin/users' ? 'active' : ''}>Users</a>
-        <a href="/admin/features" className={location.pathname === '/admin/features' ? 'active' : ''}>Features</a>
-        <a href="/admin/orders" className={location.pathname === '/admin/orders' ? 'active' : ''}>Orders</a>
+      <div className="desktop-nav">
+        <img className="logo" src={logo} alt="logo" />
+        <div>
+          {
+            links.map((link) => (
+              <a href={link.link} className={location.pathname === link.link ? 'active' : ''}>{link.title}</a>
+            ))
+          }
+        </div>
+        <div>
+          <button type="button" onClick={handleLogout}>Logout</button>
+        </div>
       </div>
-      <div>
-        <button type="button" onClick={handleLogout}>Logout</button>
+      <div className="mobile-nav">
+        <img className="logo" src={logo} alt="logo" />
+        <div>
+          <button className="menu-button" type="button" onClick={() => setToggle(!toggle)}>
+            <img src={menu} alt="Menu" />
+          </button>
+          <ul className={toggle ? 'nav-links show-nav' : 'nav-links'}>
+            {links.map((link) => <li href={link.link}><a href={link.link} className={location.pathname === link.link ? 'active' : ''}>{link.title}</a></li>)}
+            <button type="button" onClick={handleLogout}>Logout</button>
+          </ul>
+        </div>
       </div>
     </div>
   );

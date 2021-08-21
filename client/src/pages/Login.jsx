@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
 import { SpecialInput } from '../components';
 import { UserService } from '../services';
@@ -35,8 +36,13 @@ const Login = (props) => {
     if (validateFields()) {
       UserService.login(username, password)
         .then(() => {
-          if (getUser().userType === 'moderator') props.history.push('/admin');
-          else props.history.push('/customer');
+          if (getUser().userType === 'admin') {
+            toast.success('Successfully logged in as Admin');
+            props.history.push('/admin');
+          } else {
+            toast.success('Successfully logged in as Customer');
+            props.history.push('/customer');
+          }
         })
         .catch((err) => {
           const { success, error } = err.response.data;

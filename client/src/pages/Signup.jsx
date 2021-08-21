@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import { UserService } from '../services';
 import { SpecialInput } from '../components';
@@ -17,6 +18,9 @@ const Signup = (props) => {
   const [signupError, setSignupError] = useState(null);
 
   const validateField = () => {
+    // TEST USERNAME: aB#2
+    // TEST PASSWORD: 1B2$c1sf9#da0+
+
     // email validation
     if (email === '') {
       setSignupError("Sorry, we don't accept empty emails.");
@@ -40,7 +44,7 @@ const Signup = (props) => {
       return false;
     }
 
-    if (!/(?=(.*\W))/.test(username)) {
+    if (!/(?=(.*[\W_]))/.test(username)) {
       setSignupError('Username has to contain atleast 1 special character');
       return false;
     }
@@ -78,7 +82,7 @@ const Signup = (props) => {
       return false;
     }
 
-    if (!/(?=(.*\W))/.test(password)) {
+    if (!/(?=(.*[\W_]))/.test(password)) {
       setSignupError('Password has to contain atleast 1 special character');
       return false;
     }
@@ -111,6 +115,7 @@ const Signup = (props) => {
         .then(() => {
           UserService.login(username, password)
             .then(() => {
+              toast.success('Successfully created an account');
               props.history.push('/customer');
             })
             .catch((err) => {

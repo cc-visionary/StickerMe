@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { getUser, getUserToken } from './store';
 import {
-  CUSTOMER_FALLBACK, LOGIN_FALLBACK, ADMIN_LOCKED_FALLBACK, ADMIN_URLS_TO_LOCK,
+  CUSTOMER_FALLBACK,
+  LOGIN_FALLBACK,
+  ADMIN_LOCKED_FALLBACK,
+  ADMIN_URLS_TO_LOCK,
 } from './constants';
 
 const AdminRoute = ({ component: Component, ...rest }) => (
@@ -26,7 +29,7 @@ const AdminRoute = ({ component: Component, ...rest }) => (
             />
           );
         }
-        if (new Date().getDay() >= 3 && new Date().getDay() <= 6) {
+        if (new Date().getDay() < 3 && new Date().getDay() > 6) {
           if (ADMIN_URLS_TO_LOCK.includes(rest.path)) {
             return (
               <Redirect

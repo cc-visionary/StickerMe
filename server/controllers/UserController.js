@@ -41,7 +41,7 @@ const UserController = {
       return res.status(400).send({ success: false, error:"Username has to contain atleast 1 digit" })
     }
 
-    if(!/(?=(.*\W))/.test(username)) {
+    if(!/(?=(.*[\W_]))/.test(username)) {
       return res.status(400).send({ success: false, error:"Username has to contain atleast 1 special character" })
     }
 
@@ -66,7 +66,7 @@ const UserController = {
       return res.status(400).send({ success: false, error:"Password has to contain atleast 1 digit" })
     }
 
-    if(!/(?=(.*\W))/.test(password)) {
+    if(!/(?=(.*[\W_]))/.test(password)) {
       return res.status(400).send({ success: false, error:"Password has to contain atleast 1 special character" })
     }
 

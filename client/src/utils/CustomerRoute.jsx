@@ -9,7 +9,6 @@ import {
   CUSTOMER_LOCKED_FALLBACK,
   LOGIN_FALLBACK,
   CUSTOMER_URLS_TO_LOCK,
-  CUSTOMER_FALLBACK,
 } from './constants';
 
 const CustomerRoute = ({ component: Component, ...rest }) => (
@@ -32,7 +31,7 @@ const CustomerRoute = ({ component: Component, ...rest }) => (
           );
         }
 
-        if (new Date().getDay() < 3 || new Date().getDay() > 6) {
+        if (new Date().getDay() >= 3 || new Date().getDay() <= 6) {
           if (CUSTOMER_URLS_TO_LOCK.includes(rest.path)) {
             return (
               <Redirect

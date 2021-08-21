@@ -3,10 +3,13 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+// import ImageSchema from `../models/ImageModel.js`
+const { ImageSchema } = require("./ImageModel");
+
 // defines the schema for collection `characters`
 const CharacterSchema = new Schema({
-  userID: {
-    type: Schema.Types.ObjectId, 
+  username: {
+    type: String, 
     ref: 'User',
     required: true,
   },
@@ -15,47 +18,47 @@ const CharacterSchema = new Schema({
     required: true,
   },
   accessories: {
-    type: String,
+    type: ImageSchema,
     required: true,
   },
   backHair: {
-    type: String,
+    type: ImageSchema,
     required: true,
   },
-  bangs: {
-    type: String,
-    required: true,
-  },
-  blush: {
-    type: String,
+  frontHair: {
+    type: ImageSchema,
     required: true,
   },
   extraHair: {
-    type: String,
-    required: true,
-  },
-  eyebrows: {
-    type: String,
-    required: true,
-  },
-  eyes: {
-    type: String,
-    required: true,
-  },
-  mouth: {
-    type: String,
-    required: true,
-  },
-  nose: {
-    type: String,
+    type: ImageSchema,
     required: true,
   },
   sideHair: {
-    type: String,
+    type: ImageSchema,
     required: true,
   },
-  skin: {
-    type: String,
+  skinColor: {
+    type: ImageSchema,
+    required: true,
+  },
+  blush: {
+    type: ImageSchema,
+    required: true,
+  },
+  eyebrows: {
+    type: ImageSchema,
+    required: true,
+  },
+  eyes: {
+    type: ImageSchema,
+    required: true,
+  },
+  mouth: {
+    type: ImageSchema,
+    required: true,
+  },
+  nose: {
+    type: ImageSchema,
     required: true,
   },
   description: {

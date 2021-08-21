@@ -1,0 +1,226 @@
+#edit-sticker-page {
+  width: 100%;
+  padding: 5vh;
+  overflow-x: hidden;
+  background-color: #FFDE87;
+}
+
+#edit-sticker-page .title-bar {
+    background-color: rgba(1, 1, 1, 0.73);
+    color: #fff;
+    font-family: 'Indie Flower', cursive;
+    font-size: 36px;
+    border-top: 10px solid #2F2114;
+    border-left: 10px solid #2F2114;
+    border-right: 10px solid #2F2114;
+}
+
+#edit-sticker-page .desktop-view {
+  background-color: #735840;
+  display: none;
+}
+
+#edit-sticker-page .title-bar .title-text {
+  position: relative;
+  top: -5px;
+  text-transform: capitalize;
+}
+
+#edit-sticker-page .sticker-inner {
+  display: flex;
+  border-left: 10px solid #AC7849;
+  border-right: 10px solid #AC7849;
+  border-bottom: 10px solid #AC7849;
+}
+
+#edit-sticker-page .desktop-view .sticker-inner {
+  padding: 60px 100px;
+}
+
+#edit-sticker-page .frame, #edit-sticker-page .features {
+  flex: 1;
+}
+
+#edit-sticker-page .features-selection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#edit-sticker-page .features-selection select {
+    z-index: 2;
+    border: 3px solid #000;
+    background-color: transparent;
+    width: 220px;
+    font-size: 32px;
+    font-family: 'Indie Flower', cursive;
+    font-weight: 800;
+}
+
+#edit-sticker-page .features-selection select option {
+    font-size: 16px;
+    font-family: 'Indie Flower', cursive;
+    font-weight: normal;
+    color: #000;
+}
+
+#edit-sticker-page .features-selection img {
+    position: relative;
+    top: -100px;
+    margin-bottom: -100px;
+    z-index: 1;
+}
+
+#edit-sticker-page .feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: left;
+}
+
+#edit-sticker-page .mobile-view .feature-item {
+  transform: matrix(0.75,0,0,0.75,0,0);
+  transform-origin: 50% 50%;
+  width: 125px;
+  height: 125px;
+}
+
+#edit-sticker-page button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+}
+
+#edit-sticker-page .buttons {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+#edit-sticker-page .buttons button {
+  font-family: 'Indie Flower', cursive;
+  font-size: 18px;
+  background-color: #735840;
+  color: #FFF;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#edit-sticker-page .buttons .save-button span {
+  background: url('../../../images/icons/Download.png') no-repeat left center;
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+
+#edit-sticker-page .buttons .add-button span {
+  background: url('../../../images/icons/Buy.png') no-repeat left center;
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+
+#edit-sticker-page .mobile-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-sticker-page .mobile-view .sticker-inner, #edit-sticker-page .mobile-view .title-bar {
+  width: 97%;
+}
+
+#edit-sticker-page .mobile-view .feature-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+#edit-sticker-page .mobile-view .title-bar {
+  overflow: auto;
+  overflow-y: hidden;
+  -ms-overflow-y: hidden;
+  white-space: nowrap;
+}
+
+#edit-sticker-page .mobile-view .title-bar button {
+  font-family: 'Indie Flower', cursive;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #FFECBB;
+  margin: 0 10px;
+  display: inline;
+}
+
+#edit-sticker-page .mobile-view .title-bar button.active {
+  background-color: #606060;
+  border-radius: 30px;
+}
+
+#edit-sticker-page .mobile-view .sticker-inner {
+  background-color: #735840;
+  min-height: 30vh;
+}
+
+#edit-sticker-page .mobile-view .frame {
+  transform: matrix(0.5,0,0,0.5,0,0);
+  transform-origin: 50% 50%;
+  margin-top: -15vh;
+  margin-bottom: -15vh;
+}
+
+#edit-sticker-page .feature-list .check-icon {
+  position: relative;
+  top: -140px;
+  right: -50px;
+}
+
+@media screen and (min-width: 768px) {
+  #edit-sticker-page .mobile-view .frame {
+    transform: matrix(1,0,0,1,0,0);
+    transform-origin: 50% 50%;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #edit-sticker-page .mobile-view {
+    display: none;
+  }
+  #edit-sticker-page .desktop-view {
+    display: block;
+    margin-top: 7.5vh;
+  }
+  
+  #edit-sticker-page .desktop-view .feature-item {
+    transform: matrix(1.25,0,0,1.25,0,0);
+    transform-origin: 50% 50%;
+    width: 200px;
+    height: 200px;
+  }
+
+  #edit-sticker-page .buttons button {
+    font-size: 24px;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  #edit-sticker-page .feature-list .check-icon {
+    top: -80px;
+    right: 50px;
+    margin-top: 80px;
+    margin-right: -50px;
+  }
+}

@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const IMAGE_API_BASE_URL = 'http://localhost:3000/api/images';
+import { IMAGE_API_BASE_URL } from '../utils/constants';
 
 const ImageService = {
   getAllImages: async () => axios.get(IMAGE_API_BASE_URL),

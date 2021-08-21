@@ -1,0 +1,87 @@
+#locked-page {
+  height: 85vh;
+  width: 100%;
+  background-image: url(../../images/login-signup/notebook.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80vw 80vh;
+  background-color: #FFDE87;
+  font-family: 'Indie Flower', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#locked-page .error-message {
+  color: #EB8B35;
+  font-size: 50px;
+  margin: 0px;
+}
+
+#locked-page .second-line-message {
+  font-size: 48px;
+  margin: 0px;
+}
+
+#locked-page .come-back-message {
+  font-size: 24px;
+  font-weight: normal;
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+  #locked-page .logo {
+    height: 150px;
+  }
+
+  #locked-page {
+    background-image: url(../../images/login-signup/notebook-mobile.png);
+    background-size: contain;
+  }
+
+  #locked-page .error-message {
+    font-size: 32px;
+  }
+
+  #locked-page .come-back-message {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #locked-page .logo {
+    height: 100px;
+  }
+
+  #locked-page .error-message {
+    font-size: 20px;
+  }
+
+  #locked-page .come-back-message {
+    font-size: 12px;
+  }
+}
+
+@media screen and  (max-height: 450px) {
+  #locked-page .logo {
+    height: 75px;
+  }
+
+  #locked-page .error-message {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  #locked-page {
+    background-size: 75vw;
+  }
+
+  #locked-page .error-message {
+    font-size: 32px;
+  }
+
+  #locked-page .come-back-message {
+    font-size: 20px;
+  }
+}

@@ -14,9 +14,7 @@ const ContactController = {
   },
   getContactsByUsername: (req, res) => {
     const { username } = req.params;
-    db.findMany(Contact, { username }, (result) =>
-      defaultCallback(res, result)
-    );
+    db.findMany(Contact, { username }, (result) => defaultCallback(res, result));
   },
   insertContact: (req, res) => {
     const {
@@ -52,7 +50,6 @@ const ContactController = {
   updateContact: (req, res) => {
     const {
       id,
-      username,
       fullName,
       phone,
       address,
@@ -73,16 +70,12 @@ const ContactController = {
       paypalEmail, // <- verify
     };
 
-    db.updateOne(Contact, { _id: id }, contact, (result) =>
-      defaultCallback(res, result)
-    );
+    db.updateOne(Contact, { _id: id }, contact, (result) => defaultCallback(res, result));
   },
   deleteContact: (req, res) => {
     const { id } = req.params;
 
-    db.deleteOne(Contact, { _id: id }, (result) =>
-      defaultCallback(res, result)
-    );
+    db.deleteOne(Contact, { _id: id }, (result) => defaultCallback(res, result));
   },
 };
 /*

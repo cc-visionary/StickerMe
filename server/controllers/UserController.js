@@ -128,9 +128,7 @@ const UserController = {
       userType,
     };
 
-    db.updateOne(User, { username }, user, (result) =>
-      defaultCallback(res, result)
-    );
+    db.updateOne(User, { username }, user, (result) => defaultCallback(res, result));
   },
   deleteUser: (req, res) => {
     const { username } = req.params;

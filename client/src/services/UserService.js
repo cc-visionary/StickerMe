@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { setUserLocal, removeLocalUser } from '../utils/store';
 
-const USER_API_BASE_URL = 'http://localhost:3000/api/users';
+import { USER_API_BASE_URL } from '../utils/constants';
 
 const UserService = {
   getAllUsers: () => axios.get(USER_API_BASE_URL),

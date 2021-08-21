@@ -5,14 +5,9 @@ const { Schema } = mongoose;
 
 // defines the schema for collection `orders`
 const OrderSchema = new Schema({
-  userID: {
-    type: Schema.Types.ObjectId, 
+  username: {
+    type: String, 
     ref: 'User',
-    required: true,
-  },
-  characterID: {
-    type: Schema.Types.ObjectId, 
-    ref: 'Character',
     required: true,
   },
   contactID: {
@@ -20,14 +15,15 @@ const OrderSchema = new Schema({
     ref: 'Contact',
     required: true,
   },
+  characterIDs: {
+    type: [Schema.Types.ObjectId], 
+    ref: 'Character',
+    required: true,
+  },
   totalPrice: {
     type: Schema.Types.Decimal128,
     required: true,
     min: 0,
-  },
-  proofOfPayment: {
-    type: Schema.Types.Buffer,
-    require: true,
   },
   date: {
     type: Date,

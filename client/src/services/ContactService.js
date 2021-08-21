@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const CONTACT_API_BASE_URL = 'http://localhost:3000/api/contacts';
+import { CONTACT_API_BASE_URL } from '../utils/constants';
 
 const ContactService = {
   getContactsByUsername: (username) => axios.get(`${CONTACT_API_BASE_URL}/username/${username}`),

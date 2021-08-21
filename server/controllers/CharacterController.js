@@ -11,15 +11,11 @@ const CharacterController = {
   getCharactersByUsername: (req, res) => {
     const { username } = req.params;
 
-    db.findMany(Character, { username }, (result) =>
-      defaultCallback(res, result)
-    );
+    db.findMany(Character, { username }, (result) => defaultCallback(res, result));
   },
   getCharacter: (req, res) => {
     const { id } = req.params;
-    db.findOne(Character, { _id: id }, (result) =>
-      defaultCallback(res, result)
-    );
+    db.findOne(Character, { _id: id }, (result) => defaultCallback(res, result));
   },
   insertCharacter: (req, res) => {
     const {
@@ -73,7 +69,7 @@ const CharacterController = {
       name,
       accessories,
       backHair,
-      bangs,
+      frontHair,
       blush,
       extraHair,
       eyebrows,
@@ -81,9 +77,8 @@ const CharacterController = {
       mouth,
       nose,
       sideHair,
-      skin,
+      skinColor,
       description,
-      status,
     } = req.body;
 
     const character = {
@@ -91,29 +86,26 @@ const CharacterController = {
       name,
       accessories,
       backHair,
-      bangs,
-      blush,
       extraHair,
+      sideHair,
+      skinColor,
+      frontHair,
+      blush,
       eyebrows,
       eyes,
       mouth,
       nose,
-      sideHair,
-      skin,
       description,
-      status,
+      status: 'Saved',
     };
 
-    db.updateOne(Character, { _id: id }, character, (result) =>
-      defaultCallback(res, result)
-    );
+    db.updateOne(Character, { _id: id }, character, (result) => defaultCallback(res, result));
   },
   deleteCharacter: (req, res) => {
     const { id } = req.params;
 
-    db.deleteOne(Character, { _id: id }, (result) =>
-      defaultCallback(res, result)
-    );
+    // only update the status of that deleted character
+    db.updatedOne(Character, { _id: id }, { status: 'Deleted' }, (result) => defaultCallback(res, result));
   },
 };
 /*

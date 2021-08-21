@@ -1,11 +1,13 @@
 const FEATURES = [
   'Skin Color',
+  'Base Hair',
   'Back Hair',
   'Front Hair',
   'Side Hair',
   'Extra Hair',
   'Eyes',
   'Eyebrows',
+  'Ears',
   'Nose',
   'Mouth',
   'Blush',

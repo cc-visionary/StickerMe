@@ -4,9 +4,12 @@ import PropTypes from 'prop-types';
 
 import { Route, Redirect } from 'react-router-dom';
 import { getUser, getUserToken } from './store';
-
-const LOGIN_FALLBACK = '/login';
-const ADMIN_FALLBACK = '/admin';
+import {
+  ADMIN_FALLBACK,
+  CUSTOMER_LOCKED_FALLBACK,
+  LOGIN_FALLBACK,
+  CUSTOMER_URLS_TO_LOCK,
+} from './constants';
 
 const CustomerRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -26,6 +29,21 @@ const CustomerRoute = ({ component: Component, ...rest }) => (
               }}
             />
           );
+        }
+
+        if (new Date().getDay() >= 3 || new Date().getDay() <= 6) {
+          if (CUSTOMER_URLS_TO_LOCK.includes(rest.path)) {
+            return (
+              <Redirect
+                to={{
+                  pathname: CUSTOMER_LOCKED_FALLBACK,
+                  state: {
+                    from: props.location,
+                  },
+                }}
+              />
+            );
+          }
         }
         // if not, then the user will see the customer page
         return <Component {...props} />;

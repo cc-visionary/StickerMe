@@ -3,18 +3,33 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 // import { AdminNavbar, CustomerNavbar, Footer } from './components';
-import { AdminNavbar, CustomerNavbar } from './components';
+import { PublicNavbar, AdminNavbar, CustomerNavbar } from './components';
 import {
-  Admin,
-  Customer,
+  AdminHome,
+  AdminLocked,
+  AdminOrders,
+  Users,
+  EditFeatures,
+  Characters,
+  Checkout,
+  Contacts,
+  CustomerHome,
+  Profile,
+  CustomerLocked,
+  CustomerOrders,
+  EditSticker,
   Landing,
   Login,
   Signup,
   Loading,
   PageNotFound,
-  AdminLocked,
 } from './pages';
-import { AdminRoute, CustomerRoute, LoginRoute } from './utils';
+import {
+  AdminRoute,
+  CustomerRoute,
+  LockedRoute,
+  PublicRoute,
+} from './utils';
 
 import './assets/styles/App.css';
 
@@ -38,20 +53,29 @@ export default class App extends Component {
         <Router>
           <div className="app">
             <Switch>
+              <Route path="/customer" component={CustomerNavbar} />
               <Route path="/admin" component={AdminNavbar} />
-              <Route path="/locked" component={AdminNavbar} />
-              <Route path="/" component={CustomerNavbar} />
+              <Route path="/" component={PublicNavbar} />
             </Switch>
             <div id="main">
               <Switch>
-                <Route exact path="/" component={Landing} />
-                <AdminRoute path="/admin/orders" component={() => <div>Orders</div>} />
-                <AdminRoute path="/admin" component={Admin} />
-                <CustomerRoute path="/customer" component={Customer} />
-                <LoginRoute path="/login" component={Login} />
-                <LoginRoute path="/signup" component={Signup} />
-                <Route path="/admin-locked" component={AdminLocked} />
-                <Route component={PageNotFound} />
+                <LockedRoute path="/customer/locked" component={CustomerLocked} />
+                <LockedRoute path="/admin/locked" component={AdminLocked} />
+                <AdminRoute path="/admin/users" component={Users} />
+                <AdminRoute path="/admin/features" component={EditFeatures} />
+                <AdminRoute path="/admin/orders" component={AdminOrders} />
+                <AdminRoute path="/admin" component={AdminHome} />
+                <CustomerRoute path="/customer/characters/edit" component={EditSticker} />
+                <CustomerRoute path="/customer/characters" component={Characters} />
+                <CustomerRoute path="/customer/profile" component={Profile} />
+                <CustomerRoute path="/customer/contacts" component={Contacts} />
+                <CustomerRoute path="/customer/orders" component={CustomerOrders} />
+                <CustomerRoute path="/customer/checkout" component={Checkout} />
+                <CustomerRoute path="/customer" component={CustomerHome} />
+                <PublicRoute exact path="/" component={Landing} />
+                <PublicRoute path="/login" component={Login} />
+                <PublicRoute path="/signup" component={Signup} />
+                <PublicRoute component={PageNotFound} />
               </Switch>
             </div>
             {/* <Switch>

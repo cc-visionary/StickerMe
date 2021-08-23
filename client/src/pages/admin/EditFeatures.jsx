@@ -2,28 +2,15 @@ import React, { Component } from 'react';
 import FormData from 'form-data';
 import { toast } from 'react-toastify';
 
-import { FeatureList } from '../components/Admin';
-import { ImageService, UserService } from '../services';
+import { FeatureList } from '../../components/EditFeatures';
+import { ImageService } from '../../services';
+import { FEATURES } from '../../utils/constants';
 
-import selectionBackground from '../assets/images/selection-background.png';
+import selectionBackground from '../../assets/images/admin/selection-background.png';
 
-import '../assets/styles/pages/Admin.css';
+import '../../assets/styles/pages/admin/EditFeatures.css';
 
-const FEATURES = [
-  'Skin Color',
-  'Back Hair',
-  'Front Hair',
-  'Side Hair',
-  'Extra Hair',
-  'Eyes',
-  'Eyebrows',
-  'Nose',
-  'Mouth',
-  'Blush',
-  'Accessories',
-];
-
-export default class Admin extends Component {
+export default class EditFeatures extends Component {
   constructor(props) {
     super(props);
 
@@ -31,7 +18,6 @@ export default class Admin extends Component {
       currentFeature: FEATURES[0],
       currentFeatures: [],
       allFeatures: [],
-      users: [],
     };
 
     this.handleChangeFeature = this.handleChangeFeature.bind(this);
@@ -48,14 +34,6 @@ export default class Admin extends Component {
           allFeatures: result,
           currentFeatures: result.filter((r) => r.imageType === currentFeature),
         });
-      }
-    });
-    UserService.getAllUsers().then((res) => {
-      const { success, result } = res.data;
-      if (success) {
-        this.setState({ users: result });
-      } else {
-        toast.error('Failed to get the Users from the Database');
       }
     });
   }
@@ -111,11 +89,10 @@ export default class Admin extends Component {
   }
 
   render() {
-    const { users, currentFeature, currentFeatures } = this.state;
-    console.log(users);
+    const { currentFeature, currentFeatures } = this.state;
 
     return (
-      <div id="admin-page">
+      <div id="edit-features-page">
         <div className="features-container">
           <div className="title-bar">
             <span className="title-text">Sticker Features</span>

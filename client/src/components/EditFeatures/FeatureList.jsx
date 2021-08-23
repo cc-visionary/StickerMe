@@ -2,13 +2,12 @@ import React from 'react';
 import PropType from 'prop-types';
 
 import { FeatureImage } from '..';
+import { FEATURE_IMAGE_URL } from '../../utils/constants';
 import ImageUpload from './ImageUpload';
 
 import deleteIcon from '../../assets/images/icons/Delete.png';
 
-import '../../assets/styles/components/Admin/FeatureList.css';
-
-const FEATURES_PATH = 'http://localhost:3000/uploads';
+import '../../assets/styles/components/admin/FeatureList.css';
 
 const FeatureList = ({
   currentFeatures,
@@ -21,7 +20,7 @@ const FeatureList = ({
       <div className="feature-item">
         <FeatureImage
           key={feature.fileName}
-          image={`${FEATURES_PATH}/${feature.fileName}`}
+          image={`${FEATURE_IMAGE_URL}/${feature.fileName}`}
           name={feature.imageID}
         />
         <button

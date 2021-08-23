@@ -1,13 +1,14 @@
-#admin-page {
-    background-color: #FFDE87;
+#edit-features-page {
+    width: 100%;
+    height: 82.5vh;
     padding: 5vh;
 }
 
-#admin-page .features-container {
+#edit-features-page .features-container {
     background-color: #735840;
 }
 
-#admin-page .title-bar {
+#edit-features-page .title-bar {
     background-color: rgba(1, 1, 1, 0.73);
     color: #fff;
     font-family: 'Indie Flower', cursive;
@@ -21,27 +22,29 @@
     align-items: center;
 }
 
-#admin-page .title-bar .title-text {
+#edit-features-page .title-bar .title-text {
     position: relative;
     top: -5px;
 }
 
-#admin-page .features-inner {
+#edit-features-page .features-inner {
     border-left: 10px solid #AC7849;
     border-right: 10px solid #AC7849;
     border-bottom: 10px solid #AC7849;
     padding: 100px;
     display: block;
+    height: 50vh;
+    overflow-y: scroll;
 }
 
-#admin-page .features-selection {
+#edit-features-page .features-selection {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#admin-page .features-selection select {
+#edit-features-page .features-selection select {
     z-index: 2;
     border: 3px solid #000;
     background-color: transparent;
@@ -51,55 +54,61 @@
     font-weight: 800;
 }
 
-#admin-page .features-selection select option {
+#edit-features-page .features-selection select option {
     font-size: 16px;
     font-family: 'Indie Flower', cursive;
     font-weight: normal;
     color: #000;
 }
 
-#admin-page .features-selection img {
+#edit-features-page .features-selection img {
     position: relative;
     top: -125px;
     margin-bottom: -125px;
     z-index: 1;
 }
 
-@media screen and (max-width: 768px) {
-    #admin-page .title-bar {
+@media screen and (max-width: 768px), screen and (max-height: 500px) {
+    #edit-features-page .title-bar {
         font-size: 24px;
     }
 
-    #admin-page .features-inner {
+    #edit-features-page .features-inner {
         padding: 75px 10px;
     }
   
-    #admin-page .features-selection select {
+    #edit-features-page .features-selection select {
       font-size: 28px;
     }
   
-    #admin-page .features-selection select option {
+    #edit-features-page .features-selection select option {
         font-size: 14px;
     }
 }
 
 @media screen and (max-width: 500px) {
-    #admin-page .features-inner {
+    #edit-features-page .features-inner {
         padding: 50px 10px;
     }
 
-  #admin-page .features-selection img {
-    top: -75px;
-    margin-bottom: -75px;
-    width: 70vw;
-  }
-  
-  #admin-page .features-selection select {
-    font-size: 20px;
-    width: 50vw;
-  }
+    #edit-features-page .features-selection img {
+        top: -75px;
+        margin-bottom: -75px;
+        width: 70vw;
+    }
+    
+    #edit-features-page .features-selection select {
+        font-size: 20px;
+        width: 50vw;
+    }
 
-  #admin-page .features-selection select option {
-      font-size: 12px;
-  }
+    #edit-features-page .features-selection select option {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    #edit-features-page .features-inner {
+        height: 20vh;
+    }
 }

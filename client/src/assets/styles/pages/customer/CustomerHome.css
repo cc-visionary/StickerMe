@@ -29,6 +29,7 @@
   text-align: center;
   font-size: 34px;
   font-family: 'Arvo', serif;
+  margin-top: 150px;
 }
 
 #features_label:before, #features_label:after{
@@ -61,6 +62,7 @@
 
 .option_button {
   flex-grow: 1;
+  margin-top: 25px;
 }
 
 a {
@@ -72,3 +74,98 @@ a {
   background-color: #B9A162;
   border-radius: 30px;
 }
+
+@media only screen and (max-width: 1200px) {
+  #welcome_text {
+    font-size: 120px;
+  }
+  
+}
+
+@media only screen and (max-width: 992px) {
+  #welcome_text {
+    font-size: 96px;
+  }
+
+  #features_label {
+    font-size: 28px;
+    margin-top: 75px;
+  }
+
+  #customer_name {
+    font-size: 34px;
+  }
+
+  .option_icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .option_label {
+    font-size: 30px;
+  }
+  
+  #customer_options {
+    flex-wrap: wrap;
+  }
+
+  .option_button {
+    flex-basis: 50%;
+  }
+
+  .option_button:nth-child(3), .option_button:nth-child(4) {
+    margin-top: 50px;
+  }
+
+  #features_label {
+    font-size: 28px;
+    margin-top: 75px;
+  }
+  
+  #features_label:before, #features_label:after{
+    border-bottom: 5px solid;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  #welcome_text {
+    font-size: 64px;
+  }
+
+  #customer_name {
+    font-size: 32px;
+  }
+  
+  .option_icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .option_label {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #welcome_text {
+    font-size: 42px;
+  }
+
+  #customer_name {
+    font-size: 24px;
+  }
+  
+  .option_icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .option_label {
+    font-size: 24px;
+  }
+
+  #features_label {
+    font-size: 18px;
+  }
+} 

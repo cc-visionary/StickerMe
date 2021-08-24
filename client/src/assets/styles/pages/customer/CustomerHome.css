@@ -1,3 +1,74 @@
-#customer-home-page {
-  
+#welcome_text {
+  font-family: 'Arvo', serif;
+  font-size: 144px;
+  margin: 0px;
+}
+
+#customer_name {
+  margin: 0px;
+  font-family: 'Indie Flower', sans-serif;
+  font-size: 40px;
+}
+
+#user-page {
+  height: 92.5vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#inner-user-page {
+  width: 75%;
+}
+
+#features_label {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  font-size: 34px;
+  font-family: 'Arvo', serif;
+}
+
+#features_label:before, #features_label:after{
+  content: "";
+  flex: 1 1;
+  border-bottom: 10px solid;
+  margin: auto;
+}
+
+#features_label:before {
+  margin-right: 0.5em;
+}
+
+#features_label:after {
+  margin-left: 0.5em;
+}
+
+#customer_options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.option_label {
+  font-family: 'Oswald Regular', sans-serif;
+  margin: 10px 0px 0px 0px;
+  font-size: 34px;
+}
+
+.option_button {
+  flex-grow: 1;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.option_div:hover {
+  background-color: #B9A162;
+  border-radius: 30px;
 }

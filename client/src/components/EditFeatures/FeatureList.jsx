@@ -7,7 +7,7 @@ import ImageUpload from './ImageUpload';
 
 import deleteIcon from '../../assets/images/icons/Delete.png';
 
-import '../../assets/styles/components/admin/FeatureList.css';
+import '../../assets/styles/components/Admin/FeatureList.css';
 
 const FeatureList = ({
   currentFeatures,

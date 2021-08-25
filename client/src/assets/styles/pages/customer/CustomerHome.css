@@ -1,3 +1,179 @@
-#customer-home-page {
+#welcome-text {
+  font-family: 'Arvo', serif;
+  font-size: 144px;
+  margin: 0px;
+}
+
+#customer-name {
+  margin: 0px;
+  font-family: 'Indie Flower', sans-serif;
+  font-size: 40px;
+}
+
+#user-page {
+  height: 92.5vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#inner-user-page {
+  width: 75%;
+}
+
+#features-label {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  font-size: 34px;
+  font-family: 'Arvo', serif;
+  margin-top: 150px;
+}
+
+#features-label:before, #features-label:after{
+  content: "";
+  flex: 1 1;
+  border-bottom: 10px solid;
+  margin: auto;
+}
+
+#features-label:before {
+  margin-right: 0.5em;
+}
+
+#features-label:after {
+  margin-left: 0.5em;
+}
+
+#customer-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.option-label {
+  font-family: 'Oswald Regular', sans-serif;
+  margin: 10px 0px 0px 0px;
+  font-size: 34px;
+}
+
+.option-button {
+  flex-basis: 0%;
+  flex-grow: 1;
+  margin-top: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.option-div:hover {
+  background-color: #B9A162;
+  border-radius: 30px;
+}
+
+@media only screen and (max-height: 700px) {
+  #features-label {
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #welcome-text {
+    font-size: 120px;
+  }
   
 }
+
+@media only screen and (max-width: 992px) {
+  #welcome-text {
+    font-size: 96px;
+  }
+
+  #features-label {
+    font-size: 28px;
+    margin-top: 75px;
+  }
+
+  #customer-name {
+    font-size: 34px;
+  }
+
+  .option-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .option-label {
+    font-size: 30px;
+  }
+  
+  #customer-options {
+    flex-wrap: wrap;
+  }
+
+  .option-button {
+    flex-basis: 50%;
+  }
+
+  .option-button:nth-child(3), .option-button:nth-child(4) {
+    margin-top: 50px;
+  }
+
+  #features-label {
+    font-size: 28px;
+    margin-top: 75px;
+  }
+  
+  #features-label:before, #features-label:after{
+    border-bottom: 5px solid;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  #welcome-text {
+    font-size: 64px;
+  }
+
+  #customer-name {
+    font-size: 32px;
+  }
+  
+  .option-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .option-label {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #welcome-text {
+    font-size: 42px;
+  }
+
+  #customer-name {
+    font-size: 24px;
+  }
+  
+  .option-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .option-label {
+    font-size: 24px;
+  }
+
+  #features-label {
+    font-size: 18px;
+  }
+} 
+

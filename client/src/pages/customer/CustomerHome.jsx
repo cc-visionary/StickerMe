@@ -20,36 +20,36 @@ const CustomerHome = () => {
   return (
     <div id="user-page">
       <div id="inner-user-page" hidden={hiddenImage1 || hiddenImage2 || hiddenImage3 || hiddenImage4}>
-        <h1 id="welcome_text">WELCOME</h1>
-        <p id="customer_name">{userName}</p>
+        <h1 id="welcome-text">WELCOME</h1>
+        <p id="customer-name">{userName}</p>
 
-        <div id="feature_divider">
-          <p id="features_label">FEATURES</p>
+        <div id="feature-divider">
+          <p id="features-label">FEATURES</p>
         </div>
 
-        <div id="customer_options">
-          <a className="option_button" href="/#">
-            <div className="option_div" id="user_info">
-              <img className="option_icon" src={userInfoIcon} alt="User Info" onLoad={() => setHiddenImage1(false)} />
-              <p className="option_label">User Info</p>
+        <div id="customer-options">
+          <a className="option-button" href="/#">
+            <div className="option-div" id="user-info">
+              <img className="option-icon" src={userInfoIcon} alt="User Info" onLoad={() => setHiddenImage1(false)} />
+              <p className="option-label">User Info</p>
             </div>
           </a>
-          <a className="option_button" href="/#">
-            <div className="option_div" id="characters">
-              <img className="option_icon" src={characterIcon} alt="Characters" onLoad={() => setHiddenImage2(false)} />
-              <p className="option_label">Characters</p>
+          <a className="option-button" href="/#">
+            <div className="option-div" id="characters">
+              <img className="option-icon" src={characterIcon} alt="Characters" onLoad={() => setHiddenImage2(false)} />
+              <p className="option-label">Characters</p>
             </div>
           </a>
-          <a className="option_button" href="/#">
-            <div className="option_div" id="contacts">
-              <img className="option_icon" src={folderIcon} alt="User Info" onLoad={() => setHiddenImage3(false)} />
-              <p className="option_label">Contacts</p>
+          <a className="option-button" href="/#">
+            <div className="option-div" id="contacts">
+              <img className="option-icon" src={folderIcon} alt="User Info" onLoad={() => setHiddenImage3(false)} />
+              <p className="option-label">Contacts</p>
             </div>
           </a>
-          <a className="option_button" href="/#">
-            <div className="option_div" id="order">
-              <img className="option_icon" src={documentIcon} alt="User Info" onLoad={() => setHiddenImage4(false)} />
-              <p className="option_label">Order</p>
+          <a className="option-button" href="/#">
+            <div className="option-div" id="order">
+              <img className="option-icon" src={documentIcon} alt="User Info" onLoad={() => setHiddenImage4(false)} />
+              <p className="option-label">Order</p>
             </div>
           </a>
         </div>

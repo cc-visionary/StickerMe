@@ -6,9 +6,9 @@
 .pnp.js
 
 # uploads
-.png
-.jpg
-.jpeg
+/uploads/.png
+/uploads/.jpg
+/uploads/.jpeg
 
 # testing
 /coverage

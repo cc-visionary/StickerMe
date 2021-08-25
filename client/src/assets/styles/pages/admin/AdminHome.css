@@ -24,13 +24,17 @@
   margin: 2.5vh 10vw;
   border-radius: 10px;
   padding: 20px 40px;
-  height: 55vh;
+  height: 50vh;
   overflow-y: scroll;
+}
+
+#admin-home-page .orders a {
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
 #admin-home-page .orders .item {
   background-color: #464646;
-  color: #FFFFFF;
   margin: 20px 0;
   padding: 20px;
   display: flex;
@@ -59,7 +63,7 @@
   justify-content: center;
   align-items: center;
   border-top: 10px solid #000;
-  margin: 0 40vw;
+  margin: 0 35vw;
 }
 
 #admin-home-page .buttons a {
@@ -93,4 +97,44 @@
 
 #admin-home-page .shipped {
   color: #81CF7A;
+}
+
+@media screen and (max-width: 500px) {
+  #admin-home-page h1 {
+    font-size: 24px;
+  }
+
+  #admin-home-page .orders {
+    height: 55vh;
+  }
+  
+  #admin-home-page .orders .item {
+    margin: 10px 0;
+    padding: 10px;
+    flex-direction: column;
+  }
+
+  #admin-home-page .orders .item .left {
+    font-size: 18px;
+    margin: 5px;
+    flex: 0 0 100%;
+  }
+
+  #admin-home-page .orders .item .right {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #admin-home-page .buttons {
+    margin: 0 30vw;
+  }
+  
+  #admin-home-page .buttons a {
+    font-size: 18px;
+  }
+
+  #admin-home-page .buttons img {
+    height: 25px;
+  }
 }

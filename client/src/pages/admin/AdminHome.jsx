@@ -24,23 +24,25 @@ export default class CustomerHome extends Component {
 
     return (
       <div id="admin-home-page">
-        <h1>Admin Home Page</h1>
+        <h1>Orders</h1>
         <div className="orders">
           {orders.map((order) => (
-            <div className="item">
-              <div className="left">{order.name}</div>
-              <div className="right">
-                <div>
-                  QUANTITY:
-                  {` ${order.quantity}`}
-                </div>
-                <div>
-                  STATUS:
-                  { /* eslint-disable-next-line no-nested-ternary */ }
-                  <span className={order.status === 'Preparing' ? 'preparing' : (order.status === 'Cancelled' ? 'cancelled' : 'shipped')}>{` ${order.status}`}</span>
+            <a href="/orders/">
+              <div className="item">
+                <div className="left">{order.name}</div>
+                <div className="right">
+                  <div>
+                    QUANTITY:
+                    {` ${order.quantity}`}
+                  </div>
+                  <div>
+                    STATUS:
+                    { /* eslint-disable-next-line no-nested-ternary */ }
+                    <span className={order.status === 'Preparing' ? 'preparing' : (order.status === 'Cancelled' ? 'cancelled' : 'shipped')}>{` ${order.status}`}</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
         <div className="buttons">

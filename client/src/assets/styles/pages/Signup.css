@@ -48,7 +48,7 @@
   background-color: #6A6B6B;
   padding: 25px 30px;
   border-radius: 75%;
-  border: none;
+  border: 0;
   cursor: pointer;
   font-family: 'Indie Flower', cursive;
   font-size: 24px;
@@ -62,9 +62,7 @@
 
 #signup-page form input {
   margin: 5px 0;
-  width: 100%;
-  color: #7E7E7C;
-  -webkit-text-stroke: 1px #7E7E7C;
+  width: 100%
 }
 
 @media screen and (max-width: 768px) {

@@ -6,7 +6,7 @@ const SpecialInput = ({
   type, name, placeholder, value, onChange, onKeyPress,
 }) => (
   <input
-    className="special-input"
+    id="special-input"
     type={type}
     value={value}
     onChange={(e) => onChange(e.target.value)}

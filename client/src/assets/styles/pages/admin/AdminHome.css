@@ -72,10 +72,13 @@
   color: #000;
   font-family: 'Oswald', sans-serif;
   font-size: 32px;
+  flex-basis: 0%;
+  flex-grow: 1;
 }
 
 #admin-home-page .buttons a:hover {
-  color: #2E2E2E;
+  background-color: #B9A162;
+  border-radius: 30px;
 }
 
 

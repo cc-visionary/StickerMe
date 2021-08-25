@@ -1,4 +1,4 @@
-.special-input {
+#special-input {
   background-color: transparent;
   border-top: none;
   border-left: none;
@@ -8,9 +8,10 @@
   font-weight: bold;
   font-size: 24px;
   text-align: center;
-  color: #7E7E7C;
+  color: #FFF;
+  -webkit-text-stroke: 1px #FFF;
 }
 
-.special-input:focus {
+#special-input:focus {
   outline: none;
 }

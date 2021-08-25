@@ -65,27 +65,32 @@ export default class EditFeatures extends Component {
               ? [...currentFeatures, result]
               : currentFeatures,
         });
+        toast.success('Image was successfully uploaded.');
       })
       .catch((err) => {
         const { success, error } = err.response.data;
-        if (!success) toast.error(error);
+        if (!error) toast.error('Only .png, .jpg, and .jpeg formats are allowed...');
+        else if (!success) toast.error(error);
       });
   }
 
   onImageDelete(image) {
     const { allFeatures, currentFeatures } = this.state;
-    ImageService.deleteImage(image.fileName)
-      .then(() => {
-        this.setState({
-          allFeatures: allFeatures.filter((f) => f.fileName !== image.fileName),
-          currentFeatures: currentFeatures.filter(
-            (f) => f.fileName !== image.fileName,
-          ),
+    if (window.confirm('Are you sure you want to delete this feature?')) {
+      ImageService.deleteImage(image.fileName)
+        .then(() => {
+          this.setState({
+            allFeatures: allFeatures.filter((f) => f.fileName !== image.fileName),
+            currentFeatures: currentFeatures.filter(
+              (f) => f.fileName !== image.fileName,
+            ),
+          });
+          toast.success('Feature was successfully deleted.');
+        })
+        .catch(() => {
+          toast.error('Failed to delete the image...');
         });
-      })
-      .catch(() => {
-        toast.error('Failed to delete the image...');
-      });
+    }
   }
 
   render() {

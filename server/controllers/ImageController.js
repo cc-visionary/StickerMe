@@ -12,7 +12,11 @@ const defaultCallback = require("../helpers/defaultCallback");
 const ImageController = {
   // inserts an image info to the database
   insertImage: async (req, res) => {
+    console.log("ABC")
     const file = req.files[0];
+    if(file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
+      res.status(400).send({ success: false, error: 'Only .png, .jpg, and .jpeg formats are allows!' });
+    }
     const image = {
       fileName: file.path.split("\\")[1],
       filePath: file.path,

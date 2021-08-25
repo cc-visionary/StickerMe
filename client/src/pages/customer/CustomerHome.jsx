@@ -19,35 +19,35 @@ const CustomerHome = () => {
 
   return (
     <div id="user-page">
-      <div id="inner-user-page" hidden={hiddenImage1 || hiddenImage2 || hiddenImage3 || hiddenImage4}>
-        <h1 id="welcome-text">WELCOME</h1>
-        <p id="customer-name">{userName}</p>
+      <div className="inner-user-page" hidden={hiddenImage1 && hiddenImage2 && hiddenImage3 && hiddenImage4}>
+        <h1 className="welcome-text">WELCOME</h1>
+        <p className="customer-name">{userName}</p>
 
-        <div id="feature-divider">
-          <p id="features-label">FEATURES</p>
+        <div className="feature-divider">
+          <p className="features-label">FEATURES</p>
         </div>
 
-        <div id="customer-options">
-          <a className="option-button" href="/#">
-            <div className="option-div" id="user-info">
+        <div className="customer-options">
+          <a className="option-button" href="/customer/profile">
+            <div className="option-div user-info">
               <img className="option-icon" src={userInfoIcon} alt="User Info" onLoad={() => setHiddenImage1(false)} />
               <p className="option-label">User Info</p>
             </div>
           </a>
-          <a className="option-button" href="/#">
-            <div className="option-div" id="characters">
+          <a className="option-button" href="customer/characters">
+            <div className="option-div characters">
               <img className="option-icon" src={characterIcon} alt="Characters" onLoad={() => setHiddenImage2(false)} />
               <p className="option-label">Characters</p>
             </div>
           </a>
-          <a className="option-button" href="/#">
-            <div className="option-div" id="contacts">
+          <a className="option-button" href="/customer/contacts">
+            <div className="option-div contacts">
               <img className="option-icon" src={folderIcon} alt="User Info" onLoad={() => setHiddenImage3(false)} />
               <p className="option-label">Contacts</p>
             </div>
           </a>
-          <a className="option-button" href="/#">
-            <div className="option-div" id="order">
+          <a className="option-button" href="/customer/orders">
+            <div className="option-div order">
               <img className="option-icon" src={documentIcon} alt="User Info" onLoad={() => setHiddenImage4(false)} />
               <p className="option-label">Order</p>
             </div>

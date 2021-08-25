@@ -1,15 +1,3 @@
-#welcome-text {
-  font-family: 'Arvo', serif;
-  font-size: 144px;
-  margin: 0px;
-}
-
-#customer-name {
-  margin: 0px;
-  font-family: 'Indie Flower', sans-serif;
-  font-size: 40px;
-}
-
 #user-page {
   height: 92.5vh;
   width: 100%;
@@ -19,11 +7,23 @@
   flex-direction: column;
 }
 
-#inner-user-page {
+#user-page .welcome-text {
+  font-family: 'Arvo', serif;
+  font-size: 144px;
+  margin: 0px;
+}
+
+#user-page .customer-name {
+  margin: 0px;
+  font-family: 'Indie Flower', sans-serif;
+  font-size: 40px;
+}
+
+#user-page .inner-user-page {
   width: 75%;
 }
 
-#features-label {
+#user-page .features-label {
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -32,22 +32,22 @@
   margin-top: 150px;
 }
 
-#features-label:before, #features-label:after{
+#user-page .features-label:before, #user-page .features-label:after{
   content: "";
   flex: 1 1;
   border-bottom: 10px solid;
   margin: auto;
 }
 
-#features-label:before {
+#user-page .features-label:before {
   margin-right: 0.5em;
 }
 
-#features-label:after {
+#user-page .features-label:after {
   margin-left: 0.5em;
 }
 
-#customer-options {
+#user-page .customer-options {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -77,29 +77,29 @@ a {
 }
 
 @media only screen and (max-height: 700px) {
-  #features-label {
+  #user-page .features-label {
     margin-top: 0px;
   }
 }
 
 @media only screen and (max-width: 1200px) {
-  #welcome-text {
+  #user-page .welcome-text {
     font-size: 120px;
   }
   
 }
 
 @media only screen and (max-width: 992px) {
-  #welcome-text {
+  #user-page .welcome-text {
     font-size: 96px;
   }
 
-  #features-label {
+  #user-page .features-label {
     font-size: 28px;
     margin-top: 75px;
   }
 
-  #customer-name {
+  #user-page .customer-name {
     font-size: 34px;
   }
 
@@ -112,7 +112,7 @@ a {
     font-size: 30px;
   }
   
-  #customer-options {
+  #user-page .customer-options {
     flex-wrap: wrap;
   }
 
@@ -124,23 +124,23 @@ a {
     margin-top: 50px;
   }
 
-  #features-label {
+  #user-page .features-label {
     font-size: 28px;
     margin-top: 75px;
   }
   
-  #features-label:before, #features-label:after{
+  #user-page .features-label:before, #user-page .features-label:after{
     border-bottom: 5px solid;
   }
 
 }
 
 @media only screen and (max-width: 768px) {
-  #welcome-text {
+  #user-page .welcome-text {
     font-size: 64px;
   }
 
-  #customer-name {
+  #user-page .customer-name {
     font-size: 32px;
   }
   
@@ -155,11 +155,11 @@ a {
 }
 
 @media only screen and (max-width: 600px) {
-  #welcome-text {
+  #user-page .welcome-text {
     font-size: 42px;
   }
 
-  #customer-name {
+  #user-page .customer-name {
     font-size: 24px;
   }
   
@@ -172,7 +172,7 @@ a {
     font-size: 24px;
   }
 
-  #features-label {
+  #user-page .features-label {
     font-size: 18px;
   }
 } 

@@ -7,7 +7,7 @@ const Users = () => {
 
   return (
     <div id="users-list-page">
-      <h1>Admin Orders Page</h1>
+      <h1>Users Page</h1>
     </div>
   );
 };

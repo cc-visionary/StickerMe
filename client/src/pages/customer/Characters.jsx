@@ -8,7 +8,7 @@ const Characters = () => {
   return (
     <div id="characters-page">
       <h1>Character Page</h1>
-      <a href="/customer/characters/edit">Create a new character</a>
+      <a href="/customer/characters/edit-character">Create a new character</a>
     </div>
   );
 };

@@ -29,6 +29,7 @@ const AdminRoute = ({ component: Component, ...rest }) => (
             />
           );
         }
+
         if (new Date().getDay() < 3 || new Date().getDay() > 6) {
           if (ADMIN_URLS_TO_LOCK.includes(rest.path)) {
             return (

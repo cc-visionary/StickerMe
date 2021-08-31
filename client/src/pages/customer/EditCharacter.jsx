@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 import { CharacterService, ImageService } from '../../services';
 import { FeatureImage } from '../../components';
 import { FEATURES, FEATURE_IMAGE_URL } from '../../utils/constants';
-import { getUser } from '../../utils/store';
+import {
+  getCharacter, getCharacterToken, getUser, setCharacterLocal,
+} from '../../utils/store';
 
 import selectionBackground from '../../assets/images/create/selection-background.png';
 import tape1 from '../../assets/images/create/tape-1.png';
@@ -13,9 +15,9 @@ import tape4 from '../../assets/images/create/tape-4.png';
 import characterBackground from '../../assets/images/create/character-background.png';
 import selected from '../../assets/images/icons/Check.png';
 
-import '../../assets/styles/pages/customer/EditSticker.css';
+import '../../assets/styles/pages/customer/EditCharacter.css';
 
-export default class EditSticker extends Component {
+export default class EditCharacter extends Component {
   constructor(props) {
     super(props);
 
@@ -49,23 +51,45 @@ export default class EditSticker extends Component {
     ImageService.getAllImages().then((res) => {
       const { success, result } = res.data;
       if (success) {
-        this.setState({
-          allFeatures: result,
-          currentFeatures: result.filter((r) => r.imageType === currentFeature),
-          skinColor: result.filter((r) => r.imageType === 'Skin Color')[0],
-          baseHair: result.filter((r) => r.imageType === 'Base Hair')[0],
-          backHair: result.filter((r) => r.imageType === 'Back Hair')[0],
-          frontHair: result.filter((r) => r.imageType === 'Front Hair')[0],
-          sideHair: result.filter((r) => r.imageType === 'Side Hair')[0],
-          extraHair: result.filter((r) => r.imageType === 'Extra Hair')[0],
-          ear: result.filter((r) => r.imageType === 'Ears')[0],
-          eyes: result.filter((r) => r.imageType === 'Eyes')[0],
-          eyebrows: result.filter((r) => r.imageType === 'Eyebrows')[0],
-          nose: result.filter((r) => r.imageType === 'Nose')[0],
-          mouth: result.filter((r) => r.imageType === 'Mouth')[0],
-          blush: result.filter((r) => r.imageType === 'Blush')[0],
-          accessories: result.filter((r) => r.imageType === 'Accessories')[0],
-        });
+        if (getCharacterToken()) {
+          // load previous character
+          const character = getCharacter();
+          this.setState({
+            allFeatures: result,
+            currentFeatures: result.filter((r) => r.imageType === currentFeature),
+            skinColor: character.skinColor,
+            baseHair: character.baseHair,
+            backHair: character.backHair,
+            frontHair: character.frontHair,
+            sideHair: character.sideHair,
+            extraHair: character.extraHair,
+            ear: character.ear,
+            eyes: character.eyes,
+            eyebrows: character.eyebrows,
+            nose: character.nose,
+            mouth: character.mouth,
+            blush: character.blush,
+            accessories: character.accessories,
+          });
+        } else {
+          this.setState({
+            allFeatures: result,
+            currentFeatures: result.filter((r) => r.imageType === currentFeature),
+            skinColor: result.filter((r) => r.imageType === 'Skin Color')[0],
+            baseHair: result.filter((r) => r.imageType === 'Base Hair')[0],
+            backHair: result.filter((r) => r.imageType === 'Back Hair')[0],
+            frontHair: result.filter((r) => r.imageType === 'Front Hair')[0],
+            sideHair: result.filter((r) => r.imageType === 'Side Hair')[0],
+            extraHair: result.filter((r) => r.imageType === 'Extra Hair')[0],
+            ear: result.filter((r) => r.imageType === 'Ears')[0],
+            eyes: result.filter((r) => r.imageType === 'Eyes')[0],
+            eyebrows: result.filter((r) => r.imageType === 'Eyebrows')[0],
+            nose: result.filter((r) => r.imageType === 'Nose')[0],
+            mouth: result.filter((r) => r.imageType === 'Mouth')[0],
+            blush: result.filter((r) => r.imageType === 'Blush')[0],
+            accessories: result.filter((r) => r.imageType === 'Accessories')[0],
+          });
+        }
       }
     });
   }
@@ -185,6 +209,45 @@ export default class EditSticker extends Component {
     console.log('Adding to Cart');
   }
 
+  onNext() {
+    const {
+      skinColor,
+      baseHair,
+      backHair,
+      frontHair,
+      sideHair,
+      extraHair,
+      ear,
+      eyebrows,
+      eyes,
+      nose,
+      mouth,
+      blush,
+      accessories,
+    } = this.state;
+
+    const { history } = this.props;
+
+    const character = {
+      skinColor,
+      baseHair,
+      backHair,
+      frontHair,
+      sideHair,
+      extraHair,
+      ear,
+      eyebrows,
+      eyes,
+      nose,
+      mouth,
+      blush,
+      accessories,
+    };
+
+    setCharacterLocal(Math.random().toString(36).substr(2), character);
+    history.push('/customer/characters/edit-select-pose');
+  }
+
   isSelected(feature) {
     const {
       currentFeature,
@@ -299,7 +362,7 @@ export default class EditSticker extends Component {
     const { mode } = this.props;
 
     return (
-      <div id="edit-sticker-page">
+      <div id="edit-character-page">
         <div className="mobile-view">
           <div className="frame">
             <svg
@@ -414,13 +477,9 @@ export default class EditSticker extends Component {
           </div>
         </div>
         <div className="buttons">
-          <button className="save-button" type="button" onClick={this.onSave}>
+          <button className="next-button" type="button" onClick={() => this.onNext()}>
             <span />
-            Save
-          </button>
-          <button className="add-button" type="button" onClick={this.onAddToCart}>
-            <span />
-            Add to Cart
+            Next
           </button>
         </div>
       </div>

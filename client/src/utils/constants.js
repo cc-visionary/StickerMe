@@ -17,10 +17,10 @@ const FEATURES = [
 const LOGIN_FALLBACK = '/login';
 const ADMIN_FALLBACK = '/admin';
 const ADMIN_LOCKED_FALLBACK = '/admin/locked';
-const ADMIN_URLS_TO_LOCK = ['/customer/characters/features'];
+const ADMIN_URLS_TO_LOCK = ['/admin/features'];
 const CUSTOMER_FALLBACK = '/customer';
 const CUSTOMER_LOCKED_FALLBACK = '/customer/locked';
-const CUSTOMER_URLS_TO_LOCK = ['/customer/characters/edit'];
+const CUSTOMER_URLS_TO_LOCK = ['/customer/characters/edit-character', '/customer/characters/edit-select-pose', '/customer/characters/edit-name-description', '/customer/characters/order'];
 
 const FEATURE_IMAGE_URL = 'http://localhost:3000/uploads';
 const USER_API_BASE_URL = 'http://localhost:3000/api/users';

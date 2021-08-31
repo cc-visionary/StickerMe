@@ -10,7 +10,10 @@ import CustomerHome from './customer/CustomerHome';
 import Profile from './customer/Profile';
 import Characters from './customer/Characters';
 import Contacts from './customer/Contacts';
-import EditSticker from './customer/EditSticker';
+import EditCharacter from './customer/EditCharacter';
+import EditSelectPose from './customer/EditSelectPose';
+import EditNameDescription from './customer/EditNameDescription';
+import Order from './customer/Order';
 import CustomerOrders from './customer/CustomerOrders';
 import Checkout from './customer/Checkout';
 import CustomerLocked from './customer/CustomerLocked';
@@ -32,7 +35,10 @@ export {
   Profile,
   Characters,
   Contacts,
-  EditSticker,
+  EditCharacter,
+  EditSelectPose,
+  EditNameDescription,
+  Order,
   CustomerOrders,
   Checkout,
   CustomerLocked,

@@ -1,0 +1,57 @@
+#order-character {
+  
+}
+
+#order-character .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#order-character .buttons .left-buttons {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+#order-character .buttons .right-buttons {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+#order-character .buttons button {
+  font-family: 'Indie Flower', cursive;
+  font-size: 18px;
+  background-color: #735840;
+  color: #FFF;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#order-character .buttons .back-button span {
+  background: url('../../../images/icons/Back.png') no-repeat left center;
+  float: left;
+  width: 30px;
+  height: 30px;
+}
+
+#order-character .buttons .save-button span {
+  background: url('../../../images/icons/Download.png') no-repeat left center;
+  float: left;
+  width: 30px;
+  height: 30px;
+}
+
+#order-character .buttons .add-to-cart-button span {
+  background: url('../../../images/icons/Buy.png') no-repeat left center;
+  float: left;
+  width: 30px;
+  height: 30px;
+}

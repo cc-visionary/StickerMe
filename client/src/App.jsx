@@ -17,7 +17,10 @@ import {
   Profile,
   CustomerLocked,
   CustomerOrders,
-  EditSticker,
+  EditCharacter,
+  EditSelectPose,
+  EditNameDescription,
+  Order,
   Landing,
   Login,
   Signup,
@@ -65,7 +68,10 @@ export default class App extends Component {
                 <AdminRoute path="/admin/features" component={EditFeatures} />
                 <AdminRoute path="/admin/orders" component={AdminOrders} />
                 <AdminRoute path="/admin" component={AdminHome} />
-                <CustomerRoute path="/customer/characters/edit" component={EditSticker} />
+                <CustomerRoute path="/customer/characters/edit-character" component={EditCharacter} />
+                <CustomerRoute path="/customer/characters/edit-select-pose" component={EditSelectPose} />
+                <CustomerRoute path="/customer/characters/edit-name-description" component={EditNameDescription} />
+                <CustomerRoute path="/customer/characters/order" component={Order} />
                 <CustomerRoute path="/customer/characters" component={Characters} />
                 <CustomerRoute path="/customer/profile" component={Profile} />
                 <CustomerRoute path="/customer/contacts" component={Contacts} />

@@ -359,8 +359,6 @@ export default class EditCharacter extends Component {
       accessories,
     } = this.state;
 
-    const { mode } = this.props;
-
     return (
       <div id="edit-character-page">
         <div className="mobile-view">
@@ -416,7 +414,7 @@ export default class EditCharacter extends Component {
         </div>
         <div className="desktop-view">
           <div className="title-bar">
-            <span className="title-text">{mode || 'Create'}</span>
+            <span className="title-text">Create</span>
           </div>
           <div className="sticker-inner">
             <div className="frame">

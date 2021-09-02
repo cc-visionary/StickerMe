@@ -2,7 +2,9 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 import '../../assets/styles/pages/customer/Order.css';
-import { getCharacterToken, removeLocalCharacter } from '../../utils/store';
+import {
+  getCharacterToken, removeLocalCharacterDetails, removeLocalCharacter, removeLocalPoses,
+} from '../../utils/store';
 
 const Order = (props) => {
   const onBack = () => {
@@ -11,11 +13,15 @@ const Order = (props) => {
 
   const onSave = () => {
     removeLocalCharacter();
+    removeLocalPoses();
+    removeLocalCharacterDetails();
     props.history.push('/customer/orders');
   };
 
   const onAddToCart = () => {
     removeLocalCharacter();
+    removeLocalPoses();
+    removeLocalCharacterDetails();
     props.history.push('/customer/orders');
   };
 

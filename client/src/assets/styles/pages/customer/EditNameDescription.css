@@ -1,5 +1,72 @@
 #edit-name-description {
-  
+  width: 100%;
+  overflow-x: hidden;
+  overflow: hidden;
+  background-color: #FFDE87;
+}
+
+#edit-name-description .container {
+  background-color: #735840;
+}
+
+#edit-name-description .title-bar {
+  background-color: rgba(1, 1, 1, 0.73);
+  color: #fff;
+  font-family: 'Indie Flower', cursive;
+  font-size: 36px;
+  border-top: 10px solid #2F2114;
+  border-left: 10px solid #2F2114;
+  border-right: 10px solid #2F2114;
+}
+
+#edit-name-description .title-bar .title-text {
+  position: relative;
+  top: -5px;
+  text-transform: capitalize;
+}
+
+#edit-name-description .container-inner {
+  display: flex;
+  flex-direction: column;
+  border-left: 10px solid #AC7849;
+  border-right: 10px solid #AC7849;
+  border-bottom: 10px solid #AC7849;
+  padding: 50px;
+}
+
+#edit-name-description .features-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#edit-name-description .features-title input {
+    z-index: 2;
+    border: 3px solid #000;
+    background-color: transparent;
+    width: 250px;
+    font-size: 24px;
+    font-family: 'Indie Flower', cursive;
+    font-weight: 800;
+    text-align: center;
+}
+
+#edit-name-description .features-title img {
+    position: relative;
+    top: -85px;
+    margin-bottom: -60px;
+    z-index: 1;
+    height: 150px;
+}
+
+#edit-name-description .features-description textarea {
+  border-radius: 15px;
+  padding: 10px;
+  font-family: 'Indie Flower', cursive;
+  font-weight: 800;
+  width: 250px;
+  height: 30vh;
 }
 
 #edit-name-description .buttons {
@@ -19,7 +86,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -35,4 +101,42 @@
   float: left;
   width: 30px;
   height: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  #edit-name-description {
+    padding: 5vh;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #edit-name-description .features-title img {
+    top: -110px;
+    margin-bottom: -100px;
+    height: 200px;
+  }
+
+  #edit-name-description .container {
+    display: block;
+  }
+
+  #edit-name-description .container-inner {
+    padding: 60px 100px;
+  }
+
+  #edit-name-description .features-title input {
+      width: 300px;
+      font-size: 32px;
+  }
+  
+  #edit-name-description .features-description textarea {
+    width: 400px;
+    height: 25vh;
+  }
+
+  #edit-name-description .buttons button {
+    font-size: 24px;
+    padding: 10px;
+    margin-top: 20px;
+  }
 }

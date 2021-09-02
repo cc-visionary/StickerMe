@@ -8,5 +8,5 @@
   background-color: #FFDE87;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }

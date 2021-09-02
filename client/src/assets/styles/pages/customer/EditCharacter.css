@@ -1,7 +1,7 @@
 #edit-character-page {
   width: 100%;
-  padding: 5vh;
   overflow-x: hidden;
+  overflow: hidden;
   background-color: #FFDE87;
 }
 
@@ -67,7 +67,7 @@
 
 #edit-character-page .features-selection img {
     position: relative;
-    top: -100px;
+    top: -110px;
     margin-bottom: -100px;
     z-index: 1;
 }
@@ -181,6 +181,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  #edit-character-page {
+    padding: 5vh;
+  }
+
   #edit-character-page .mobile-view .frame {
     transform: matrix(1,0,0,1,0,0);
     transform-origin: 50% 50%;

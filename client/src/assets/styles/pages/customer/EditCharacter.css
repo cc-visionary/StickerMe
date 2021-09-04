@@ -23,7 +23,8 @@
 #edit-character-page .title-bar .title-text {
   position: relative;
   top: -5px;
-  text-transform: capitalize;
+  text-transform: uppercase;
+  color: #FFECBB;
 }
 
 #edit-character-page .sticker-inner {

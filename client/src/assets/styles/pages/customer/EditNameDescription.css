@@ -22,7 +22,8 @@
 #edit-name-description .title-bar .title-text {
   position: relative;
   top: -5px;
-  text-transform: capitalize;
+  text-transform: uppercase;
+  color: #FFECBB;
 }
 
 #edit-name-description .container-inner {

@@ -30,3 +30,22 @@
   text-align: left;
   margin: 0 0 10px 10px;
 }
+
+
+@media screen and (max-width: 768px) {
+  #special-form-select select {
+    font-size: 14px;
+    padding: 2.5px;
+    width: 47.5vw;
+  }
+  
+  #special-form-select .label {
+    font-size: 14px;
+    margin: 10px;
+  }
+
+  #special-form-select .error {
+    font-size: 12px;
+    margin: 0 0 5px 10px;
+  }
+}

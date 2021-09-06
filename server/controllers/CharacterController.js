@@ -14,14 +14,14 @@ const CharacterController = {
     db.findMany(Character, { username }, (result) => defaultCallback(res, result));
   },
   getCharacter: (req, res) => {
-    const { id } = req.params;
-    db.findOne(Character, { _id: id }, (result) => defaultCallback(res, result));
+    const { title } = req.params;
+    db.findOne(Character, { title }, (result) => defaultCallback(res, result));
   },
   insertCharacter: (req, res) => {
     const {
       username,
-      name,
       accessories,
+      baseHair,
       backHair,
       bangs,
       blush,
@@ -31,16 +31,19 @@ const CharacterController = {
       mouth,
       nose,
       sideHair,
-      skin,
+      frontHair,
+      poses,
+      title,
       description,
       status,
     } = req.body;
 
     const character = {
+      _id: new require('mongodb').ObjectID(),
       username,
-      name,
       accessories,
       backHair,
+      baseHair,
       bangs,
       blush,
       extraHair,
@@ -49,13 +52,16 @@ const CharacterController = {
       mouth,
       nose,
       sideHair,
-      skin,
+      frontHair,
+      poses,
+      title,
       description,
       status,
     };
 
     db.insertOne(Character, character, (result) => {
       if (result.success) {
+        console.log(result._id)
         res.status(200).send({ success: true, result: character });
       } else {
         res.status(400).send({ success: false, error: result.error.message });
@@ -64,12 +70,11 @@ const CharacterController = {
   },
   updateCharacter: (req, res) => {
     const {
-      id,
       username,
-      name,
       accessories,
       backHair,
-      frontHair,
+      baseHair,
+      bangs,
       blush,
       extraHair,
       eyebrows,
@@ -77,26 +82,31 @@ const CharacterController = {
       mouth,
       nose,
       sideHair,
-      skinColor,
+      frontHair,
+      poses,
+      title,
       description,
+      status,
     } = req.body;
 
     const character = {
       username,
-      name,
       accessories,
       backHair,
-      extraHair,
-      sideHair,
-      skinColor,
-      frontHair,
+      baseHair,
+      bangs,
       blush,
+      extraHair,
       eyebrows,
       eyes,
       mouth,
       nose,
+      sideHair,
+      frontHair,
+      poses,
+      title,
       description,
-      status: 'Saved',
+      status,
     };
 
     db.updateOne(Character, { _id: id }, character, (result) => defaultCallback(res, result));
@@ -105,7 +115,7 @@ const CharacterController = {
     const { id } = req.params;
 
     // only update the status of that deleted character
-    db.updatedOne(Character, { _id: id }, { status: 'Deleted' }, (result) => defaultCallback(res, result));
+    db.deleteOne(Character, { _id: id }, (result) => defaultCallback(res, result));
   },
 };
 /*

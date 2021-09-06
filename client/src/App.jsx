@@ -84,9 +84,6 @@ export default class App extends Component {
                 <PublicRoute component={PageNotFound} />
               </Switch>
             </div>
-            {/* <Switch>
-              <Route path="/" component={Footer} />
-            </Switch> */}
           </div>
         </Router>
       </Suspense>

@@ -184,6 +184,7 @@
 @media screen and (min-width: 768px) {
   #edit-character-page {
     padding: 5vh;
+    padding-bottom: 1vh;
   }
 
   #edit-character-page .mobile-view .frame {

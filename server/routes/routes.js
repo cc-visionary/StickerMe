@@ -7,9 +7,6 @@ const UserController = require("../controllers/UserController.js");
 // import module `ContactController` from `../controllers/ContactController.js`
 const ContactController = require("../controllers/ContactController.js");
 
-// import module `CartController` from `../controllers/CartController.js`
-const CartController = require("../controllers/CartController.js");
-
 // import module `OrderController` from `../controllers/OrderController.js`
 const OrderController = require("../controllers/OrderController.js");
 
@@ -48,15 +45,6 @@ app.patch("/contacts/update", ContactController.updateContact);
 
 app.delete("/contacts/delete/:id", ContactController.deleteContact);
 
-// API for Carts
-app.get("/carts/:username", CartController.getCartByUser);
-
-app.post("/carts", CartController.insertCart);
-
-app.delete("/carts/item", CartController.deleteCartItem);
-
-app.delete("/carts", CartController.deleteCart);
-
 // API for Orders
 app.get("/orders", OrderController.getAllOrders);
 
@@ -67,13 +55,13 @@ app.post("/orders", OrderController.insertOrder);
 // API for Characters
 app.get("/characters/username/:username", CharacterController.getCharactersByUsername);
 
-app.get("/characters/id/:id", CharacterController.getCharacter);
+app.get("/characters/title/:title", CharacterController.getCharacter);
 
 app.post("/characters/add", CharacterController.insertCharacter);
 
 app.patch("/characters/update", CharacterController.updateCharacter);
 
-app.delete("/contacts/delete/:id", CharacterController.deleteCharacter);
+app.delete("/characters/delete/:id", CharacterController.deleteCharacter);
 
 // API for Images
 app.get("/images/:imageType", ImageController.getImagesByType);

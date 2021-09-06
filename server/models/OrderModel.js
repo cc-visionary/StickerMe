@@ -15,8 +15,8 @@ const OrderSchema = new Schema({
     ref: 'Contact',
     required: true,
   },
-  characterIDs: {
-    type: [Schema.Types.ObjectId], 
+  characterID: {
+    type: Schema.Types.ObjectId, 
     ref: 'Character',
     required: true,
   },
@@ -28,6 +28,9 @@ const OrderSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  additionalNotes: {
+    type: String,
   },
 });
 

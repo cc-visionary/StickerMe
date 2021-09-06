@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { ImageService } from '../../services';
 import { FeatureImage } from '../../components';
@@ -33,7 +34,7 @@ export default class EditSelectPose extends Component {
   onSelectFeature(feature) {
     const { selectedPoses } = this.state;
     if (this.isSelected(feature)) {
-      this.setState({ selectedPoses: selectedPoses.filter((p) => p !== feature) });
+      this.setState({ selectedPoses: selectedPoses.filter((p) => p.imageID !== feature.imageID) });
     } else {
       this.setState({ selectedPoses: [...selectedPoses, feature] });
     }
@@ -49,13 +50,17 @@ export default class EditSelectPose extends Component {
   onNext() {
     const { selectedPoses } = this.state;
     const { history } = this.props;
+    if (selectedPoses.length === 0) {
+      toast.error('Please select atleast 1 pose');
+      return;
+    }
     setPosesLocal(selectedPoses);
     history.push('/customer/characters/edit-name-description');
   }
 
   isSelected(feature) {
     const { selectedPoses } = this.state;
-    return selectedPoses.includes(feature);
+    return selectedPoses.map((p) => p.imageID).includes(feature.imageID);
   }
 
   render() {
@@ -71,10 +76,9 @@ export default class EditSelectPose extends Component {
             <div className="features">
               <div className="feature-list">
                 {poses.map((feature) => (
-                  <div className="feature-item">
+                  <div key={feature.fileName} className="feature-item">
                     <button type="button" onClick={() => this.onSelectFeature(feature)}>
                       <FeatureImage
-                        key={feature.fileName}
                         image={`${FEATURE_IMAGE_URL}/${feature.fileName}`}
                         name={feature.imageID}
                       />

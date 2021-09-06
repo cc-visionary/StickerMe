@@ -1,5 +1,7 @@
 #order-character {
   width: 100%;
+  overflow-x: hidden;
+  overflow: hidden;
   background-color: #FFDE87;
 }
 
@@ -29,12 +31,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   border-left: 10px solid #AC7849;
   border-right: 10px solid #AC7849;
   border-bottom: 10px solid #AC7849;
-  min-height: 70vh;
+  min-height: 68.5vh;
   max-height: 55vh;
   padding: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #order-character .buttons {
@@ -50,7 +55,6 @@
 #order-character .right-form {
   flex: 1;
   text-align: left;
-  margin-left: 50px;
 }
 
 #order-character .right-form p {
@@ -64,10 +68,10 @@
   font-family: 'Indie Flower', cursive;
   border-radius: 25px;
   border: 5px solid #B0B0B0;
-  font-size: 18px;
+  font-size: 14px;
   padding: 5px;
-  width: 450px;
-  height: 400px;
+  width: 70vw;
+  height: 100px;
 }
 
 #order-character .buttons button {
@@ -81,7 +85,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -99,9 +102,25 @@
   height: 30px;
 }
 
+@media screen and (min-width: 800px) {
+  #order-character .container-inner {
+    flex-direction: row;
+  }
+
+  #order-character .right-form textarea {
+    width: 450px;
+    height: 400px;
+  }
+
+  #order-character .right-form {
+    margin-left: 50px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   #order-character {
     padding: 5vh;
+    padding-bottom: 1vh;
   }
 
   #order-character .container {
@@ -112,10 +131,15 @@
     min-height: 60vh;
     padding: 30px 50px;
   }
-
+  
   #order-character .buttons button {
     font-size: 24px;
     padding: 10px;
     margin-top: 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  #order-character .left-form {
+    margin-top: 175px;
   }
 }

@@ -10,7 +10,11 @@ const ContactSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  fullName: {
+  firstName: {
+    type: String,
+    require: true,
+  },
+  lastName: {
     type: String,
     require: true,
   },
@@ -18,9 +22,12 @@ const ContactSchema = new Schema({
     type: String,
     require: true,
   },
-  address: {
+  address1: {
     type: String,
     require: true,
+  },
+  address2: {
+    type: String,
   },
   city: {
     type: String,
@@ -37,7 +44,7 @@ const ContactSchema = new Schema({
   paypalEmail: {
     type: String,
     require: true,
-  },
+  }
 });
 
 /*

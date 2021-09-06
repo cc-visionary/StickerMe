@@ -1,32 +1,44 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import '../../assets/styles/pages/customer/Order.css';
 import FormInput from '../../components/FormInput';
 import FormSelect from '../../components/FormSelect';
+import { CharacterService, ContactService, OrderService } from '../../services';
 import {
-  getCharacterToken, removeLocalCharacterDetails, removeLocalCharacter, removeLocalPoses,
+  getCharacterToken,
+  removeLocalCharacterDetails,
+  removeLocalCharacter,
+  removeLocalPoses,
+  getCharacter,
+  getCharacterDetails,
+  getPoses,
+  getUser,
 } from '../../utils/store';
 
 const Order = (props) => {
   const countries = ['Philippines', 'United Stated of America'];
   const cities = ['Manila', 'Quezon'];
-  const provinces = ['Province 1', 'Province 2'];
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [paypalEmail, setPaypalEmail] = useState('');
   const [address1, setAddress1] = useState('');
   const [address2, setAddress2] = useState('');
   const [country, setCountry] = useState(null);
   const [city, setCity] = useState(null);
-  const [province, setProvince] = useState(null);
-  const [zipCode, setZipCode] = useState('');
+  const [zipcode, setzipcode] = useState('');
+  const [additionalNotes, setAdditionalNotes] = useState('');
 
   const [fnError, setFNError] = useState(null);
   const [lnError, setLNError] = useState(null);
   const [a1Error, setA1Error] = useState(null);
   const [ctrError, setCTRError] = useState(null);
   const [ctyError, setCTYError] = useState(null);
+  const [ppError, setPPError] = useState(null);
   const [pError, setPError] = useState(null);
   const [zError, setZError] = useState(null);
 
@@ -62,13 +74,17 @@ const Order = (props) => {
     } else {
       setCTYError(null);
     }
-    if (province === '') {
-      setPError('Province is required');
+    if (phone === '') {
+      setPError('Phone is required');
       valid = false;
     } else {
       setPError(null);
     }
-    if (zipCode === '') {
+    if (paypalEmail === '') {
+      setPPError('Paypal Email is required');
+      valid = false;
+    }
+    if (zipcode === '') {
       setZError('Zip Code is required');
       valid = false;
     } else {
@@ -83,14 +99,66 @@ const Order = (props) => {
 
   const onOrder = () => {
     if (validateFields()) {
-      removeLocalCharacter();
-      removeLocalPoses();
-      removeLocalCharacterDetails();
-      props.history.push('/customer/orders');
+      const character = {
+        ...getCharacter(),
+        ...getCharacterDetails(),
+        poses: getPoses(),
+        username: getUser().uname,
+        status: 'order',
+      };
+
+      CharacterService.addCharacter(character)
+        .then((characterRes) => {
+          const { result: characterResult } = characterRes.data;
+          const contact = {
+            username: getUser().uname,
+            firstName,
+            lastName,
+            phone,
+            address1,
+            address2,
+            city,
+            country,
+            zipcode,
+            paypalEmail,
+          };
+          ContactService.addContact(contact)
+            .then((contactRes) => {
+              const { result: contactResult } = contactRes.data;
+              const order = {
+                username: contactResult.username,
+                contactID: contactResult._id,
+                characterID: characterResult._id,
+                totalPrice: 5 * getPoses().length,
+                date: new Date(),
+                additionalNotes,
+              };
+              OrderService.addOrder(order)
+                .then(() => {
+                  removeLocalCharacter();
+                  removeLocalPoses();
+                  removeLocalCharacterDetails();
+                  toast.success('Character was ordered successfully');
+                  props.history.push('/customer/characters');
+                })
+                .catch((err) => {
+                  const { error } = err.response.data;
+                  console.log(error);
+                });
+            })
+            .catch((err) => {
+              const { error } = err.response.data;
+              console.log(error);
+            });
+        })
+        .catch((err) => {
+          const { error } = err.response.data;
+          console.log(error);
+        });
     }
   };
 
-  return getCharacterToken() ? (
+  return getCharacterToken() && getCharacterDetails() && getPoses() ? (
     <div id="order-character">
       <div className="container">
         <div className="title-bar">
@@ -100,16 +168,17 @@ const Order = (props) => {
           <div className="left-form">
             <FormInput title="First Name" inputValue={firstName} onChange={setFirstName} error={fnError} required />
             <FormInput title="Last Name" inputValue={lastName} onChange={setLastName} error={lnError} required />
+            <FormInput title="Paypal Email" inputValue={paypalEmail} onChange={setPaypalEmail} error={ppError} required />
+            <FormInput title="Phone Number" inputValue={phone} onChange={setPhone} error={pError} required />
             <FormInput title="Address Line 1" inputValue={address1} onChange={setAddress1} error={a1Error} required />
             <FormInput title="Address Line 2" inputValue={address2} onChange={setAddress2} />
             <FormSelect title="Country" inputValue={country} onChange={setCountry} options={countries} error={ctrError} required />
             <FormSelect title="City" inputValue={city} onChange={setCity} options={cities} error={ctyError} required />
-            <FormSelect title="Province" inputValue={province} onChange={setProvince} options={provinces} error={pError} required />
-            <FormInput title="Zip Code" inputValue={zipCode} onChange={setZipCode} error={zError} required />
+            <FormInput title="Zip Code" inputValue={zipcode} onChange={setzipcode} error={zError} required />
           </div>
           <div className="right-form">
             <p>Additional Instructions</p>
-            <textarea name="additional-instructions" />
+            <textarea value={additionalNotes} onChange={(e) => setAdditionalNotes(e.target.value)} name="additional-instructions" />
           </div>
         </div>
       </div>

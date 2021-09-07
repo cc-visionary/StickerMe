@@ -19,24 +19,29 @@ const ContactController = {
   insertContact: (req, res) => {
     const {
       username,
-      fullName,
+      firstName,
+      lastName,
       phone,
-      address,
+      address1,
+      address2,
       city,
       country,
       zipcode,
-      paypalEmail,
+      paypalEmail
     } = req.body;
 
     const contact = {
+      _id: new require('mongodb').ObjectID(),
       username,
-      fullName,
+      firstName,
+      lastName,
       phone,
-      address,
+      address1,
+      address2,
       city,
       country,
       zipcode,
-      paypalEmail,
+      paypalEmail
     };
 
     db.insertOne(Contact, contact, (result) => {
@@ -49,7 +54,7 @@ const ContactController = {
   },
   updateContact: (req, res) => {
     const {
-      id,
+      _id,
       fullName,
       phone,
       address,
@@ -70,7 +75,7 @@ const ContactController = {
       paypalEmail, // <- verify
     };
 
-    db.updateOne(Contact, { _id: id }, contact, (result) => defaultCallback(res, result));
+    db.updateOne(Contact, { _id }, contact, (result) => defaultCallback(res, result));
   },
   deleteContact: (req, res) => {
     const { id } = req.params;

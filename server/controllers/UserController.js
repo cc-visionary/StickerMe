@@ -96,14 +96,14 @@ const UserController = {
       userType,
     };
 
-    db.findOne(User, { username }, (result1) => {
+    db.findOne(User, { username }, (nameResult) => {
       // check if username exists
-      if(result1.result) {
+      if(nameResult.result) {
         return res.status(400).send({ success: false, error: 'Username already exists.' });
       } else {
-        db.findOne(User, { email }, (result2) => {
+        db.findOne(User, { email }, (emailResult) => {
           // check if email already exists
-          if(result2.result) {
+          if(emailResult.result) {
             return res.status(400).send({ success: false, error: 'Email already exists.' });
           } else {
             db.insertOne(User, user, (result) => {

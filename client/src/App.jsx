@@ -38,6 +38,9 @@ import './assets/styles/App.css';
 
 // Import toastify css file
 import 'react-toastify/dist/ReactToastify.css';
+import {
+  getCharacter, getCharacterDetails, getPoses, getUser,
+} from './utils/store';
 
 // toast-configuration method,
 // it is compulsory method.
@@ -51,6 +54,12 @@ export default class App extends Component {
   }
 
   render() {
+    console.log([
+      getUser() != null,
+      getCharacter() != null,
+      getPoses() != null,
+      getCharacterDetails() != null,
+    ]);
     return (
       <Suspense fallback={<Loading />}>
         <Router>
@@ -84,9 +93,6 @@ export default class App extends Component {
                 <PublicRoute component={PageNotFound} />
               </Switch>
             </div>
-            {/* <Switch>
-              <Route path="/" component={Footer} />
-            </Switch> */}
           </div>
         </Router>
       </Suspense>

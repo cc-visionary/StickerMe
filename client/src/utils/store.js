@@ -23,6 +23,40 @@ export const setCharacterLocal = (token, character) => {
   localStorage.setItem('character', JSON.stringify(character));
 };
 
+// return the poses from the local storage
+export const getPoses = () => {
+  const poses = localStorage.getItem('poses');
+  if (poses) return JSON.parse(poses);
+  return null;
+};
+
+// remove the poses from the local storage
+export const removeLocalPoses = () => {
+  localStorage.removeItem('poses');
+};
+
+// set the poses from the local storage
+export const setPosesLocal = (poses) => {
+  localStorage.setItem('poses', JSON.stringify(poses));
+};
+
+// return the character details from the local storage
+export const getCharacterDetails = () => {
+  const details = localStorage.getItem('characterDetails');
+  if (details) return JSON.parse(details);
+  return null;
+};
+
+// remove the character details from the local storage
+export const removeLocalCharacterDetails = () => {
+  localStorage.removeItem('characterDetails');
+};
+
+// set the character details from the local storage
+export const setCharacterDetailsLocal = (details) => {
+  localStorage.setItem('characterDetails', JSON.stringify(details));
+};
+
 /* ---------------- USER ------------------*/
 
 // return the user data from the local storage

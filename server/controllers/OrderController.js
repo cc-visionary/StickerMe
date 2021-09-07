@@ -17,14 +17,23 @@ const OrderController = {
     db.findMany(Order, { username }, (result) => defaultCallback(res, result));
   },
   insertOrder: (req, res) => {
-    const { username, contactID, characterIDs, totalPrice, date } = req.body;
-
-    const order = {
+    const { 
       username, 
       contactID,
-      characterIDs,
+      characterID,
+      totalPrice,
+      date,
+      additionalNotes
+    } = req.body;
+
+    const order = {
+      _id: new require('mongodb').ObjectID(),
+      username,
+      contactID,
+      characterID,
       totalPrice, 
       date,
+      additionalNotes
     }
 
     db.insertOne(Order, order, (result) => {

@@ -1,5 +1,45 @@
 #order-character {
-  
+  width: 100%;
+  overflow-x: hidden;
+  overflow: hidden;
+  background-color: #FFDE87;
+}
+
+#order-character .title-bar {
+  background-color: rgba(1, 1, 1, 0.73);
+  color: #FFF;
+  font-family: 'Indie Flower', cursive;
+  font-size: 36px;
+  border-top: 10px solid #2F2114;
+  border-left: 10px solid #2F2114;
+  border-right: 10px solid #2F2114;
+}
+
+#order-character .container {
+  background-color: #735840;
+  flex-grow: 100;
+}
+
+#order-character .title-bar .title-text {
+  position: relative;
+  top: -5px;
+  text-transform: uppercase;
+  color: #FFECBB;
+}
+
+#order-character .container-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-left: 10px solid #AC7849;
+  border-right: 10px solid #AC7849;
+  border-bottom: 10px solid #AC7849;
+  min-height: 68.5vh;
+  max-height: 55vh;
+  padding: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #order-character .buttons {
@@ -8,16 +48,30 @@
   align-items: center;
 }
 
-#order-character .buttons .left-buttons {
-  display: flex;
-  justify-content: left;
-  align-items: center;
+#order-character .left-form {
+  flex: 1;
 }
 
-#order-character .buttons .right-buttons {
-  display: flex;
-  justify-content: right;
-  align-items: center;
+#order-character .right-form {
+  flex: 1;
+  text-align: left;
+}
+
+#order-character .right-form p {
+  font-family: 'Indie Flower', cursive;
+  color: #FFF;
+  font-size: 20px;
+  margin: 10px;
+}
+
+#order-character .right-form textarea {
+  font-family: 'Indie Flower', cursive;
+  border-radius: 25px;
+  border: 5px solid #B0B0B0;
+  font-size: 14px;
+  padding: 5px;
+  width: 70vw;
+  height: 100px;
 }
 
 #order-character .buttons button {
@@ -31,7 +85,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -42,16 +95,51 @@
   height: 30px;
 }
 
-#order-character .buttons .save-button span {
-  background: url('../../../images/icons/Download.png') no-repeat left center;
+#order-character .buttons .order-button span {
+  background: url('../../../images/icons/Buy.png') no-repeat left center;
   float: left;
   width: 30px;
   height: 30px;
 }
 
-#order-character .buttons .add-to-cart-button span {
-  background: url('../../../images/icons/Buy.png') no-repeat left center;
-  float: left;
-  width: 30px;
-  height: 30px;
+@media screen and (min-width: 800px) {
+  #order-character .container-inner {
+    flex-direction: row;
+  }
+
+  #order-character .right-form textarea {
+    width: 450px;
+    height: 400px;
+  }
+
+  #order-character .right-form {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #order-character {
+    padding: 5vh;
+    padding-bottom: 1vh;
+  }
+
+  #order-character .container {
+    display: block;
+  }
+
+  #order-character .container-inner {
+    min-height: 60vh;
+    padding: 30px 50px;
+  }
+  
+  #order-character .buttons button {
+    font-size: 24px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  #order-character .left-form {
+    margin-top: 175px;
+  }
 }

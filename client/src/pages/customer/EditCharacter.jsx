@@ -1,10 +1,11 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 
-import { CharacterService, ImageService } from '../../services';
+import { ImageService } from '../../services';
 import { FeatureImage } from '../../components';
 import { FEATURES, FEATURE_IMAGE_URL } from '../../utils/constants';
 import {
-  getCharacter, getCharacterToken, getUser, setCharacterLocal,
+  getCharacter, getCharacterToken, setCharacterLocal,
 } from '../../utils/store';
 
 import selectionBackground from '../../assets/images/create/selection-background.png';
@@ -27,6 +28,7 @@ export default class EditCharacter extends Component {
       allFeatures: [],
       skinColor: null,
       backHair: null,
+      baseHair: null,
       frontHair: null,
       sideHair: null,
       extraHair: null,
@@ -41,8 +43,6 @@ export default class EditCharacter extends Component {
 
     this.handleChangeFeature = this.handleChangeFeature.bind(this);
     this.onSelectFeature = this.onSelectFeature.bind(this);
-    this.onSave = this.onSave.bind(this);
-    this.onAddToCart = this.onAddToCart.bind(this);
   }
 
   componentDidMount() {
@@ -57,19 +57,19 @@ export default class EditCharacter extends Component {
           this.setState({
             allFeatures: result,
             currentFeatures: result.filter((r) => r.imageType === currentFeature),
-            skinColor: character.skinColor,
-            baseHair: character.baseHair,
-            backHair: character.backHair,
-            frontHair: character.frontHair,
-            sideHair: character.sideHair,
-            extraHair: character.extraHair,
-            ear: character.ear,
-            eyes: character.eyes,
-            eyebrows: character.eyebrows,
-            nose: character.nose,
-            mouth: character.mouth,
-            blush: character.blush,
-            accessories: character.accessories,
+            skinColor: result.find((r) => r._id === character.skinColor),
+            baseHair: result.find((r) => r._id === character.baseHair),
+            backHair: result.find((r) => r._id === character.backHair),
+            frontHair: result.find((r) => r._id === character.frontHair),
+            sideHair: result.find((r) => r._id === character.sideHair),
+            extraHair: result.find((r) => r._id === character.extraHair),
+            ear: result.find((r) => r._id === character.ear),
+            eyes: result.find((r) => r._id === character.eyes),
+            eyebrows: result.find((r) => r._id === character.eyebrows),
+            nose: result.find((r) => r._id === character.nose),
+            mouth: result.find((r) => r._id === character.mouth),
+            blush: result.find((r) => r._id === character.blush),
+            accessories: result.find((r) => r._id === character.accessories),
           });
         } else {
           this.setState({
@@ -164,51 +164,6 @@ export default class EditCharacter extends Component {
     }
   }
 
-  onSave() {
-    const {
-      skinColor,
-      baseHair,
-      backHair,
-      frontHair,
-      sideHair,
-      extraHair,
-      ears,
-      eyes,
-      eyebrows,
-      nose,
-      mouth,
-      blush,
-      accessories,
-    } = this.state;
-
-    const character = {
-      username: getUser().uname,
-      skinColor,
-      baseHair,
-      backHair,
-      frontHair,
-      sideHair,
-      extraHair,
-      ears,
-      eyes,
-      eyebrows,
-      nose,
-      mouth,
-      blush,
-      accessories,
-    };
-
-    CharacterService.addCharacter(character).then((res) => {
-      console.log(res);
-    }).catch((err) => {
-      console.log(err.response.data);
-    });
-  }
-
-  onAddToCart() {
-    console.log('Adding to Cart');
-  }
-
   onNext() {
     const {
       skinColor,
@@ -229,19 +184,19 @@ export default class EditCharacter extends Component {
     const { history } = this.props;
 
     const character = {
-      skinColor,
-      baseHair,
-      backHair,
-      frontHair,
-      sideHair,
-      extraHair,
-      ear,
-      eyebrows,
-      eyes,
-      nose,
-      mouth,
-      blush,
-      accessories,
+      skinColor: skinColor._id,
+      baseHair: baseHair._id,
+      backHair: backHair._id,
+      frontHair: frontHair._id,
+      sideHair: sideHair._id,
+      extraHair: extraHair._id,
+      ear: ear._id,
+      eyebrows: eyebrows._id,
+      eyes: eyes._id,
+      nose: nose._id,
+      mouth: mouth._id,
+      blush: blush._id,
+      accessories: accessories._id,
     };
 
     setCharacterLocal(Math.random().toString(36).substr(2), character);
@@ -359,8 +314,6 @@ export default class EditCharacter extends Component {
       accessories,
     } = this.state;
 
-    const { mode } = this.props;
-
     return (
       <div id="edit-character-page">
         <div className="mobile-view">
@@ -400,10 +353,9 @@ export default class EditCharacter extends Component {
           <div className="sticker-inner">
             <div className="feature-list">
               {currentFeatures.map((feature) => (
-                <div className="feature-item">
+                <div key={feature.fileName} className="feature-item">
                   <button type="button" onClick={() => this.onSelectFeature(feature)}>
                     <FeatureImage
-                      key={feature.fileName}
                       image={`${FEATURE_IMAGE_URL}/${feature.fileName}`}
                       name={feature.imageID}
                     />
@@ -416,7 +368,7 @@ export default class EditCharacter extends Component {
         </div>
         <div className="desktop-view">
           <div className="title-bar">
-            <span className="title-text">{mode || 'Create'}</span>
+            <span className="title-text">Create</span>
           </div>
           <div className="sticker-inner">
             <div className="frame">

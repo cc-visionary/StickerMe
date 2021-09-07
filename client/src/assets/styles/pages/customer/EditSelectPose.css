@@ -1,5 +1,8 @@
 #edit-select-pose {
-  
+  width: 100%;
+  overflow-x: hidden;
+  overflow: hidden;
+  background-color: #FFDE87;
 }
 
 #edit-select-pose .buttons {
@@ -19,7 +22,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -35,4 +37,130 @@
   float: left;
   width: 30px;
   height: 30px;
+}
+
+#edit-select-pose .title-bar {
+  background-color: rgba(1, 1, 1, 0.73);
+  color: #fff;
+  font-family: 'Indie Flower', cursive;
+  font-size: 36px;
+  border-top: 10px solid #2F2114;
+  border-left: 10px solid #2F2114;
+  border-right: 10px solid #2F2114;
+}
+
+#edit-select-pose .container {
+  background-color: #735840;
+  flex-grow: 100;
+}
+
+#edit-select-pose .title-bar .title-text {
+  position: relative;
+  top: -5px;
+  text-transform: uppercase;
+  color: #FFECBB;
+}
+
+#edit-select-pose .sticker-inner {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border-left: 10px solid #AC7849;
+  border-right: 10px solid #AC7849;
+  border-bottom: 10px solid #AC7849;
+  min-height: 68.5vh;
+  max-height: 55vh;
+  padding: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#edit-select-pose .feature-item {
+  transform: matrix(0.75,0,0,0.75,0,0);
+  transform-origin: 50% 50%;
+  width: 125px;
+  height: 125px;
+}
+
+#edit-select-pose button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  padding: 5px;
+}
+
+#edit-select-pose .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#edit-select-pose .buttons button {
+  font-family: 'Indie Flower', cursive;
+  font-size: 18px;
+  background-color: #735840;
+  color: #FFF;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#edit-select-pose .buttons .next-button span {
+  background: url('../../../images/icons/Next.png') no-repeat left center;
+  float: left;
+  width: 20px;
+  height: 20px;
+}
+
+#edit-select-pose .feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: left;
+}
+
+#edit-select-pose .feature-list .check-icon {
+  position: relative;
+  top: -140px;
+  right: -50px;
+}
+
+@media screen and (min-width: 768px) {
+  #edit-select-pose {
+    padding: 5vh;
+    padding-bottom: 1vh;
+  }
+
+  #edit-select-pose .container {
+    display: block;
+  }
+
+  #edit-select-pose .sticker-inner {
+    min-height: 60vh;
+    padding: 60px 100px;
+  }
+
+  #edit-select-pose .container .feature-item {
+    transform: matrix(1.25,0,0,1.25,0,0);
+    transform-origin: 50% 50%;
+    width: 200px;
+    height: 200px;
+  }
+
+  #edit-select-pose .buttons button {
+    font-size: 24px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  #edit-select-pose .feature-list .check-icon {
+    top: -80px;
+    right: 50px;
+    margin-top: 80px;
+    margin-right: -50px;
+  }
 }

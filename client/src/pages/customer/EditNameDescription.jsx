@@ -26,22 +26,18 @@ const EditNameDescription = (props) => {
   };
 
   const onNext = () => {
-    if (title === '') {
-      toast.error('Title cannot be empty');
-    } else {
-      CharacterService.getAllCharacterNames()
-        .then((res) => {
-          const { result } = res.data;
-          if (result.map((r) => r.title).includes(title)) {
-            toast.error('Title already exists');
-          } else if (quantities.includes(NaN) || quantities.includes(0)) {
-            toast.error('Quantities must be atleast 1');
-          } else {
-            setCharacterDetailsLocal({ title, description, quantities });
-            props.history.push('/customer/characters/order');
-          }
-        });
-    }
+    CharacterService.getAllCharacterNames()
+      .then((res) => {
+        const { result } = res.data;
+        if (result.map((r) => r.title).includes(title)) {
+          toast.error('Title already exists');
+        } else if (quantities.includes(NaN) || quantities.includes(0)) {
+          toast.error('Quantities must be atleast 1');
+        } else {
+          setCharacterDetailsLocal({ title: title === '' ? (Math.random() + 1).toString(36).substring(4) : title, description, quantities });
+          props.history.push('/customer/characters/order');
+        }
+      });
   };
 
   const onChangeNumber = (val, index) => {

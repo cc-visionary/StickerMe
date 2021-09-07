@@ -3,7 +3,7 @@ import React from 'react';
 import '../assets/styles/components/FormSelect.css';
 
 const FormSelect = ({
-  title, onChange, options, error, placeholder, required, disabled,
+  inputValue, title, onChange, options, error, placeholder, required, disabled,
 }) => (
   <div id="special-form-select">
     <div className="label">
@@ -13,6 +13,7 @@ const FormSelect = ({
     <div>
       <select
         placeholder={placeholder}
+        value={inputValue}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
         required={required}

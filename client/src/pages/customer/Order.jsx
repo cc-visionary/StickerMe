@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import countriesCity from '../../utils/countries.json';
 
 import '../../assets/styles/pages/customer/Order.css';
 import FormInput from '../../components/FormInput';
@@ -19,8 +20,8 @@ import {
 } from '../../utils/store';
 
 const Order = (props) => {
-  const countries = ['Philippines', 'United Stated of America'];
-  const cities = ['Manila', 'Quezon'];
+  const countries = Object.keys(countriesCity);
+  const [cities, setCities] = useState([...new Set(countriesCity.Philippines)]);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -28,8 +29,8 @@ const Order = (props) => {
   const [paypalEmail, setPaypalEmail] = useState('');
   const [address1, setAddress1] = useState('');
   const [address2, setAddress2] = useState('');
-  const [country, setCountry] = useState(null);
-  const [city, setCity] = useState(null);
+  const [country, setCountry] = useState('Philippines');
+  const [city, setCity] = useState('Manila');
   const [zipcode, setzipcode] = useState('');
   const [additionalNotes, setAdditionalNotes] = useState('');
 
@@ -44,14 +45,21 @@ const Order = (props) => {
 
   const validateFields = () => {
     let valid = true;
+    const reName = /(?=.*[\d\W_])/;
     if (firstName === '') {
       setFNError('First Name is required');
+      valid = false;
+    } else if (reName.test(firstName)) {
+      setFNError('Only uppercase and lower case letters are allowed');
       valid = false;
     } else {
       setFNError(null);
     }
     if (lastName === '') {
       setLNError('Last Name is required');
+      valid = false;
+    } else if (reName.test(lastName)) {
+      setLNError('Only uppercase and lower case letters are allowed');
       valid = false;
     } else {
       setLNError(null);
@@ -80,17 +88,44 @@ const Order = (props) => {
     } else {
       setPError(null);
     }
+    const reEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (paypalEmail === '') {
       setPPError('Paypal Email is required');
       valid = false;
+    } else if (!reEmail.test(paypalEmail)) {
+      setPPError('Invalid email format');
+      valid = false;
+    } else {
+      setPPError(null);
     }
+    const rePhone = /^\d{11}?$/;
+    if (phone === '') {
+      setPError('Phone Number is required');
+      valid = false;
+    } else if (phone[0] !== '0' && phone[1] !== '9') {
+      setPError('Phone Number must be start with 09');
+    } else if (!rePhone.test(phone)) {
+      setPError('Phone Number must be containing 11 digits');
+    } else {
+      setPError(null);
+    }
+    const reZip = /\b[\d]+\b/;
     if (zipcode === '') {
       setZError('Zip Code is required');
+      valid = false;
+    } else if (!reZip.test(zipcode)) {
+      setZError('Zip Code can only contain digits');
       valid = false;
     } else {
       setZError(null);
     }
     return valid;
+  };
+
+  const onChangeCountry = (val) => {
+    setCountry(val);
+    setCities(countriesCity[val]);
+    setCity(countriesCity[val][0]);
   };
 
   const onBack = () => {
@@ -110,6 +145,7 @@ const Order = (props) => {
       CharacterService.addCharacter(character)
         .then((characterRes) => {
           const { result: characterResult } = characterRes.data;
+          toast.success('Character was successfully added to the database');
           const contact = {
             username: getUser().uname,
             firstName,
@@ -172,7 +208,7 @@ const Order = (props) => {
             <FormInput title="Phone Number" inputValue={phone} onChange={setPhone} error={pError} required />
             <FormInput title="Address Line 1" inputValue={address1} onChange={setAddress1} error={a1Error} required />
             <FormInput title="Address Line 2" inputValue={address2} onChange={setAddress2} />
-            <FormSelect title="Country" inputValue={country} onChange={setCountry} options={countries} error={ctrError} required />
+            <FormSelect title="Country" inputValue={country} onChange={(val) => onChangeCountry(val)} options={countries} error={ctrError} required />
             <FormSelect title="City" inputValue={city} onChange={setCity} options={cities} error={ctyError} required />
             <FormInput title="Zip Code" inputValue={zipcode} onChange={setzipcode} error={zError} required />
           </div>

@@ -3,7 +3,7 @@ import React from 'react';
 import '../assets/styles/components/FormInput.css';
 
 const FormInput = ({
-  title, onChange, error, placeholder, required, disabled,
+  title, inputValue, onChange, error, placeholder, required, disabled,
 }) => (
   <div id="special-form-input">
     <div className="label">
@@ -13,6 +13,7 @@ const FormInput = ({
     <div>
       <input
         placeholder={placeholder}
+        value={inputValue}
         onChange={(e) => onChange(e.target.value)}
         required={required}
         disabled={disabled}

@@ -32,6 +32,10 @@ const OrderSchema = new Schema({
   additionalNotes: {
     type: String,
   },
+  status: {
+    type: String,
+    default: 'Preparing',
+  }
 });
 
 /*

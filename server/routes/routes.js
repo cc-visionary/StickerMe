@@ -53,6 +53,8 @@ app.get("/orders/:username", OrderController.getOrderByUser);
 app.post("/orders", OrderController.insertOrder);
 
 // API for Characters
+app.get("/characters/names", CharacterController.getCharacterNames);
+
 app.get("/characters/username/:username", CharacterController.getCharactersByUsername);
 
 app.get("/characters/title/:title", CharacterController.getCharacter);

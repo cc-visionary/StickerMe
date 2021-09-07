@@ -98,22 +98,23 @@ const Order = (props) => {
     } else {
       setPPError(null);
     }
-    const rePhone = /^\d{11}?$/;
+    const reDigits = /\b[\d]+\b/;
     if (phone === '') {
       setPError('Phone Number is required');
       valid = false;
     } else if (phone[0] !== '0' && phone[1] !== '9') {
       setPError('Phone Number must be start with 09');
-    } else if (!rePhone.test(phone)) {
-      setPError('Phone Number must be containing 11 digits');
+    } else if (!reDigits.test(phone)) {
+      setPError('Phone Number can only contain digits');
+    } else if (phone.length !== 11) {
+      setPError('Phone Number must be 11 digits');
     } else {
       setPError(null);
     }
-    const reZip = /\b[\d]+\b/;
     if (zipcode === '') {
       setZError('Zip Code is required');
       valid = false;
-    } else if (!reZip.test(zipcode)) {
+    } else if (!reDigits.test(zipcode)) {
       setZError('Zip Code can only contain digits');
       valid = false;
     } else {
@@ -134,12 +135,17 @@ const Order = (props) => {
 
   const onOrder = () => {
     if (validateFields()) {
-      const character = {
+      const charDetails = {
         ...getCharacter(),
         ...getCharacterDetails(),
+      };
+      console.log(charDetails);
+      const character = {
+        ...charDetails,
         poses: getPoses(),
         username: getUser().uname,
         status: 'order',
+        saved: window.confirm('Do you wish to save this character for future use?'),
       };
 
       CharacterService.addCharacter(character)
@@ -165,7 +171,7 @@ const Order = (props) => {
                 username: contactResult.username,
                 contactID: contactResult._id,
                 characterID: characterResult._id,
-                totalPrice: 5 * getPoses().length,
+                totalPrice: 5 * charDetails.quantities.reduce((a, b) => a + b),
                 date: new Date(),
                 additionalNotes,
               };

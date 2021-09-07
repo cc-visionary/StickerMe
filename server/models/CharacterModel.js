@@ -18,7 +18,7 @@ const CharacterSchema = new Schema({
   backHair: {
     type: Schema.Types.ObjectId,
     ref: 'Image',
-    required: true, 
+    required: true,
   },
   frontHair: {
     type: Schema.Types.ObjectId,
@@ -65,6 +65,10 @@ const CharacterSchema = new Schema({
     ref: 'Image',
     required: true,
   },
+  quantities: {
+    type: [Number],
+    required: true,
+  },
   title: {
     type: String,
     required: true,
@@ -72,6 +76,10 @@ const CharacterSchema = new Schema({
   description: {
     type: String, 
   },
+  saved: {
+    type: Boolean,
+    required: true,
+  }
 });
 
 /*

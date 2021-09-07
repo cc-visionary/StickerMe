@@ -128,6 +128,21 @@
   top: -140px;
   right: -50px;
 }
+@media screen and (min-width: 800px) {
+  #edit-select-pose .container .feature-item {
+    transform: matrix(1.25,0,0,1.25,0,0);
+    transform-origin: 50% 50%;
+    width: 200px;
+    height: 200px;
+  }
+
+  #edit-select-pose .feature-list .check-icon {
+    top: -80px;
+    right: 50px;
+    margin-top: 80px;
+    margin-right: -50px;
+  }
+}
 
 @media screen and (min-width: 768px) {
   #edit-select-pose {
@@ -144,23 +159,9 @@
     padding: 60px 100px;
   }
 
-  #edit-select-pose .container .feature-item {
-    transform: matrix(1.25,0,0,1.25,0,0);
-    transform-origin: 50% 50%;
-    width: 200px;
-    height: 200px;
-  }
-
   #edit-select-pose .buttons button {
     font-size: 24px;
     padding: 10px;
     margin-top: 20px;
-  }
-
-  #edit-select-pose .feature-list .check-icon {
-    top: -80px;
-    right: 50px;
-    margin-top: 80px;
-    margin-right: -50px;
   }
 }

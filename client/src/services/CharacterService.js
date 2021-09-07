@@ -5,6 +5,7 @@ import axios from 'axios';
 const CHARACTER_API_BASE_URL = 'http://localhost:3000/api/characters';
 
 const CharacterService = {
+  getAllCharacterNames: () => axios.get(`${CHARACTER_API_BASE_URL}/names`),
   getAllCharactersByUsername: (username) => axios.get(`${CHARACTER_API_BASE_URL}/username/${username}`),
   getCharacter: (id) => axios.get(`${CHARACTER_API_BASE_URL}/id/${id}`),
   addCharacter: (character) => axios.post(`${CHARACTER_API_BASE_URL}/add`, character),

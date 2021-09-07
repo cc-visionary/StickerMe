@@ -50,6 +50,7 @@
 
 #order-character .left-form {
   flex: 1;
+  margin-top: 200px;
 }
 
 #order-character .right-form {
@@ -138,8 +139,14 @@
     margin-top: 20px;
   }
 }
+@media screen and (max-width: 768px) {
+  #order-character .left-form {
+    margin-top: 100px;
+  }
+}
+
 @media screen and (max-width: 500px) {
   #order-character .left-form {
-    margin-top: 175px;
+    margin-top: 225px;
   }
 }

@@ -6,7 +6,8 @@ import { IMAGE_API_BASE_URL } from '../utils/constants';
 
 const ImageService = {
   getAllImages: async () => axios.get(IMAGE_API_BASE_URL),
-  getImageByType: async (imageType) => axios.get(`${IMAGE_API_BASE_URL}/${imageType}`),
+  getImageByType: async (imageType) => axios.get(`${IMAGE_API_BASE_URL}/type/${imageType}`),
+  getImageByID: async (id) => axios.get(`${IMAGE_API_BASE_URL}/id/${id}`),
   uploadImage: async (image) => {
     const config = {
       headers: {

@@ -8,10 +8,6 @@ const Contact = require("../models/ContactModel");
 const defaultCallback = require("../helpers/defaultCallback");
 
 const ContactController = {
-  getContact: (req, res) => {
-    const { id } = req.params;
-    db.findOne(Contact, { _id: id }, (result) => defaultCallback(res, result));
-  },
   getContactsByUsername: (req, res) => {
     const { username } = req.params;
     db.findMany(Contact, { username }, (result) => defaultCallback(res, result));
@@ -31,7 +27,6 @@ const ContactController = {
     } = req.body;
 
     const contact = {
-      _id: new require('mongodb').ObjectID(),
       username,
       firstName,
       lastName,

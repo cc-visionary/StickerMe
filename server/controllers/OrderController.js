@@ -16,25 +16,29 @@ const OrderController = {
 
     db.findMany(Order, { username }, (result) => defaultCallback(res, result));
   },
+  cancelOrder: (req, res) => {
+    const { id } = req.params;
+
+    db.updateOne(Order, { _id: id }, { status: 'Cancelled' }, (result) => defaultCallback(res, result))
+  },
   insertOrder: (req, res) => {
     const { 
       username, 
-      contactID,
-      characterID,
+      contact,
+      character,
       totalPrice,
-      date,
-      additionalNotes
+      additionalNotes,
     } = req.body;
 
     const order = {
-      _id: new require('mongodb').ObjectID(),
       username,
-      contactID,
-      characterID,
-      totalPrice, 
-      date,
-      additionalNotes
+      contact,
+      character,
+      totalPrice,
+      additionalNotes,
     }
+    console.log(contact);
+    console.log(character);
 
     db.insertOne(Order, order, (result) => {
       if (result.success) {
@@ -43,6 +47,17 @@ const OrderController = {
         res.status(400).send({ success: false, error: result.error.message });
       }
     });
+  },
+  updateStatus: (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    db.updateOne(Order, { _id: id }, { status }, (result) => defaultCallback(res, result));
+  },
+  deleteOrder: (req, res) => {
+    const { id } = req.params;
+
+    db.deleteOne(Order, { _id: id }, (result) => defaultCallback(res, result));
   },
 };
 /*

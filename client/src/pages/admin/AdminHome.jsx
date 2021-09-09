@@ -1,22 +1,29 @@
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from 'react';
 
 import profile from '../../assets/images/icons/Profile.png';
 import features from '../../assets/images/icons/Features.png';
 
 import '../../assets/styles/pages/admin/AdminHome.css';
+import { OrderService } from '../../services';
 
 export default class CustomerHome extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      orders: [
-        { name: 'Colonel Sanders', quantity: 1, status: 'Preparing' },
-        { name: 'Tony Tan Caktiong', quantity: 1, status: 'Preparing' },
-        { name: 'Richard Mcdonald', quantity: 2, status: 'Cancelled' },
-        { name: 'Dave Thomas', quantity: 1, status: 'Shipped' },
-      ],
+      orders: [],
     };
+  }
+
+  componentDidMount() {
+    OrderService.getAllOrders().then((res) => {
+      const { result } = res.data;
+      this.setState({ orders: result });
+    }).catch((err) => {
+      const { error } = err.response.data;
+      console.log(error);
+    });
   }
 
   render() {
@@ -26,24 +33,23 @@ export default class CustomerHome extends Component {
       <div id="admin-home-page">
         <h1>Orders</h1>
         <div className="orders">
-          {orders.map((order) => (
-            <a href="/orders/">
+          {orders.length > 0 ? orders.map((order) => (
+            <a href="/admin/orders/">
               <div className="item">
-                <div className="left">{order.name}</div>
+                <div className="left">{`${order.contact.firstName} ${order.contact.lastName}`}</div>
                 <div className="right">
                   <div>
                     QUANTITY:
-                    {` ${order.quantity}`}
+                    {order.character.quantities.reduce((a, b) => a + b)}
                   </div>
                   <div>
                     STATUS:
-                    { /* eslint-disable-next-line no-nested-ternary */ }
-                    <span className={order.status === 'Preparing' ? 'preparing' : (order.status === 'Cancelled' ? 'cancelled' : 'shipped')}>{` ${order.status}`}</span>
+                    <span className={order.status.toLowerCase()}>{` ${order.status}`}</span>
                   </div>
                 </div>
               </div>
             </a>
-          ))}
+          )) : <div className="no-orders">No orders...</div>}
         </div>
         <div className="buttons">
           <a href="/admin/features">

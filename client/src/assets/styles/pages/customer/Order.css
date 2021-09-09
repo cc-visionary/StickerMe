@@ -75,6 +75,26 @@
   height: 100px;
 }
 
+#order-character .contact-select {
+  border-left: 10px solid #AC7849;
+  border-right: 10px solid #AC7849;
+}
+
+#order-character .contact-select #special-form-select {
+  padding-top: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+#order-character .contact-select .label {
+  flex: 0;
+  min-width: 100px;
+}
+
+#order-character .contact-select p {
+  display: none;
+}
+
 #order-character .buttons button {
   font-family: 'Indie Flower', cursive;
   font-size: 18px;

@@ -46,6 +46,11 @@ const ImageController = {
     const { imageType } = req.params;
     db.findMany(Image, { imageType }, (result) => defaultCallback(res, result));
   },
+  // returns image corresponding to the ID
+  getImagesByID: async (req, res) => {
+    const { id } = req.params;
+    db.findOne(Image, { _id: id }, (result) => defaultCallback(res, result));
+  },
   deleteImage: async (req, res) => {
     const { fileName } = req.params;
     try {

@@ -26,7 +26,7 @@ const EditNameDescription = (props) => {
   };
 
   const onNext = () => {
-    CharacterService.getAllCharacterNames()
+    CharacterService.getAllCharacters()
       .then((res) => {
         const { result } = res.data;
         if (result.map((r) => r.title).includes(title)) {

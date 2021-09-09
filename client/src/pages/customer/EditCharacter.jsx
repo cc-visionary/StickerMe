@@ -5,7 +5,9 @@ import { ImageService } from '../../services';
 import { FeatureImage } from '../../components';
 import { FEATURES, FEATURE_IMAGE_URL } from '../../utils/constants';
 import {
-  getCharacter, getCharacterToken, setCharacterLocal,
+  getCharacter,
+  getCharacterToken,
+  setCharacterLocal,
 } from '../../utils/store';
 
 import selectionBackground from '../../assets/images/create/selection-background.png';
@@ -57,19 +59,19 @@ export default class EditCharacter extends Component {
           this.setState({
             allFeatures: result,
             currentFeatures: result.filter((r) => r.imageType === currentFeature),
-            skinColor: result.find((r) => r._id === character.skinColor),
-            baseHair: result.find((r) => r._id === character.baseHair),
-            backHair: result.find((r) => r._id === character.backHair),
-            frontHair: result.find((r) => r._id === character.frontHair),
-            sideHair: result.find((r) => r._id === character.sideHair),
-            extraHair: result.find((r) => r._id === character.extraHair),
-            ear: result.find((r) => r._id === character.ear),
-            eyes: result.find((r) => r._id === character.eyes),
-            eyebrows: result.find((r) => r._id === character.eyebrows),
-            nose: result.find((r) => r._id === character.nose),
-            mouth: result.find((r) => r._id === character.mouth),
-            blush: result.find((r) => r._id === character.blush),
-            accessories: result.find((r) => r._id === character.accessories),
+            skinColor: result.find((r) => r.imageID === character.skinColor),
+            baseHair: result.find((r) => r.imageID === character.baseHair),
+            backHair: result.find((r) => r.imageID === character.backHair),
+            frontHair: result.find((r) => r.imageID === character.frontHair),
+            sideHair: result.find((r) => r.imageID === character.sideHair),
+            extraHair: result.find((r) => r.imageID === character.extraHair),
+            ear: result.find((r) => r.imageID === character.ear),
+            eyes: result.find((r) => r.imageID === character.eyes),
+            eyebrows: result.find((r) => r.imageID === character.eyebrows),
+            nose: result.find((r) => r.imageID === character.nose),
+            mouth: result.find((r) => r.imageID === character.mouth),
+            blush: result.find((r) => r.imageID === character.blush),
+            accessories: result.find((r) => r.imageID === character.accessories),
           });
         } else {
           this.setState({
@@ -184,19 +186,19 @@ export default class EditCharacter extends Component {
     const { history } = this.props;
 
     const character = {
-      skinColor: skinColor._id,
-      baseHair: baseHair._id,
-      backHair: backHair._id,
-      frontHair: frontHair._id,
-      sideHair: sideHair._id,
-      extraHair: extraHair._id,
-      ear: ear._id,
-      eyebrows: eyebrows._id,
-      eyes: eyes._id,
-      nose: nose._id,
-      mouth: mouth._id,
-      blush: blush._id,
-      accessories: accessories._id,
+      skinColor: skinColor.imageID,
+      baseHair: baseHair.imageID,
+      backHair: backHair.imageID,
+      frontHair: frontHair.imageID,
+      sideHair: sideHair.imageID,
+      extraHair: extraHair.imageID,
+      ear: ear.imageID,
+      eyebrows: eyebrows.imageID,
+      eyes: eyes.imageID,
+      nose: nose.imageID,
+      mouth: mouth.imageID,
+      blush: blush.imageID,
+      accessories: accessories.imageID,
     };
 
     setCharacterLocal(Math.random().toString(36).substr(2), character);
@@ -331,7 +333,7 @@ export default class EditCharacter extends Component {
               <image href={ear && `${FEATURE_IMAGE_URL}/${ear.fileName}`} height="500" width="500" x="150" y="150" />
               <image href={blush && `${FEATURE_IMAGE_URL}/${blush.fileName}`} height="500" width="500" x="150" y="155" />
               <image href={baseHair && `${FEATURE_IMAGE_URL}/${baseHair.fileName}`} height="500" width="500" x="150" y="150" />
-              <image href={frontHair && `${FEATURE_IMAGE_URL}/${frontHair.fileName}`} height="500" width="500" x="150" y="125" />
+              <image href={frontHair && `${FEATURE_IMAGE_URL}/${frontHair.fileName}`} height="500" width="500" x="150" y="140" />
               <image href={sideHair && `${FEATURE_IMAGE_URL}/${sideHair.fileName}`} height="500" width="500" x="150" y="150" />
               <image href={extraHair && `${FEATURE_IMAGE_URL}/${extraHair.fileName}`} height="500" width="500" x="150" y="150" />
               <image href={eyes && `${FEATURE_IMAGE_URL}/${eyes.fileName}`} height="500" width="500" x="150" y="150" />
@@ -387,7 +389,7 @@ export default class EditCharacter extends Component {
                 <image href={baseHair && `${FEATURE_IMAGE_URL}/${baseHair.fileName}`} height="500" width="500" x="150" y="150" />
                 <image href={eyes && `${FEATURE_IMAGE_URL}/${eyes.fileName}`} height="500" width="500" x="150" y="150" />
                 <image href={eyebrows && `${FEATURE_IMAGE_URL}/${eyebrows.fileName}`} height="500" width="500" x="150" y="150" />
-                <image href={frontHair && `${FEATURE_IMAGE_URL}/${frontHair.fileName}`} height="500" width="500" x="150" y="150" />
+                <image href={frontHair && `${FEATURE_IMAGE_URL}/${frontHair.fileName}`} height="500" width="500" x="150" y="140" />
                 <image href={sideHair && `${FEATURE_IMAGE_URL}/${sideHair.fileName}`} height="500" width="500" x="150" y="150" />
                 <image href={extraHair && `${FEATURE_IMAGE_URL}/${extraHair.fileName}`} height="500" width="500" x="150" y="150" />
                 <image href={nose && `${FEATURE_IMAGE_URL}/${nose.fileName}`} height="500" width="500" x="150" y="150" />

@@ -11,53 +11,43 @@ const CharacterSchema = new Schema({
     required: true,
   },
   accessories: {
-    type: Schema.Types.ObjectId,
-    ref: 'Image',
+    type: Schema.Types.String,
     required: true,
   },
   backHair: {
-    type: Schema.Types.ObjectId,
-    ref: 'Image',
+    type: Schema.Types.String,
     required: true,
   },
   frontHair: {
-    type: Schema.Types.ObjectId,
-    ref: 'Image',
+    type: Schema.Types.String,
     required: true,
   },
   extraHair: {
-    type: Schema.Types.ObjectId,
-    ref: 'Image',
+    type: Schema.Types.String,
     required: true,
   },
   sideHair: {
-    type: Schema.Types.ObjectId,
-    ref: 'Image',
+    type: Schema.Types.String,
     required: true,
   },
   blush: {
-    type: Schema.Types.ObjectId,
-    ref: 'Image',
+    type: Schema.Types.String,
     required: true,
   },
   eyebrows: {
-    type: Schema.Types.ObjectId,
-    ref: 'Image',
+    type: Schema.Types.String,
     required: true,
   },
   eyes: {
-    type: Schema.Types.ObjectId,
-    ref: 'Image',
+    type: Schema.Types.String,
     required: true,
   },
   mouth: {
-    type: Schema.Types.ObjectId,
-    ref: 'Image',
+    type: Schema.Types.String,
     required: true,
   },
   nose: {
-    type: Schema.Types.ObjectId,
-    ref: 'Image',
+    type: Schema.Types.String,
     required: true,
   },
   poses: {
@@ -71,15 +61,12 @@ const CharacterSchema = new Schema({
   },
   title: {
     type: String,
+    unique: true,
     required: true,
   },
   description: {
     type: String, 
   },
-  saved: {
-    type: Boolean,
-    required: true,
-  }
 });
 
 /*

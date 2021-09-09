@@ -8,17 +8,13 @@ const Character = require("../models/CharacterModel");
 const defaultCallback = require("../helpers/defaultCallback");
 
 const CharacterController = {
-  getCharacterNames: (req, res) => {
-    db.findMany(Character, { saved: true }, (result) => defaultCallback(res, result));
+  getAllCharacters: (req, res) => {
+    db.findMany(Character, null, (result) => defaultCallback(res, result));
   },
   getCharactersByUsername: (req, res) => {
     const { username } = req.params;
 
-    db.findMany(Character, { username, saved: true }, (result) => defaultCallback(res, result));
-  },
-  getCharacter: (req, res) => {
-    const { title } = req.params;
-    db.findOne(Character, { title }, (result) => defaultCallback(res, result));
+    db.findMany(Character, { username }, (result) => defaultCallback(res, result));
   },
   insertCharacter: (req, res) => {
     const {
@@ -39,11 +35,9 @@ const CharacterController = {
       title,
       description,
       quantities,
-      saved,
     } = req.body;
 
     const character = {
-      _id: new require('mongodb').ObjectID(),
       username,
       accessories,
       backHair,
@@ -61,12 +55,10 @@ const CharacterController = {
       title,
       description,
       quantities,
-      saved,
     };
 
     db.insertOne(Character, character, (result) => {
       if (result.success) {
-        console.log(result._id)
         res.status(200).send({ success: true, result: character });
       } else {
         res.status(400).send({ success: false, error: result.error.message });
@@ -119,7 +111,6 @@ const CharacterController = {
   deleteCharacter: (req, res) => {
     const { id } = req.params;
 
-    // only update the status of that deleted character
     db.deleteOne(Character, { _id: id }, (result) => defaultCallback(res, result));
   },
 };

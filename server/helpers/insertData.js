@@ -16,8 +16,8 @@ const users = [
 ];
 
 const contacts = [
-
-]
+  
+];
 
 const characters = [
 

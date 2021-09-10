@@ -1,3 +1,43 @@
 #admin-orders-page {
-  
+  padding-top: 20px;
+  background-color: #FFDE87;
+  width: 100%;
+  padding: 0 7.5vw;
+}
+
+#admin-orders-page .select-bar {
+  padding-top: 20px;
+}
+
+#admin-orders-page .order-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#admin-orders-page hr {
+  border: 2.5px solid #000000;
+}
+
+#admin-orders-page button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  color: #464646;
+  font-family: 'Lato', sans-serif;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 800px) {
+  #admin-orders-page button {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #admin-orders-page .order-list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
 }

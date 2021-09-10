@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import countriesCity from '../../utils/countries.json';
@@ -23,6 +23,8 @@ const Order = (props) => {
   const countries = Object.keys(countriesCity);
   const [cities, setCities] = useState([...new Set(countriesCity.Philippines)]);
 
+  const [contacts, setContacts] = useState([]);
+  const [currentContact, setCurrentContact] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
@@ -37,8 +39,6 @@ const Order = (props) => {
   const [fnError, setFNError] = useState(null);
   const [lnError, setLNError] = useState(null);
   const [a1Error, setA1Error] = useState(null);
-  const [ctrError, setCTRError] = useState(null);
-  const [ctyError, setCTYError] = useState(null);
   const [ppError, setPPError] = useState(null);
   const [pError, setPError] = useState(null);
   const [zError, setZError] = useState(null);
@@ -70,18 +70,6 @@ const Order = (props) => {
     } else {
       setA1Error(null);
     }
-    if (country === '') {
-      setCTRError('Country is required');
-      valid = false;
-    } else {
-      setCTRError(null);
-    }
-    if (city === '') {
-      setCTYError('City is required');
-      valid = false;
-    } else {
-      setCTYError(null);
-    }
     if (phone === '') {
       setPError('Phone is required');
       valid = false;
@@ -104,10 +92,13 @@ const Order = (props) => {
       valid = false;
     } else if (phone[0] !== '0' && phone[1] !== '9') {
       setPError('Phone Number must be start with 09');
+      valid = false;
     } else if (!reDigits.test(phone)) {
       setPError('Phone Number can only contain digits');
+      valid = false;
     } else if (phone.length !== 11) {
       setPError('Phone Number must be 11 digits');
+      valid = false;
     } else {
       setPError(null);
     }
@@ -125,7 +116,7 @@ const Order = (props) => {
 
   const onChangeCountry = (val) => {
     setCountry(val);
-    setCities(countriesCity[val]);
+    setCities([...new Set(countriesCity[val])]);
     setCity(countriesCity[val][0]);
   };
 
@@ -139,42 +130,96 @@ const Order = (props) => {
         ...getCharacter(),
         ...getCharacterDetails(),
       };
-      console.log(charDetails);
       const character = {
         ...charDetails,
         poses: getPoses(),
         username: getUser().uname,
-        status: 'order',
-        saved: window.confirm('Do you wish to save this character for future use?'),
       };
+      const contact = {
+        username: character.username,
+        firstName,
+        lastName,
+        phone,
+        address1,
+        address2,
+        city,
+        country,
+        zipcode,
+        paypalEmail,
+      };
+      const order = {
+        username: contact.username,
+        contact,
+        character,
+        totalPrice: 5 * charDetails.quantities.reduce((a, b) => a + b),
+        additionalNotes,
+      };
+      console.log(order);
 
-      CharacterService.addCharacter(character)
-        .then((characterRes) => {
-          const { result: characterResult } = characterRes.data;
-          toast.success('Character was successfully added to the database');
-          const contact = {
-            username: getUser().uname,
-            firstName,
-            lastName,
-            phone,
-            address1,
-            address2,
-            city,
-            country,
-            zipcode,
-            paypalEmail,
-          };
+      if (window.confirm('Do you wish to save this character for future use?')) {
+        CharacterService.addCharacter(character)
+          .then(() => {
+            toast.success('Character was successfully added to the database');
+            if (currentContact === 'Add New Contact') {
+              if (window.confirm('Do you wish to save this contact details for future use?')) {
+                ContactService.addContact(contact)
+                  .then(() => {
+                    toast.success('Contact was successfully added to the database');
+                    OrderService.addOrder(order)
+                      .then(() => {
+                        removeLocalCharacter();
+                        removeLocalPoses();
+                        removeLocalCharacterDetails();
+                        toast.success('Character was ordered successfully');
+                        props.history.push('/customer/characters');
+                      })
+                      .catch((err) => {
+                        const { error } = err.response.data;
+                        console.log(error);
+                      });
+                  })
+                  .catch((err) => {
+                    const { error } = err.response.data;
+                    console.log(error);
+                  });
+              } else {
+                OrderService.addOrder(order)
+                  .then(() => {
+                    removeLocalCharacter();
+                    removeLocalPoses();
+                    removeLocalCharacterDetails();
+                    toast.success('Character was ordered successfully');
+                    props.history.push('/customer/characters');
+                  })
+                  .catch((err) => {
+                    const { error } = err.response.data;
+                    console.log(error);
+                  });
+              }
+            } else {
+              OrderService.addOrder(order)
+                .then(() => {
+                  removeLocalCharacter();
+                  removeLocalPoses();
+                  removeLocalCharacterDetails();
+                  toast.success('Character was ordered successfully');
+                  props.history.push('/customer/characters');
+                })
+                .catch((err) => {
+                  const { error } = err.response.data;
+                  console.log(error);
+                });
+            }
+          })
+          .catch((err) => {
+            const { error } = err.response.data;
+            console.log(error);
+          });
+      } else if (currentContact === 'Add New Contact') {
+        if (window.confirm('Do you wish to save this contact details for future use?')) {
           ContactService.addContact(contact)
-            .then((contactRes) => {
-              const { result: contactResult } = contactRes.data;
-              const order = {
-                username: contactResult.username,
-                contactID: contactResult._id,
-                characterID: characterResult._id,
-                totalPrice: 5 * charDetails.quantities.reduce((a, b) => a + b),
-                date: new Date(),
-                additionalNotes,
-              };
+            .then(() => {
+              toast.success('Character was successfully added to the database');
               OrderService.addOrder(order)
                 .then(() => {
                   removeLocalCharacter();
@@ -192,19 +237,83 @@ const Order = (props) => {
               const { error } = err.response.data;
               console.log(error);
             });
-        })
-        .catch((err) => {
-          const { error } = err.response.data;
-          console.log(error);
-        });
+        } else {
+          OrderService.addOrder(order)
+            .then(() => {
+              removeLocalCharacter();
+              removeLocalPoses();
+              removeLocalCharacterDetails();
+              toast.success('Character was ordered successfully');
+              props.history.push('/customer/characters');
+            })
+            .catch((err) => {
+              const { error } = err.response.data;
+              console.log(error);
+            });
+        }
+      } else {
+        OrderService.addOrder(order)
+          .then(() => {
+            removeLocalCharacter();
+            removeLocalPoses();
+            removeLocalCharacterDetails();
+            toast.success('Character was ordered successfully');
+            props.history.push('/customer/characters');
+          })
+          .catch((err) => {
+            const { error } = err.response.data;
+            console.log(error);
+          });
+      }
     }
   };
+
+  const onSelectContact = (val) => {
+    if (val === 'Add New Contact') {
+      setFirstName('');
+      setLastName('');
+      setPhone('');
+      setPaypalEmail('');
+      setAddress1('');
+      setAddress2('');
+      setCountry('Philippines');
+      setCity('Manila');
+      setzipcode('');
+      setAdditionalNotes('');
+    } else {
+      const index = contacts.map((c) => `${c.firstName} ${c.lastName}`).indexOf(val);
+      const currContact = contacts[index];
+      setFirstName(currContact.firstName);
+      setLastName(currContact.lastName);
+      setPhone(currContact.phone);
+      setPaypalEmail(currContact.paypalEmail);
+      setAddress1(currContact.address1);
+      setAddress2(currContact.address2);
+      setCountry(currContact.country);
+      setCity(currContact.city);
+      setzipcode(currContact.zipcode);
+      setAdditionalNotes(currContact.additionalNotes);
+    }
+    setCurrentContact(val);
+  };
+
+  useEffect(() => {
+    ContactService.getContactsByUsername(getUser().uname).then((res) => {
+      const { result } = res.data;
+
+      setContacts([...result]);
+      onSelectContact('Add New Contact');
+    });
+  }, []);
 
   return getCharacterToken() && getCharacterDetails() && getPoses() ? (
     <div id="order-character">
       <div className="container">
         <div className="title-bar">
           <span className="title-text">Order</span>
+        </div>
+        <div className="contact-select">
+          <FormSelect title="Contact" inputValue={currentContact} onChange={onSelectContact} options={[...contacts.map((c) => `${c.firstName} ${c.lastName}`), 'Add New Contact']} required />
         </div>
         <div className="container-inner">
           <div className="left-form">
@@ -214,8 +323,8 @@ const Order = (props) => {
             <FormInput title="Phone Number" inputValue={phone} onChange={setPhone} error={pError} required />
             <FormInput title="Address Line 1" inputValue={address1} onChange={setAddress1} error={a1Error} required />
             <FormInput title="Address Line 2" inputValue={address2} onChange={setAddress2} />
-            <FormSelect title="Country" inputValue={country} onChange={(val) => onChangeCountry(val)} options={countries} error={ctrError} required />
-            <FormSelect title="City" inputValue={city} onChange={setCity} options={cities} error={ctyError} required />
+            <FormSelect title="Country" inputValue={country} onChange={(val) => onChangeCountry(val)} options={countries} required />
+            <FormSelect title="City" inputValue={city} onChange={setCity} options={cities} required />
             <FormInput title="Zip Code" inputValue={zipcode} onChange={setzipcode} error={zError} required />
           </div>
           <div className="right-form">

@@ -37,8 +37,6 @@ app.post("/users/logout", UserController.logout);
 // API for Contacts
 app.get("/contacts/username/:username", ContactController.getContactsByUsername);
 
-app.get("/contacts/id/:id", ContactController.getContact);
-
 app.post("/contacts/add", ContactController.insertContact);
 
 app.patch("/contacts/update", ContactController.updateContact);
@@ -52,12 +50,16 @@ app.get("/orders/:username", OrderController.getOrderByUser);
 
 app.post("/orders", OrderController.insertOrder);
 
-// API for Characters
-app.get("/characters/names", CharacterController.getCharacterNames);
+app.patch("/orders/status/:id", OrderController.updateStatus);
 
+app.patch("/orders/cancel/:id", OrderController.cancelOrder);
+
+app.delete("/orders/delete/:id", OrderController.deleteOrder);
+
+// API for Characters
 app.get("/characters/username/:username", CharacterController.getCharactersByUsername);
 
-app.get("/characters/title/:title", CharacterController.getCharacter);
+app.get("/characters", CharacterController.getAllCharacters);
 
 app.post("/characters/add", CharacterController.insertCharacter);
 
@@ -66,7 +68,9 @@ app.patch("/characters/update", CharacterController.updateCharacter);
 app.delete("/characters/delete/:id", CharacterController.deleteCharacter);
 
 // API for Images
-app.get("/images/:imageType", ImageController.getImagesByType);
+app.get("/images/id/:id", ImageController.getImagesByID);
+
+app.get("/images/type/:imageType", ImageController.getImagesByType);
 
 app.get("/images", ImageController.getAllImages);
 

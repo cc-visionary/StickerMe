@@ -1,6 +1,8 @@
 #admin-home-page {
   width: 100vw;
-  height: 85vh;
+  height: 75vh;
+  padding: 5vh;
+  background-color: #FFDE87;
 }
 
 #admin-home-page h1 {
@@ -58,6 +60,12 @@
   margin-left: 10px;
 }
 
+#admin-home-page .no-orders {
+  color: #FFF;
+  font-size: 32px;
+  font-family: 'Oswald', sans-serif;
+}
+
 #admin-home-page .buttons {
   display: flex;
   justify-content: center;
@@ -90,7 +98,7 @@
   height: 50px;
 }
 
-#admin-home-page .preparing {
+#admin-home-page .preparing, #admin-home-page .paid {
   color: #F5D562;
 }
 
@@ -103,6 +111,11 @@
 }
 
 @media screen and (max-width: 500px) {
+  #admin-home-page {
+    padding: 0;
+    margin: 0;
+  }
+
   #admin-home-page h1 {
     font-size: 24px;
   }

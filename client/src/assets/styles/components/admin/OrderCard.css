@@ -1,0 +1,96 @@
+#order-card {
+  color: #FFF;
+  min-width: 30vw;
+  margin: 20px
+}
+
+#order-card .header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 5px;
+  background-color: #343333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#order-card .body {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #424141;
+  padding: 10px;
+  max-height: 20vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#order-card .full-name {
+  font-family: 'Indie Flower', cursive;
+  font-size: 20px;
+  text-align: left;
+}
+
+#order-card .date {
+  font-family: 'Oswald', sans-serif;
+  text-align: left;
+}
+
+#order-card .part-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10vw;
+}
+
+#order-card p {
+  margin: 0;
+}
+
+#order-card .preparing, #order-card .paid, #order-card .cancelled, #order-card .shipped  {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  color: #424141;
+  padding: 5px;
+  border-radius: 30px;
+}
+
+#order-card .label {
+  font-family: 'Oswald', sans-serif;
+}
+#order-card .price .value, #order-card .quantity .value {
+  margin-left: 10px;
+}
+
+#order-card .price, #order-card .quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#order-card .preparing {
+  background-color: #F5D562;
+}
+
+#order-card .cancelled {
+  background-color: #EE6950;
+}
+
+#order-card .shipped, #order-card .paid {
+  background-color: #81CF7A;
+}
+
+@media screen and (max-width: 768px) {
+  #order-card {
+    width: 30vw;
+  } 
+
+  #order-card .part-item {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #order-card {
+    width: 80vw;
+    margin: 20px 0;
+  }
+}

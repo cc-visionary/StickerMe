@@ -1,6 +1,6 @@
 #order-card {
   color: #FFF;
-  min-width: 35vw;
+  min-width: 30vw;
   margin: 20px
 }
 
@@ -33,6 +33,12 @@
 #order-card .date {
   font-family: 'Oswald', sans-serif;
   text-align: left;
+}
+
+#order-card .part-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10vw;
 }
 
 #order-card p {
@@ -72,8 +78,19 @@
   background-color: #81CF7A;
 }
 
+@media screen and (max-width: 768px) {
+  #order-card {
+    width: 30vw;
+  } 
+
+  #order-card .part-item {
+    margin: 0;
+  }
+}
+
 @media screen and (max-width: 500px) {
   #order-card {
     width: 80vw;
-  } 
+    margin: 20px 0;
+  }
 }

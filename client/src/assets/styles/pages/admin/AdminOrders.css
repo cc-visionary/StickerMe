@@ -1,14 +1,19 @@
 #admin-orders-page {
   padding-top: 20px;
+  background-color: #FFDE87;
+  width: 100%;
+  padding: 0 7.5vw;
+}
+
+#admin-orders-page .select-bar {
+  padding-top: 20px;
 }
 
 #admin-orders-page .order-list {
   display: flex;
   flex-wrap: wrap;
-  max-width: 75vw;
   justify-content: center;
   align-items: center;
-  margin: 0 -20px;
 }
 
 #admin-orders-page hr {
@@ -24,9 +29,9 @@
   font-size: 30px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   #admin-orders-page button {
-    font-size: 24px;
+    font-size: 18px;
   }
 }
 
@@ -34,9 +39,5 @@
   #admin-orders-page .order-list {
     flex-direction: column;
     flex-wrap: nowrap;
-  }
-
-  #admin-orders-page button {
-    font-size: 18px;
   }
 }

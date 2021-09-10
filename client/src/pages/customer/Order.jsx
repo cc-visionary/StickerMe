@@ -160,27 +160,42 @@ const Order = (props) => {
         CharacterService.addCharacter(character)
           .then(() => {
             toast.success('Character was successfully added to the database');
-            if (window.confirm('Do you wish to save this contact details for future use?')) {
-              ContactService.addContact(contact)
-                .then(() => {
-                  toast.success('Contact was successfully added to the database');
-                  OrderService.addOrder(order)
-                    .then(() => {
-                      removeLocalCharacter();
-                      removeLocalPoses();
-                      removeLocalCharacterDetails();
-                      toast.success('Character was ordered successfully');
-                      props.history.push('/customer/characters');
-                    })
-                    .catch((err) => {
-                      const { error } = err.response.data;
-                      console.log(error);
-                    });
-                })
-                .catch((err) => {
-                  const { error } = err.response.data;
-                  console.log(error);
-                });
+            if (currentContact === 'Add New Contact') {
+              if (window.confirm('Do you wish to save this contact details for future use?')) {
+                ContactService.addContact(contact)
+                  .then(() => {
+                    toast.success('Contact was successfully added to the database');
+                    OrderService.addOrder(order)
+                      .then(() => {
+                        removeLocalCharacter();
+                        removeLocalPoses();
+                        removeLocalCharacterDetails();
+                        toast.success('Character was ordered successfully');
+                        props.history.push('/customer/characters');
+                      })
+                      .catch((err) => {
+                        const { error } = err.response.data;
+                        console.log(error);
+                      });
+                  })
+                  .catch((err) => {
+                    const { error } = err.response.data;
+                    console.log(error);
+                  });
+              } else {
+                OrderService.addOrder(order)
+                  .then(() => {
+                    removeLocalCharacter();
+                    removeLocalPoses();
+                    removeLocalCharacterDetails();
+                    toast.success('Character was ordered successfully');
+                    props.history.push('/customer/characters');
+                  })
+                  .catch((err) => {
+                    const { error } = err.response.data;
+                    console.log(error);
+                  });
+              }
             } else {
               OrderService.addOrder(order)
                 .then(() => {
@@ -200,27 +215,42 @@ const Order = (props) => {
             const { error } = err.response.data;
             console.log(error);
           });
-      } else if (window.confirm('Do you wish to save this contact details for future use?')) {
-        ContactService.addContact(contact)
-          .then(() => {
-            toast.success('Character was successfully added to the database');
-            OrderService.addOrder(order)
-              .then(() => {
-                removeLocalCharacter();
-                removeLocalPoses();
-                removeLocalCharacterDetails();
-                toast.success('Character was ordered successfully');
-                props.history.push('/customer/characters');
-              })
-              .catch((err) => {
-                const { error } = err.response.data;
-                console.log(error);
-              });
-          })
-          .catch((err) => {
-            const { error } = err.response.data;
-            console.log(error);
-          });
+      } else if (currentContact === 'Add New Contact') {
+        if (window.confirm('Do you wish to save this contact details for future use?')) {
+          ContactService.addContact(contact)
+            .then(() => {
+              toast.success('Character was successfully added to the database');
+              OrderService.addOrder(order)
+                .then(() => {
+                  removeLocalCharacter();
+                  removeLocalPoses();
+                  removeLocalCharacterDetails();
+                  toast.success('Character was ordered successfully');
+                  props.history.push('/customer/characters');
+                })
+                .catch((err) => {
+                  const { error } = err.response.data;
+                  console.log(error);
+                });
+            })
+            .catch((err) => {
+              const { error } = err.response.data;
+              console.log(error);
+            });
+        } else {
+          OrderService.addOrder(order)
+            .then(() => {
+              removeLocalCharacter();
+              removeLocalPoses();
+              removeLocalCharacterDetails();
+              toast.success('Character was ordered successfully');
+              props.history.push('/customer/characters');
+            })
+            .catch((err) => {
+              const { error } = err.response.data;
+              console.log(error);
+            });
+        }
       } else {
         OrderService.addOrder(order)
           .then(() => {

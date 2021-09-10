@@ -33,6 +33,7 @@ const OrderCard = ({ order }) => (
       </div>
       <div>
         <div className="label">INSTRUCTIONS:</div>
+        {console.log(order)}
         <div className="value">{order.additionalNotes === '' ? 'No additional instructions' : order.additionalNotes}</div>
       </div>
       <div>
@@ -41,7 +42,54 @@ const OrderCard = ({ order }) => (
       </div>
       <div>
         <div className="label">PARTS:</div>
-        <div>{`ACCESSORIES: ${order.character.accessories}`}</div>
+        <div className="part-item">
+          <div>ACCESSORIES:</div>
+          <div>{order.character.accessories}</div>
+        </div>
+        <div className="part-item">
+          <div>BACKHAIR:</div>
+          <div>{order.character.backHair}</div>
+        </div>
+        <div className="part-item">
+          <div>BANGS:</div>
+          <div>{order.character.frontHair}</div>
+        </div>
+        <div className="part-item">
+          <div>BASEHAIR:</div>
+          <div>{order.character.baseHair}</div>
+        </div>
+        <div className="part-item">
+          <div>BLUSH:</div>
+          <div>{order.character.blush}</div>
+        </div>
+        <div className="part-item">
+          <div>EARS:</div>
+          <div>{order.character.ear}</div>
+        </div>
+        <div className="part-item">
+          <div>EXTRAHAIR:</div>
+          <div>{order.character.extraHair}</div>
+        </div>
+        <div className="part-item">
+          <div>EYEBROWS:</div>
+          <div>{order.character.eyebrows}</div>
+        </div>
+        <div className="part-item">
+          <div>EYES:</div>
+          <div>{order.character.eyes}</div>
+        </div>
+        <div className="part-item">
+          <div>SIDEHAIR:</div>
+          <div>{order.character.sideHair}</div>
+        </div>
+        <div className="part-item">
+          <div>MOUTH:</div>
+          <div>{order.character.mouth}</div>
+        </div>
+        <div className="part-item">
+          <div>NOSE:</div>
+          <div>{order.character.nose}</div>
+        </div>
       </div>
     </div>
   </div>
